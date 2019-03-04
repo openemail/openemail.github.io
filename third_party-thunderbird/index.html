@@ -76,7 +76,7 @@
   }
   ga.l = +new Date
   /* Setup integration and send page view */
-  ga("create", "UA-92608422-4", ".github.io")
+  ga("create", "UA-135540331-1", "docs.openemail.io")
   ga("set", "anonymizeIp", true)
   ga("send", "pageview")
   /* Register handler to log search on blur */
@@ -197,7 +197,7 @@
 
   
 
-<a href="https://github.com/openemail/openemail/" title="Go to repository" class="md-source" data-md-source="github">
+<a href="https://github.com/openemail/openemail-docs/" title="Go to repository" class="md-source" data-md-source="github">
   
     <div class="md-source__icon">
       <svg viewBox="0 0 24 24" width="24" height="24">
@@ -244,7 +244,7 @@
 
   
 
-<a href="https://github.com/openemail/openemail/" title="Go to repository" class="md-source" data-md-source="github">
+<a href="https://github.com/openemail/openemail-docs/" title="Go to repository" class="md-source" data-md-source="github">
   
     <div class="md-source__icon">
       <svg viewBox="0 0 24 24" width="24" height="24">
@@ -1522,7 +1522,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/openemail/openemail/edit/master/docs/third_party-thunderbird.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/openemail/openemail-docs/edit/master/docs/third_party-thunderbird.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
                 <h1 id="build-the-sogo-integrator-plugin">Build the SOGo Integrator plugin<a class="headerlink" href="#build-the-sogo-integrator-plugin" title="Permanent link">&para;</a></h1>
@@ -1536,16 +1536,16 @@ Create a new directory <code>thunderbird-plugins</code> and place the script <a 
 Finally, execute the script with your hostname as an argument and piping it the names of all domains that mailcow handles.
 All of this can be done using the following commands:</p>
 <div class="codehilite"><pre><span></span>cd data/web
-curl -LO https://github.com/openemail/openemail-docs/raw/master/docs/download/thunderbird-plugins.php
+curl -LO https://github.com/mailcow/mailcow-dockerized-docs/raw/master/docs/download/thunderbird-plugins.php
 mkdir thunderbird-plugins
 cd thunderbird-plugins
-curl -Lo build-plugins.sh https://github.com/openemail/openemail-docs/raw/master/docs/download/build-thunderbird-plugins.sh
+curl -Lo build-plugins.sh https://github.com/mailcow/mailcow-dockerized-docs/raw/master/docs/download/build-thunderbird-plugins.sh
 chmod +x build-plugins.sh
-echo example.com example.org | ./build-plugins.sh mail.example.com
+echo example.com example.org | ./build-plugins.sh mailcow.example.com
 </pre></div>
 
 <h1 id="install-it-in-thunderbird">Install it in Thunderbird<a class="headerlink" href="#install-it-in-thunderbird" title="Permanent link">&para;</a></h1>
-<p>After you have set up your mailcow IMAP account in Thunderbird, download the SOGo integrator plugin for your domain, e.g. <a href="https://mail.example.com/thunderbird-plugins/sogo-integrator-31.0.6-example.com.xpi">https://mail.example.com/thunderbird-plugins/sogo-integrator-31.0.6-example.com.xpi</a>, and install it into Thunderbird.
+<p>After you have set up your mailcow IMAP account in Thunderbird, download the SOGo integrator plugin for your domain, e.g. <a href="https://mailcow.example.com/thunderbird-plugins/sogo-integrator-31.0.6-example.com.xpi">https://mailcow.example.com/thunderbird-plugins/sogo-integrator-31.0.6-example.com.xpi</a>, and install it into Thunderbird.
 All your address books and calendars will be configured automatically.</p>
                 
                   
@@ -1604,7 +1604,7 @@ All your address books and calendars will be configured automatically.</p>
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2018 André Peters
+            Copyright 2019 Chinthaka Deshapriya
           </div>
         
         powered by
@@ -1619,7 +1619,7 @@ All your address books and calendars will be configured automatically.</p>
     
       <a href="https://openemail.io" class="md-footer-social__link fa fa-globe"></a>
     
-      <a href="https://openemail.github.io" class="md-footer-social__link fa fa-github-alt"></a>
+      <a href="https://docs.openemail.io" class="md-footer-social__link fa fa-github-alt"></a>
     
   </div>
 
