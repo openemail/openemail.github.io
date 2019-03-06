@@ -376,6 +376,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#install-compose-on-linux-systems" title="Install Compose on Linux systems" class="md-nav__link">
+    Install Compose on Linux systems
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloning-openemail-repository" title="Cloning openemail  repository" class="md-nav__link">
+    Cloning openemail  repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-openemailconf" title="Generating openemail.conf" class="md-nav__link">
+    Generating openemail.conf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customize-the-configuration" title="Customize the configuration" class="md-nav__link">
+    Customize the configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-mtu" title="Setup MTU" class="md-nav__link">
+    Setup MTU
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pull-openemail-docker-images" title="Pull openemail docker images" class="md-nav__link">
+    Pull openemail docker images
+  </a>
+  
+</li>
+      
       
       
       
@@ -1545,6 +1587,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#install-compose-on-linux-systems" title="Install Compose on Linux systems" class="md-nav__link">
+    Install Compose on Linux systems
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloning-openemail-repository" title="Cloning openemail  repository" class="md-nav__link">
+    Cloning openemail  repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-openemailconf" title="Generating openemail.conf" class="md-nav__link">
+    Generating openemail.conf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customize-the-configuration" title="Customize the configuration" class="md-nav__link">
+    Customize the configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-mtu" title="Setup MTU" class="md-nav__link">
+    Setup MTU
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pull-openemail-docker-images" title="Pull openemail docker images" class="md-nav__link">
+    Pull openemail docker images
+  </a>
+  
+</li>
+      
       
       
       
@@ -1570,8 +1654,8 @@
 <p class="admonition-title">Warning</p>
 <p>Make sure you've read <a href="https://docs.openemail.io/prerequisite-system/">"Prepare Your System"</a> before proceeding!</p>
 </div>
-<p>You need to install Docker and Docker Compose to setup <strong>openemail</strong> for your domain.</p>
-<p><strong>1.</strong> Learn how to install <a href="https://docs.docker.com/engine/installation/linux/">Docker</a> and <a href="https://docs.docker.com/compose/install/">Docker Compose</a>.</p>
+<p>You need to install <code>Docker</code> and <code>Docker Compose</code> to setup <strong>openemail</strong> for your domain.</p>
+<p>This section will help you to learn how to install <a href="https://docs.docker.com/engine/installation/linux/">Docker</a> and <a href="https://docs.docker.com/compose/install/">Docker Compose</a>.</p>
 <h2 id="installing-docker-community-edition-on-ubuntu">Installing Docker Community Edition on Ubuntu<a class="headerlink" href="#installing-docker-community-edition-on-ubuntu" title="Permanent link">&para;</a></h2>
 <p>To install Docker CE, you need the 64-bit version of one of these Ubuntu versions:</p>
 <ul>
@@ -1623,44 +1707,56 @@ This command downloads a test image and runs it in a container. When the contain
 <p class="admonition-title">Note</p>
 <p>If you are planing to use CentOS as your <strong>openemai</strong> docker host please follow the official <a href="https://docs.docker.com/install/linux/docker-ce/centos/">CentOS docker-ce Installation Guide</a></p>
 </div>
-<ul>
-<li>Docker-Compose
-<div class="codehilite"><pre><span></span>curl -L https://github.com/docker/compose/releases/download/$(curl -Ls https://www.servercow.de/docker-compose/latest.php)/docker-compose-$(uname -s)-$(uname -m) &gt; /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
-</pre></div></li>
-</ul>
-<p>Please use the latest Docker engine available and do not use the engine that ships with your distros repository.</p>
-<p><strong>2.</strong> Clone the master branch of the repository, make sure your umask equals 0022.
-<div class="codehilite"><pre><span></span># umask
-0022
-# cd /opt
-# git clone https://github.com/mailcow/mailcow-dockerized
-# cd mailcow-dockerized
+<h2 id="install-compose-on-linux-systems">Install Compose on Linux systems<a class="headerlink" href="#install-compose-on-linux-systems" title="Permanent link">&para;</a></h2>
+<p>On Linux, you can download the Docker Compose binary from the <a href="https://github.com/docker/compose/releases">Compose repository release page on GitHub</a>. Follow the instructions from the link, which involve running the curl command in your terminal to download the binaries. These step by step instructions are also included below.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the command docker-compose fails after installation, check your path. You can also create a symbolic link to /usr/bin or any other directory in your path.</p>
+</div>
+<p>For example:
+<div class="codehilite"><pre><span></span>sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+</pre></div>
+<strong>3.</strong> Test your installation
+<div class="codehilite"><pre><span></span>docker-compose --version
 </pre></div></p>
-<p><strong>3.</strong> Generate a configuration file. Use a FQDN (<code>host.domain.tld</code>) as hostname when asked.
+<h2 id="cloning-openemail-repository">Cloning openemail  repository<a class="headerlink" href="#cloning-openemail-repository" title="Permanent link">&para;</a></h2>
+<p>Clone the master branch of the repository, make sure your <code>umask</code> equals 0022.
+<div class="codehilite"><pre><span></span>sudo su -
+umask
+cd /opt
+git clone https://github.com/openemail/openemail.git
+cd openemail
+</pre></div></p>
+<h2 id="generating-openemailconf">Generating openemail.conf<a class="headerlink" href="#generating-openemailconf" title="Permanent link">&para;</a></h2>
+<p>Generate a configuration file. Use a FQDN (<code>host.domain.tld</code>) as hostname when asked.</p>
 <div class="codehilite"><pre><span></span>./generate_config.sh
-</pre></div></p>
-<p><strong>4.</strong> Change configuration if you want or need to.
-<div class="codehilite"><pre><span></span>nano mailcow.conf
+</pre></div>
+
+<h2 id="customize-the-configuration">Customize the configuration<a class="headerlink" href="#customize-the-configuration" title="Permanent link">&para;</a></h2>
+<p>Change configuration if you want or need to.
+<div class="codehilite"><pre><span></span>nano openemail.conf
 </pre></div>
 If you plan to use a reverse proxy, you can, for example, bind HTTPS to 127.0.0.1 on port 8443 and HTTP to 127.0.0.1 on port 8080.</p>
 <p>You may need to stop an existing pre-installed MTA which blocks port 25/tcp. See <a href="https://mailcow.github.io/mailcow-dockerized-docs/firststeps-local_mta/">this chapter</a> to learn how to reconfigure Postfix to run besides mailcow after a successful installation.</p>
-<p><strong>4.1.</strong> OpenStack users and users with a MTU not equal to 1500:</p>
+<h2 id="setup-mtu">Setup MTU<a class="headerlink" href="#setup-mtu" title="Permanent link">&para;</a></h2>
+<p>OpenStack users and users with a MTU not equal to 1500:</p>
 <p>Edit <code>docker-compose.yml</code> and change the network settings according to your MTU.
-Add the new driver_opts parameter like this:
+Add the new driver_opts parameter like this:</p>
 <div class="codehilite"><pre><span></span><span class="n">networks</span><span class="o">:</span>
-  <span class="n">mailcow</span><span class="o">-</span><span class="n">network</span><span class="o">:</span>
+  <span class="n">openemail</span><span class="o">-</span><span class="n">network</span><span class="o">:</span>
     <span class="o">...</span>
     <span class="n">driver_opts</span><span class="o">:</span>
       <span class="n">com</span><span class="o">.</span><span class="na">docker</span><span class="o">.</span><span class="na">network</span><span class="o">.</span><span class="na">driver</span><span class="o">.</span><span class="na">mtu</span><span class="o">:</span> <span class="mi">1450</span>
     <span class="o">...</span>
-</pre></div></p>
-<p><strong>5.</strong> Pull the images and run the composer file. The parameter <code>-d</code> will start mailcow: dockerized detached:
+</pre></div>
+
+<h2 id="pull-openemail-docker-images">Pull openemail docker images<a class="headerlink" href="#pull-openemail-docker-images" title="Permanent link">&para;</a></h2>
+<p>Pull the images and run the composer file. The parameter <code>-d</code> will start openemail docker containers detached:
 <div class="codehilite"><pre><span></span>docker-compose pull
 docker-compose up -d
 </pre></div></p>
 <p>Done!</p>
-<p>You can now access <strong>https://${MAILCOW_HOSTNAME}</strong> with the default credentials <code>admin</code> + password <code>moohoo</code>.</p>
+<p>You can now access <strong>https://${OPENEMAIL_HOSTNAME}</strong> with the default credentials <code>admin</code> + password <code>openemail</code>.</p>
 <p>The database will be initialized right after a connection to MySQL can be established.</p>
                 
                   
