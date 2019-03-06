@@ -341,50 +341,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dkim-spf-and-dmarc" title="DKIM, SPF and DMARC" class="md-nav__link">
-    DKIM, SPF and DMARC
+  <a href="#the-minimal-dns-configuration" title="The minimal DNS configuration" class="md-nav__link">
+    The minimal DNS configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reverse-dns-of-your-mx-ip" title="Reverse DNS of your MX IP" class="md-nav__link">
+    Reverse DNS of your MX IP
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#to-find-out-your-current-spf-settings-run" title="To find out your current SPF settings run:" class="md-nav__link">
-    To find out your current SPF settings run:
+  <a href="#to-find-the-ip-of-your-mx-run" title="To find the IP of your MX run:" class="md-nav__link">
+    To find the IP of your MX run:
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#creating-a-dkim-key-and-dns-records" title="Creating a DKIM key and DNS records" class="md-nav__link">
-    Creating a DKIM key and DNS records
+  <a href="#to-find-your-ptr-record-run" title="To find your PTR record run:" class="md-nav__link">
+    To find your PTR record run:
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-advanced-dns-configuration" title="The advanced DNS configuration" class="md-nav__link">
-    The advanced DNS configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#testing" title="Testing" class="md-nav__link">
-    Testing
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#misc" title="Misc" class="md-nav__link">
-    Misc
-  </a>
   
 </li>
       
@@ -1594,50 +1580,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dkim-spf-and-dmarc" title="DKIM, SPF and DMARC" class="md-nav__link">
-    DKIM, SPF and DMARC
+  <a href="#the-minimal-dns-configuration" title="The minimal DNS configuration" class="md-nav__link">
+    The minimal DNS configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reverse-dns-of-your-mx-ip" title="Reverse DNS of your MX IP" class="md-nav__link">
+    Reverse DNS of your MX IP
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#to-find-out-your-current-spf-settings-run" title="To find out your current SPF settings run:" class="md-nav__link">
-    To find out your current SPF settings run:
+  <a href="#to-find-the-ip-of-your-mx-run" title="To find the IP of your MX run:" class="md-nav__link">
+    To find the IP of your MX run:
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#creating-a-dkim-key-and-dns-records" title="Creating a DKIM key and DNS records" class="md-nav__link">
-    Creating a DKIM key and DNS records
+  <a href="#to-find-your-ptr-record-run" title="To find your PTR record run:" class="md-nav__link">
+    To find your PTR record run:
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-advanced-dns-configuration" title="The advanced DNS configuration" class="md-nav__link">
-    The advanced DNS configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#testing" title="Testing" class="md-nav__link">
-    Testing
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#misc" title="Misc" class="md-nav__link">
-    Misc
-  </a>
   
 </li>
       
@@ -1673,72 +1645,76 @@
 <li>An in-depth discussion of SPF, DKIM and DMARC:
   <a href="https://www.skelleton.net/2015/03/21/how-to-eliminate-spam-and-protect-your-name-with-dmarc/">"How to eliminate spam and protect your name with DMARC"</a></li>
 </ul>
-<p><div class="codehilite"><pre><span></span>## The minimal DNS configuration
-
-Let&#39;s first first find your MX records using the `dig` command in your Linux system. Run the following query to view the MX records for the domain `openemail.io`. Simply change this domain to query MX for your domain.
-</pre></div>
-dig openemail.io MX +short
-<div class="codehilite"><pre><span></span>You will get an output like below.
-</pre></div>
-15 hasuna.openemail.io.
-10 mail.openemail.io.
-<div class="codehilite"><pre><span></span>According to the above output the domain `openemal.io` has two `MX` records. The numbers `10` and `15` are respective `MX` priorities.
-## Reverse DNS of your MX IP
-
-Make sure that the PTR record of your IP matches the FQDN of your openemal host: `<span class="cp">${</span><span class="n">OPENEMAIL_HOSTNAME</span><span class="cp">}</span>` [^1]. This record is usually set at the provider you leased the IP (server) from.
-
-### To find the IP of your `MX` run:
-</pre></div>
-$ dig mail.openemail.io +short
-<div class="codehilite"><pre><span></span>The above query should return an `IP` address like below.
-</pre></div>
-68.183.186.231
-<div class="codehilite"><pre><span></span>### To find your PTR record run:
-</pre></div>
-$ host  68.183.186.231
-<div class="codehilite"><pre><span></span>You will get an output like Below
-</pre></div>
-231.186.183.68.in-addr.arpa domain name pointer mail.openemail.io</p>
-<h2 id="dkim-spf-and-dmarc">DKIM, SPF and DMARC<a class="headerlink" href="#dkim-spf-and-dmarc" title="Permanent link">&para;</a></h2>
-<p>The SPF, DKIM, and DMARC are setup as TXT in your DNS zone file. If you are running your own DNS for your domain you can add the following record in to your domains zone file like the example below.
-<div class="codehilite"><pre><span></span>@   IN    TXT   &quot;v=spf1 mx -all&quot;
-</pre></div></p>
-<h3 id="to-find-out-your-current-spf-settings-run">To find out your current SPF settings run:<a class="headerlink" href="#to-find-out-your-current-spf-settings-run" title="Permanent link">&para;</a></h3>
-<p><div class="codehilite"><pre><span></span>$ <span class="s2">&quot;v=spf1  mx  -all&quot;</span>
+<h2 id="the-minimal-dns-configuration">The minimal DNS configuration<a class="headerlink" href="#the-minimal-dns-configuration" title="Permanent link">&para;</a></h2>
+<p>Let's first first find your MX records using the <code>dig</code> command in your Linux system. Run the following query to view the MX records for the domain <code>openemail.io</code>. Simply change this domain to query MX for your domain.</p>
+<p><div class="codehilite"><pre><span></span>dig openemail.io MX +short
 </pre></div>
 You will get an output like below.
-<div class="codehilite"><pre><span></span>&quot;v=spf1  mx -all&quot;
+<div class="codehilite"><pre><span></span>15 hasuna.openemail.io.
+10 mail.openemail.io.
 </pre></div>
-Using "v=spf1 mx -all" authorizes any IP that is also a MX for the sending domain. If you use <code>~all</code> ,it means softfail which allows mail whether or not it matches the parameters in the record.</p>
-<p>Please refer to <a href="http://www.openspf.org">SPF Project</a> for further reading.</p>
-<h3 id="creating-a-dkim-key-and-dns-records">Creating a DKIM key and DNS records<a class="headerlink" href="#creating-a-dkim-key-and-dns-records" title="Permanent link">&para;</a></h3>
-<p>It is highly recommended to create a <strong>DKIM</strong> TXT record in your **openemal UI##  and set the corresponding TXT record in your DNS records. Please refer to <a href="http://www.opendkim.org">OpenDKIM</a> for further reading.</p>
-<p>The below steps can be used to create DKIM key in you Linux command line.</p>
-<p>** Step-1: install required tools
-<div class="codehilite"><pre><span></span>$ sudo apt-get install opendkim opendkim-tools
+According to the above output the domain <code>openemal.io</code> has two <code>MX</code> records. The numbers <code>10</code> and <code>15</code> are respective <code>MX</code> priorities.</p>
+<h2 id="reverse-dns-of-your-mx-ip">Reverse DNS of your MX IP<a class="headerlink" href="#reverse-dns-of-your-mx-ip" title="Permanent link">&para;</a></h2>
+<p>Make sure that the PTR record of your IP matches the FQDN of your openemal host: <code>${OPENEMAIL_HOSTNAME}</code> <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>. This record is usually set at the provider you leased the IP (server) from.</p>
+<h3 id="to-find-the-ip-of-your-mx-run">To find the IP of your <code>MX</code> run:<a class="headerlink" href="#to-find-the-ip-of-your-mx-run" title="Permanent link">&para;</a></h3>
+<p><div class="codehilite"><pre><span></span>$ dig mail.openemail.io +short
 </pre></div>
-** Step-2: Crete the _domainkey
-Now create DKIM key pair using <code>opendkim-genkey</code> command line utility. For this guide we are using domain name <code>openemail.io</code>, Change this name with your actual domain name.
-<div class="codehilite"><pre><span></span>$ mkdir -p dkim-keys/openemail.io
-$ <span class="nb">cd</span> dkim-keys/openemail.io
+The above query should return an <code>IP</code> address like below.
+<div class="codehilite"><pre><span></span>68.183.186.231
+</pre></div></p>
+<h3 id="to-find-your-ptr-record-run">To find your PTR record run:<a class="headerlink" href="#to-find-your-ptr-record-run" title="Permanent link">&para;</a></h3>
+<p><div class="codehilite"><pre><span></span>$ host  <span class="m">68</span>.183.186.231
+</pre></div>
+You will get an output like Below
+<div class="codehilite"><pre><span></span>231.186.183.68.in-addr.arpa domain name pointer mail.openemail.io
+
+## DKIM, SPF and DMARC
+
+The SPF, DKIM, and DMARC are setup as TXT in your DNS zone file. If you are running your own DNS for your domain you can add the following record in to your domains zone file like the example below.
+</pre></div>
+@   IN    TXT   "v=spf1 mx -all"
+<div class="codehilite"><pre><span></span>### To find out your current SPF settings run:
+</pre></div>
+$ "v=spf1  mx  -all"
+<div class="codehilite"><pre><span></span>You will get an output like below.
+</pre></div>
+"v=spf1  mx -all"
+<div class="codehilite"><pre><span></span><span class="n">Using</span> <span class="s">&quot;v=spf1 mx -all&quot;</span> <span class="n">authorizes</span> <span class="n">any</span> <span class="n">IP</span> <span class="n">that</span> <span class="n">is</span> <span class="n">also</span> <span class="n">a</span> <span class="n">MX</span> <span class="k">for</span> <span class="n">the</span> <span class="n">sending</span> <span class="n">domain</span><span class="p">.</span> <span class="n">If</span> <span class="n">you</span> <span class="n">use</span> <span class="err">`</span><span class="o">~</span><span class="n">all</span><span class="err">`</span> <span class="p">,</span><span class="n">it</span> <span class="n">means</span> <span class="n">softfail</span> <span class="n">which</span> <span class="n">allows</span> <span class="n">mail</span> <span class="n">whether</span> <span class="n">or</span> <span class="n">not</span> <span class="n">it</span> <span class="n">matches</span> <span class="n">the</span> <span class="n">parameters</span> <span class="k">in</span> <span class="n">the</span> <span class="n">record</span><span class="p">.</span>
+
+<span class="n">Please</span> <span class="n">refer</span> <span class="n">to</span> <span class="p">[</span><span class="n">SPF</span> <span class="n">Project</span><span class="p">](</span><span class="nl">http</span><span class="p">:</span><span class="c1">//www.openspf.org) for further reading.</span>
+
+<span class="cp">### Creating a DKIM key and DNS records</span>
+
+<span class="n">It</span> <span class="n">is</span> <span class="n">highly</span> <span class="n">recommended</span> <span class="n">to</span> <span class="n">create</span> <span class="n">a</span> <span class="o">**</span><span class="n">DKIM</span><span class="o">**</span> <span class="n">TXT</span> <span class="n">record</span> <span class="k">in</span> <span class="n">your</span> <span class="o">**</span><span class="n">openemal</span> <span class="n">UI</span><span class="err">##</span>  <span class="n">and</span> <span class="n">set</span> <span class="n">the</span> <span class="n">corresponding</span> <span class="n">TXT</span> <span class="n">record</span> <span class="k">in</span> <span class="n">your</span> <span class="n">DNS</span> <span class="n">records</span><span class="p">.</span> <span class="n">Please</span> <span class="n">refer</span> <span class="n">to</span> <span class="p">[</span><span class="n">OpenDKIM</span><span class="p">](</span><span class="nl">http</span><span class="p">:</span><span class="c1">//www.opendkim.org) for further reading.</span>
+
+<span class="n">The</span> <span class="n">below</span> <span class="n">steps</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">create</span> <span class="n">DKIM</span> <span class="n">key</span> <span class="k">in</span> <span class="n">you</span> <span class="n">Linux</span> <span class="n">command</span> <span class="n">line</span><span class="p">.</span>
+
+<span class="o">**</span> <span class="n">Step</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span> <span class="n">install</span> <span class="n">required</span> <span class="n">tools</span>
+</pre></div>
+$ sudo apt-get install opendkim opendkim-tools
+<div class="codehilite"><pre><span></span>** Step-2: Crete the _domainkey
+Now create DKIM key pair using `opendkim-genkey` command line utility. For this guide we are using domain name `openemail.io`, Change this name with your actual domain name.
+</pre></div>
+$ mkdir -p dkim-keys/openemail.io
+$ cd dkim-keys/openemail.io
 $ opendkim-genkey -t -s dkim -d openemail.io
 $ cat dkim.txt
+<div class="codehilite"><pre><span></span>You will get an output like below. It is accually the TXT record for `bind` and compatible DNS servers.
 </pre></div>
-You will get an output like below. It is accually the TXT record for <code>bind</code> and compatible DNS servers.
-<div class="codehilite"><pre><span></span>dkim._domainkey IN  TXT ( &quot;v=DKIM1; h=sha256; k=rsa; t=y; &quot;
-      &quot;p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtIfYQWd16SotLpDAIe+9CRda6+KmExTSM4lQsO8XsbJsECqEuUer+xrJTVA4N5tEM53MeuH36tCjsKynlKMKmNQtMpblg3fHL0Z57FUyAUoHO9GOK1lS8vOA5wbf68FQ06YHAd/Dgq21/sYrERnnXYVvH5jSA44YBfiwrvuzopl/ekMp71WJMR73TmEQ1BTf6SZA6STvCJVj8d&quot;
-      &quot;pAuLekL1EYQzsGsp1kcOFYOee9c9VjfgkuZnJkAkQmz94L3YTd/08i6rZrKUSRXcx8dfitx7k12IrBsKCqlXgRIpWYWJW58gAM1Fif6gjDmugj4mAIQJ4oyWJdNDZPYpKEG+6VQQIDAQAB&quot; )  ; ----- DKIM key dkim for openemail.io
-</pre></div></p>
-<div class="codehilite"><pre><span></span>dkim._domainkey  IN TXT     &quot;v=DKIM1; k=rsa; t=s; s=email; p=...&quot;
+dkim._domainkey IN  TXT ( "v=DKIM1; h=sha256; k=rsa; t=y; "
+      "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtIfYQWd16SotLpDAIe+9CRda6+KmExTSM4lQsO8XsbJsECqEuUer+xrJTVA4N5tEM53MeuH36tCjsKynlKMKmNQtMpblg3fHL0Z57FUyAUoHO9GOK1lS8vOA5wbf68FQ06YHAd/Dgq21/sYrERnnXYVvH5jSA44YBfiwrvuzopl/ekMp71WJMR73TmEQ1BTf6SZA6STvCJVj8d"
+      "pAuLekL1EYQzsGsp1kcOFYOee9c9VjfgkuZnJkAkQmz94L3YTd/08i6rZrKUSRXcx8dfitx7k12IrBsKCqlXgRIpWYWJW58gAM1Fif6gjDmugj4mAIQJ4oyWJdNDZPYpKEG+6VQQIDAQAB" )  ; ----- DKIM key dkim for openemail.io
+<div class="codehilite"><pre><span></span>
 </pre></div>
+dkim._domainkey  IN TXT     "v=DKIM1; k=rsa; t=s; s=email; p=..."
+<div class="codehilite"><pre><span></span><span class="n">The</span> <span class="n">last</span> <span class="n">step</span> <span class="k">in</span> <span class="n">protecting</span> <span class="n">yourself</span> <span class="n">and</span> <span class="n">others</span> <span class="n">is</span> <span class="n">the</span> <span class="n">implementation</span> <span class="n">of</span> <span class="n">a</span> <span class="o">**</span><span class="n">DMARC</span><span class="o">**</span> <span class="n">TXT</span> <span class="n">record</span><span class="p">,</span> <span class="k">for</span> <span class="n">example</span> <span class="n">by</span> <span class="n">using</span> <span class="n">the</span> <span class="p">[</span><span class="n">DMARC</span> <span class="n">Assistant</span><span class="p">](</span><span class="nl">http</span><span class="p">:</span><span class="c1">//www.kitterman.com/dmarc/assistant.html) ([check](https://dmarcian.com/dmarc-inspector/google.com)).</span>
+</pre></div>
+_dmarc              IN TXT     "v=DMARC1; p=reject; rua=mailto:<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#109;&#97;&#105;&#108;&#97;&#117;&#116;&#104;&#45;&#114;&#101;&#112;&#111;&#114;&#116;&#115;&#64;&#101;&#120;&#97;&#109;&#112;&#108;&#101;&#46;&#111;&#114;&#103;">&#109;&#97;&#105;&#108;&#97;&#117;&#116;&#104;&#45;&#114;&#101;&#112;&#111;&#114;&#116;&#115;&#64;&#101;&#120;&#97;&#109;&#112;&#108;&#101;&#46;&#111;&#114;&#103;</a>"
+<div class="codehilite"><pre><span></span>## The advanced DNS configuration
 
-<p>The last step in protecting yourself and others is the implementation of a <strong>DMARC</strong> TXT record, for example by using the <a href="http://www.kitterman.com/dmarc/assistant.html">DMARC Assistant</a> (<a href="https://dmarcian.com/dmarc-inspector/google.com">check</a>).</p>
-<div class="codehilite"><pre><span></span>_dmarc              IN TXT     &quot;v=DMARC1; p=reject; rua=mailto:mailauth-reports@example.org&quot;
+**SRV** records specify the server(s) for a specific protocol on your domain. If you want to explicitly announce a service as not provided, give &quot;.&quot; as the target address (instead of &quot;mail.example.org.&quot;). Please refer to [RFC 2782](https://tools.ietf.org/html/rfc2782).
 </pre></div>
-
-<h2 id="the-advanced-dns-configuration">The advanced DNS configuration<a class="headerlink" href="#the-advanced-dns-configuration" title="Permanent link">&para;</a></h2>
-<p><strong>SRV</strong> records specify the server(s) for a specific protocol on your domain. If you want to explicitly announce a service as not provided, give "." as the target address (instead of "mail.example.org."). Please refer to <a href="https://tools.ietf.org/html/rfc2782">RFC 2782</a>.</p>
-<div class="codehilite"><pre><span></span>_imap._tcp          IN SRV     0 1 143   mail.example.org.
+_imap._tcp          IN SRV     0 1 143   mail.example.org.
 _imaps._tcp         IN SRV     0 1 993   mail.example.org.
 _pop3._tcp          IN SRV     0 1 110   mail.example.org.
 _pop3s._tcp         IN SRV     0 1 995   mail.example.org.
@@ -1747,24 +1723,24 @@ _smtps._tcp         IN SRV     0 1 465   mail.example.org.
 _sieve._tcp         IN SRV     0 1 4190  mail.example.org.
 _autodiscover._tcp  IN SRV     0 1 443   mail.example.org.
 _carddavs._tcp      IN SRV     0 1 443   mail.example.org.
-_carddavs._tcp      IN TXT     &quot;path=/SOGo/dav/&quot;
+_carddavs._tcp      IN TXT     "path=/SOGo/dav/"
 _caldavs._tcp       IN SRV     0 1 443   mail.example.org.
-_caldavs._tcp       IN TXT     &quot;path=/SOGo/dav/&quot;
-</pre></div>
+_caldavs._tcp       IN TXT     "path=/SOGo/dav/"
+<div class="codehilite"><pre><span></span><span class="cp">## Testing</span>
 
-<h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
-<p>Here are some tools you can use to verify your DNS configuration:</p>
-<ul>
-<li><a href="https://mxtoolbox.com/SuperTool.aspx">MX Toolbox</a> (DNS, SMTP, RBL)</li>
-<li><a href="https://www.port25.com/dkim-wizard/">port25.com</a> (DKIM, SPF)</li>
-<li><a href="https://www.mail-tester.com/">Mail-tester</a> (DKIM, DMARC, SPF)</li>
-<li><a href="https://www.dmarcanalyzer.com/spf/checker/">DMARC Analyzer</a> (DMARC, SPF)</li>
-</ul>
-<h2 id="misc">Misc<a class="headerlink" href="#misc" title="Permanent link">&para;</a></h2>
-<p>If you are interested in statistics, you can additionally register with the <a href="https://gmail.com/postmaster">Postmaster Tool</a>  by Google and supply a <strong>google-site-verification</strong> TXT record, which will give you details about spam-classified mails by your domain. This is clearly optional.</p>
-<div class="codehilite"><pre><span></span>@                   IN TXT     &quot;google-site-verification=...&quot;
-</pre></div>
+<span class="n">Here</span> <span class="n">are</span> <span class="n">some</span> <span class="n">tools</span> <span class="n">you</span> <span class="n">can</span> <span class="n">use</span> <span class="n">to</span> <span class="n">verify</span> <span class="n">your</span> <span class="n">DNS</span> <span class="nl">configuration</span><span class="p">:</span>
 
+<span class="o">-</span> <span class="p">[</span><span class="n">MX</span> <span class="n">Toolbox</span><span class="p">](</span><span class="nl">https</span><span class="p">:</span><span class="c1">//mxtoolbox.com/SuperTool.aspx) (DNS, SMTP, RBL)</span>
+<span class="o">-</span> <span class="p">[</span><span class="n">port25</span><span class="p">.</span><span class="n">com</span><span class="p">](</span><span class="nl">https</span><span class="p">:</span><span class="c1">//www.port25.com/dkim-wizard/) (DKIM, SPF)</span>
+<span class="o">-</span> <span class="p">[</span><span class="n">Mail</span><span class="o">-</span><span class="n">tester</span><span class="p">](</span><span class="nl">https</span><span class="p">:</span><span class="c1">//www.mail-tester.com/) (DKIM, DMARC, SPF)</span>
+<span class="o">-</span> <span class="p">[</span><span class="n">DMARC</span> <span class="n">Analyzer</span><span class="p">](</span><span class="nl">https</span><span class="p">:</span><span class="c1">//www.dmarcanalyzer.com/spf/checker/) (DMARC, SPF)</span>
+
+<span class="cp">## Misc</span>
+
+<span class="n">If</span> <span class="n">you</span> <span class="n">are</span> <span class="n">interested</span> <span class="k">in</span> <span class="n">statistics</span><span class="p">,</span> <span class="n">you</span> <span class="n">can</span> <span class="n">additionally</span> <span class="k">register</span> <span class="n">with</span> <span class="n">the</span> <span class="p">[</span><span class="n">Postmaster</span> <span class="n">Tool</span><span class="p">](</span><span class="nl">https</span><span class="p">:</span><span class="c1">//gmail.com/postmaster)  by Google and supply a **google-site-verification** TXT record, which will give you details about spam-classified mails by your domain. This is clearly optional.</span>
+</pre></div>
+@                   IN TXT     "google-site-verification=..."
+```</p>
 <div class="footnote">
 <hr />
 <ol>
