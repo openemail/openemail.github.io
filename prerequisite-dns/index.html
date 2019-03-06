@@ -341,23 +341,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#reverse-dns-of-your-ip" title="Reverse DNS of your IP" class="md-nav__link">
-    Reverse DNS of your IP
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-minimal-dns-configuration" title="The minimal DNS configuration" class="md-nav__link">
-    The minimal DNS configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#dkim-spf-and-dmarc" title="DKIM, SPF and DMARC" class="md-nav__link">
     DKIM, SPF and DMARC
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-find-out-your-current-spf-settings-run" title="To find out your current SPF settings run:" class="md-nav__link">
+    To find out your current SPF settings run:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-dkim-key-and-dns-records" title="Creating a DKIM key and DNS records" class="md-nav__link">
+    Creating a DKIM key and DNS records
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1588,23 +1594,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#reverse-dns-of-your-ip" title="Reverse DNS of your IP" class="md-nav__link">
-    Reverse DNS of your IP
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-minimal-dns-configuration" title="The minimal DNS configuration" class="md-nav__link">
-    The minimal DNS configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#dkim-spf-and-dmarc" title="DKIM, SPF and DMARC" class="md-nav__link">
     DKIM, SPF and DMARC
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-find-out-your-current-spf-settings-run" title="To find out your current SPF settings run:" class="md-nav__link">
+    To find out your current SPF settings run:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-dkim-key-and-dns-records" title="Creating a DKIM key and DNS records" class="md-nav__link">
+    Creating a DKIM key and DNS records
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1650,7 +1662,8 @@
                 
                   <h1>DNS Setup</h1>
                 
-                <p>Below you can find a list of <strong>recommended DNS records</strong>. While some are mandatory for a mail server (A, MX), others are recommended to build a good reputation score (TXT/SPF) or used for auto-configuration of mail clients (SRV).</p>
+                <p>DNS infrastructure of the Internet plays a major role in email security today. Proper DNS setup for your email domain requires prior to setting up openemail for your domain.</p>
+<p>Below you can find a list of <strong>recommended DNS records</strong>. While some are mandatory for a mail server (A, MX), others are recommended to build a good reputation score (TXT/SPF) or used for auto-configuration of mail clients (SRV).</p>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li>A good article covering all relevant topics:
@@ -1660,24 +1673,62 @@
 <li>An in-depth discussion of SPF, DKIM and DMARC:
   <a href="https://www.skelleton.net/2015/03/21/how-to-eliminate-spam-and-protect-your-name-with-dmarc/">"How to eliminate spam and protect your name with DMARC"</a></li>
 </ul>
-<h2 id="reverse-dns-of-your-ip">Reverse DNS of your IP<a class="headerlink" href="#reverse-dns-of-your-ip" title="Permanent link">&para;</a></h2>
-<p>Make sure that the PTR record of your IP matches the FQDN of your mailcow host: <code>${MAILCOW_HOSTNAME}</code> <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>. This record is usually set at the provider you leased the IP (server) from.</p>
-<h2 id="the-minimal-dns-configuration">The minimal DNS configuration<a class="headerlink" href="#the-minimal-dns-configuration" title="Permanent link">&para;</a></h2>
-<p>This example shows you a set of records for one domain managed by mailcow. Each domain that is added to mailcow needs at least this set of records to function correctly.</p>
-<div class="codehilite"><pre><span></span># Name              Type       Value
-mail                IN A       1.2.3.4
-autodiscover        IN CNAME   mail
-autoconfig          IN CNAME   mail
+<p><div class="codehilite"><pre><span></span>## The minimal DNS configuration
 
-@                   IN MX 10   mail
+Let&#39;s first first find your MX records using the `dig` command in your Linux system. Run the following query to view the MX records for the domain `openemail.io`. Simply change this domain to query MX for your domain.
 </pre></div>
+dig openemail.io MX +short
+<div class="codehilite"><pre><span></span>You will get an output like below.
+</pre></div>
+15 hasuna.openemail.io.
+10 mail.openemail.io.
+<div class="codehilite"><pre><span></span>According to the above output the domain `openemal.io` has two `MX` records. The numbers `10` and `15` are respective `MX` priorities.
+## Reverse DNS of your MX IP
 
+Make sure that the PTR record of your IP matches the FQDN of your openemal host: `<span class="cp">${</span><span class="n">OPENEMAIL_HOSTNAME</span><span class="cp">}</span>` [^1]. This record is usually set at the provider you leased the IP (server) from.
+
+### To find the IP of your `MX` run:
+</pre></div>
+$ dig mail.openemail.io +short
+<div class="codehilite"><pre><span></span>The above query should return an `IP` address like below.
+</pre></div>
+68.183.186.231
+<div class="codehilite"><pre><span></span>### To find your PTR record run:
+</pre></div>
+$ host  68.183.186.231
+<div class="codehilite"><pre><span></span>You will get an output like Below
+</pre></div>
+231.186.183.68.in-addr.arpa domain name pointer mail.openemail.io</p>
 <h2 id="dkim-spf-and-dmarc">DKIM, SPF and DMARC<a class="headerlink" href="#dkim-spf-and-dmarc" title="Permanent link">&para;</a></h2>
-<p>In the example DNS zone file snippet below, a simple <strong>SPF</strong> TXT record is used to only allow THIS server (the MX) to send mail for your domain. Every other server is disallowed but able to ("<code>~all</code>"). Please refer to <a href="http://www.openspf.org">SPF Project</a> for further reading.</p>
-<div class="codehilite"><pre><span></span>@                   IN TXT     &quot;v=spf1 mx ~all&quot;
+<p>The SPF, DKIM, and DMARC are setup as TXT in your DNS zone file. If you are running your own DNS for your domain you can add the following record in to your domains zone file like the example below.
+<div class="codehilite"><pre><span></span>@   IN    TXT   &quot;v=spf1 mx -all&quot;
+</pre></div></p>
+<h3 id="to-find-out-your-current-spf-settings-run">To find out your current SPF settings run:<a class="headerlink" href="#to-find-out-your-current-spf-settings-run" title="Permanent link">&para;</a></h3>
+<p><div class="codehilite"><pre><span></span>$ <span class="s2">&quot;v=spf1  mx  -all&quot;</span>
 </pre></div>
-
-<p>It is highly recommended to create a <strong>DKIM</strong> TXT record in your mailcow UI and set the corresponding TXT record in your DNS records. Please refer to <a href="http://www.opendkim.org">OpenDKIM</a> for further reading.</p>
+You will get an output like below.
+<div class="codehilite"><pre><span></span>&quot;v=spf1  mx -all&quot;
+</pre></div>
+Using "v=spf1 mx -all" authorizes any IP that is also a MX for the sending domain. If you use <code>~all</code> ,it means softfail which allows mail whether or not it matches the parameters in the record.</p>
+<p>Please refer to <a href="http://www.openspf.org">SPF Project</a> for further reading.</p>
+<h3 id="creating-a-dkim-key-and-dns-records">Creating a DKIM key and DNS records<a class="headerlink" href="#creating-a-dkim-key-and-dns-records" title="Permanent link">&para;</a></h3>
+<p>It is highly recommended to create a <strong>DKIM</strong> TXT record in your **openemal UI##  and set the corresponding TXT record in your DNS records. Please refer to <a href="http://www.opendkim.org">OpenDKIM</a> for further reading.</p>
+<p>The below steps can be used to create DKIM key in you Linux command line.</p>
+<p>** Step-1: install required tools
+<div class="codehilite"><pre><span></span>$ sudo apt-get install opendkim opendkim-tools
+</pre></div>
+** Step-2: Crete the _domainkey
+Now create DKIM key pair using <code>opendkim-genkey</code> command line utility. For this guide we are using domain name <code>openemail.io</code>, Change this name with your actual domain name.
+<div class="codehilite"><pre><span></span>$ mkdir -p dkim-keys/openemail.io
+$ <span class="nb">cd</span> dkim-keys/openemail.io
+$ opendkim-genkey -t -s dkim -d openemail.io
+$ cat dkim.txt
+</pre></div>
+You will get an output like below. It is accually the TXT record for <code>bind</code> and compatible DNS servers.
+<div class="codehilite"><pre><span></span>dkim._domainkey IN  TXT ( &quot;v=DKIM1; h=sha256; k=rsa; t=y; &quot;
+      &quot;p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtIfYQWd16SotLpDAIe+9CRda6+KmExTSM4lQsO8XsbJsECqEuUer+xrJTVA4N5tEM53MeuH36tCjsKynlKMKmNQtMpblg3fHL0Z57FUyAUoHO9GOK1lS8vOA5wbf68FQ06YHAd/Dgq21/sYrERnnXYVvH5jSA44YBfiwrvuzopl/ekMp71WJMR73TmEQ1BTf6SZA6STvCJVj8d&quot;
+      &quot;pAuLekL1EYQzsGsp1kcOFYOee9c9VjfgkuZnJkAkQmz94L3YTd/08i6rZrKUSRXcx8dfitx7k12IrBsKCqlXgRIpWYWJW58gAM1Fif6gjDmugj4mAIQJ4oyWJdNDZPYpKEG+6VQQIDAQAB&quot; )  ; ----- DKIM key dkim for openemail.io
+</pre></div></p>
 <div class="codehilite"><pre><span></span>dkim._domainkey  IN TXT     &quot;v=DKIM1; k=rsa; t=s; s=email; p=...&quot;
 </pre></div>
 
