@@ -416,6 +416,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#the-advanced-dns-configuration" title="The advanced DNS configuration" class="md-nav__link">
+    The advanced DNS configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#testing-for-spf-dkim-and-dmarc" title="Testing for SPF, DKIM, and DMARC" class="md-nav__link">
     Testing for SPF, DKIM, and DMARC
   </a>
@@ -1710,6 +1717,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#the-advanced-dns-configuration" title="The advanced DNS configuration" class="md-nav__link">
+    The advanced DNS configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#testing-for-spf-dkim-and-dmarc" title="Testing for SPF, DKIM, and DMARC" class="md-nav__link">
     Testing for SPF, DKIM, and DMARC
   </a>
@@ -1810,14 +1824,15 @@ You will get an output like below. It is actually the TXT record for <code>bind<
       &quot;pAuLekL1EYQzsGsp1kcOFYOee9c9VjfgkuZnJkAkQmz94L3YTd/08i6rZrKUSRXcx8dfitx7k12IrBsKCqlXgRIpWYWJW58gAM1Fif6gjDmugj4mAIQJ4oyWJdNDZPYpKEG+6VQQIDAQAB&quot; )  ; ----- DKIM key dkim for openemail.io
 </pre></div></p>
 <h3 id="creating-dkim-key-in-openemal-ui">Creating DKIM key in openemal UI<a class="headerlink" href="#creating-dkim-key-in-openemal-ui" title="Permanent link">&para;</a></h3>
-<p><img alt="" src="../images/openemail-dkim-add.png" /></p>
-<p>Do the following step  which are marked in red color</p>
+<p>Do the following step  which are marked in red color in configuration window screenshot of openemail-UI below.</p>
 <p><strong>1.</strong> Click on <code>Select domains with missing keys</code></p>
 <p><strong>2.</strong> Set <code>dkim</code> key length as <code>2048</code></p>
 <p><strong>3.</strong> Press <code>Add</code> button</p>
+<p><img alt="" src="../images/openemail-dkim-add.png" /></p>
 <h3 id="setup-dmarc-record">Setup DMARC record<a class="headerlink" href="#setup-dmarc-record" title="Permanent link">&para;</a></h3>
 <p>You can setup a TXT record for your domains' DMARC using the example below.</p>
 <p>You can query DnS like below to check how a DMARC record has been setup  </p>
+<p><strong>To query DNS for an existing entry you can run:</strong></p>
 <p><div class="codehilite"><pre><span></span>$ dig TXT _dmarc.openemail.io  +short
 </pre></div>
 You will get an output like below.</p>
@@ -1825,8 +1840,8 @@ You will get an output like below.</p>
 </pre></div>
 The corresponding DNS zone file entry that we have added for this purpose is like below. You can do the same thing for your domain.
 <div class="codehilite"><pre><span></span>_dmarc    IN    TXT   &quot;v=DMARC1; p=quarantine; pct=5; rua=mailto:postmaster@openemail.io&quot;
-</pre></div>
-S## The advanced DNS configuration</p>
+</pre></div></p>
+<h2 id="the-advanced-dns-configuration">The advanced DNS configuration<a class="headerlink" href="#the-advanced-dns-configuration" title="Permanent link">&para;</a></h2>
 <p><strong>SRV</strong> records specify the server(s) for a specific protocol on your domain. If you want to explicitly announce a service as not provided, give "." as the target address (instead of "mail.example.org."). Please refer to <a href="https://tools.ietf.org/html/rfc2782">RFC 2782</a>. for more details.</p>
 <div class="codehilite"><pre><span></span>_imap._tcp          IN SRV     0 1 143   mail.example.org.
 _imaps._tcp         IN SRV     0 1 993   mail.example.org.
