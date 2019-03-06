@@ -396,6 +396,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#creating-a-dmarc-record" title="Creating a DMARC record" class="md-nav__link">
+    Creating a DMARC record
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -409,8 +416,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#testing" title="Testing" class="md-nav__link">
-    Testing
+  <a href="#testing-for-spf-dkim-and-dmarc" title="Testing for SPF, DKIM, and DMARC" class="md-nav__link">
+    Testing for SPF, DKIM, and DMARC
   </a>
   
 </li>
@@ -1683,6 +1690,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#creating-a-dmarc-record" title="Creating a DMARC record" class="md-nav__link">
+    Creating a DMARC record
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1696,8 +1710,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#testing" title="Testing" class="md-nav__link">
-    Testing
+  <a href="#testing-for-spf-dkim-and-dmarc" title="Testing for SPF, DKIM, and DMARC" class="md-nav__link">
+    Testing for SPF, DKIM, and DMARC
   </a>
   
 </li>
@@ -1780,27 +1794,34 @@ Using "v=spf1 mx -all" authorizes any IP that is also a MX for the sending domai
 <h3 id="creating-a-dkim-key-and-dns-records">Creating a DKIM key and DNS records<a class="headerlink" href="#creating-a-dkim-key-and-dns-records" title="Permanent link">&para;</a></h3>
 <p>It is highly recommended to create a <strong>DKIM</strong> TXT record in your **openemal UI##  and set the corresponding TXT record in your DNS records. Please refer to <a href="http://www.opendkim.org">OpenDKIM</a> for further reading.</p>
 <p>The below steps can be used to create DKIM key in you Linux command line in case if you are using your own mail server like postfix. You do not need to execute below. We have listed those commands to understand how the back-end has been configured for DKIM validations.</p>
-<p>** Step-1: install required tools
+<p>** Step-1: install required tools **
 <div class="codehilite"><pre><span></span>$ sudo apt-get install opendkim opendkim-tools
 </pre></div>
-** Step-2: Crete the _domainkey
-Now create DKIM key pair using <code>opendkim-genkey</code> command line utility. For this guide we are using domain name <code>openemail.io</code>, Change this name with your actual domain name.
+** Step-2: Crete the _domainkey **</p>
+<p>Now create DKIM key pair using <code>opendkim-genkey</code> command line utility. For this guide we are using domain name <code>openemail.io</code>, Change this name with your actual domain name.
 <div class="codehilite"><pre><span></span>$ mkdir -p dkim-keys/openemail.io
 $ <span class="nb">cd</span> dkim-keys/openemail.io
 $ opendkim-genkey -t -s dkim -d openemail.io
 $ cat dkim.txt
 </pre></div>
-You will get an output like below. It is accually the TXT record for <code>bind</code> and compatible DNS servers.
+You will get an output like below. It is actually the TXT record for <code>bind</code> and compatible DNS servers.
 <div class="codehilite"><pre><span></span>dkim._domainkey IN  TXT ( &quot;v=DKIM1; h=sha256; k=rsa; t=y; &quot;
       &quot;p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtIfYQWd16SotLpDAIe+9CRda6+KmExTSM4lQsO8XsbJsECqEuUer+xrJTVA4N5tEM53MeuH36tCjsKynlKMKmNQtMpblg3fHL0Z57FUyAUoHO9GOK1lS8vOA5wbf68FQ06YHAd/Dgq21/sYrERnnXYVvH5jSA44YBfiwrvuzopl/ekMp71WJMR73TmEQ1BTf6SZA6STvCJVj8d&quot;
       &quot;pAuLekL1EYQzsGsp1kcOFYOee9c9VjfgkuZnJkAkQmz94L3YTd/08i6rZrKUSRXcx8dfitx7k12IrBsKCqlXgRIpWYWJW58gAM1Fif6gjDmugj4mAIQJ4oyWJdNDZPYpKEG+6VQQIDAQAB&quot; )  ; ----- DKIM key dkim for openemail.io
+</pre></div></p>
+<h3 id="creating-a-dmarc-record">Creating a DMARC record<a class="headerlink" href="#creating-a-dmarc-record" title="Permanent link">&para;</a></h3>
+<p>The last step in protecting yourself and others is the implementation of a <strong>DMARC</strong> TXT record, for example by using the <a href="http://www.kitterman.com/dmarc/assistant.html">DMARC Assistant</a> (<a href="https://dmarcian.com/dmarc-inspector/google.com">check</a>).</p>
+<p>If you have already setup a DMARC record for your domain you can query it and find like below.
+<div class="codehilite"><pre><span></span>$ dig TXT _dmarc.openemail.io  +short
 </pre></div>
-The last step in protecting yourself and others is the implementation of a <strong>DMARC</strong> TXT record, for example by using the <a href="http://www.kitterman.com/dmarc/assistant.html">DMARC Assistant</a> (<a href="https://dmarcian.com/dmarc-inspector/google.com">check</a>).</p>
-<div class="codehilite"><pre><span></span>_dmarc              IN TXT     &quot;v=DMARC1; p=reject; rua=mailto:mailauth-reports@example.org&quot;
+You will get an output like below.
+<div class="codehilite"><pre><span></span>&quot;v=DMARC1; p=quarantine; pct=5; rua=mailto:postmaster@openemail.io&quot;
 </pre></div>
-
+The corresponding DNS zone file entry that we have added for this purpose is like below. You can do the same thing for your domain.
+<div class="codehilite"><pre><span></span>_dmarc    IN    TXT   &quot;v=DMARC1; p=quarantine; pct=5; rua=mailto:postmaster@openemail.io&quot;
+</pre></div></p>
 <h2 id="the-advanced-dns-configuration">The advanced DNS configuration<a class="headerlink" href="#the-advanced-dns-configuration" title="Permanent link">&para;</a></h2>
-<p><strong>SRV</strong> records specify the server(s) for a specific protocol on your domain. If you want to explicitly announce a service as not provided, give "." as the target address (instead of "mail.example.org."). Please refer to <a href="https://tools.ietf.org/html/rfc2782">RFC 2782</a>.</p>
+<p><strong>SRV</strong> records specify the server(s) for a specific protocol on your domain. If you want to explicitly announce a service as not provided, give "." as the target address (instead of "mail.example.org."). Please refer to <a href="https://tools.ietf.org/html/rfc2782">RFC 2782</a>. for more details.</p>
 <div class="codehilite"><pre><span></span>_imap._tcp          IN SRV     0 1 143   mail.example.org.
 _imaps._tcp         IN SRV     0 1 993   mail.example.org.
 _pop3._tcp          IN SRV     0 1 110   mail.example.org.
@@ -1815,7 +1836,7 @@ _caldavs._tcp       IN SRV     0 1 443   mail.example.org.
 _caldavs._tcp       IN TXT     &quot;path=/SOGo/dav/&quot;
 </pre></div>
 
-<h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
+<h2 id="testing-for-spf-dkim-and-dmarc">Testing for SPF, DKIM, and DMARC<a class="headerlink" href="#testing-for-spf-dkim-and-dmarc" title="Permanent link">&para;</a></h2>
 <p>Here are some tools you can use to verify your DNS configuration:</p>
 <ul>
 <li><a href="https://mxtoolbox.com/SuperTool.aspx">MX Toolbox</a> (DNS, SMTP, RBL)</li>
@@ -1824,7 +1845,7 @@ _caldavs._tcp       IN TXT     &quot;path=/SOGo/dav/&quot;
 <li><a href="https://www.dmarcanalyzer.com/spf/checker/">DMARC Analyzer</a> (DMARC, SPF)</li>
 </ul>
 <h2 id="misc">Misc<a class="headerlink" href="#misc" title="Permanent link">&para;</a></h2>
-<p>If you are interested in statistics, you can additionally register with the <a href="https://gmail.com/postmaster">Postmaster Tool</a>  by Google and supply a <strong>google-site-verification</strong> TXT record, which will give you details about spam-classified mails by your domain. This is clearly optional.</p>
+<p>If you are interested in statistics, you can additionally register with the <a href="https://gmail.com/postmaster">Postmaster Tool</a>  by Google and supply a <strong>google-site-verification</strong> TXT record, which will give you details about spam-classified mails by your domain. This is clearly optional. You can add a TXT records in your DNS server like the one below.</p>
 <div class="codehilite"><pre><span></span>@                   IN TXT     &quot;google-site-verification=...&quot;
 </pre></div>
 
@@ -1832,7 +1853,7 @@ _caldavs._tcp       IN TXT     &quot;path=/SOGo/dav/&quot;
 <hr />
 <ol>
 <li id="fn:1">
-<p>A <strong>Fully Qualified Domain Name</strong> (<strong>FQDN</strong>) is the complete (absolute) domain name for a specific computer or host, on the Internet. The FQDN consists of at least three parts divided by a dot: the hostname (myhost), the domain name (mydomain) and the top level domain in short <strong>tld</strong> (com). In the example of <code>mx.mailcow.email</code> the hostname would be <code>mx</code>, the domain name 'mailcow' and the tld <code>email</code>.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>A <strong>Fully Qualified Domain Name</strong> (<strong>FQDN</strong>) is the complete (absolute) domain name for a specific computer or host, on the Internet. The FQDN consists of at least three parts divided by a dot: the hostname (myhost), the domain name (mydomain) and the top level domain in short <strong>tld</strong> (com). In the example of <code>mx.openemail.io</code> the hostname would be <code>mx</code>, the domain name 'openemal' and the tld is <code>io</code>.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
