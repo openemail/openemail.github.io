@@ -1608,8 +1608,8 @@ sub   rsa4096 2017-02-22 [S]
 <strong>4.</strong> Use the following command to set up the stable repository.
 <div class="codehilite"><pre><span></span>sudo add-apt-repository &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable&quot;
 </pre></div>
-<strong>Install docker-ce</strong>
-<strong>1.</strong> Update the <code>apt</code> package index.
+<strong>Install docker-ce</strong></p>
+<p><strong>1.</strong> Update the <code>apt</code> package index.
 <div class="codehilite"><pre><span></span>sudo apt-get update
 </pre></div>
 <strong>2.</strong> Install the latest version of Docker CE and containerd.
@@ -1621,8 +1621,8 @@ sub   rsa4096 2017-02-22 [S]
 This command downloads a test image and runs it in a container. When the container runs, it prints an informational message and exits.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-</div>
 <p>If you are planing to use CentOS as your <strong>openemai</strong> docker host please follow the official <a href="https://docs.docker.com/install/linux/docker-ce/centos/">CentOS docker-ce Installation Guide</a></p>
+</div>
 <ul>
 <li>Docker-Compose
 <div class="codehilite"><pre><span></span>curl -L https://github.com/docker/compose/releases/download/$(curl -Ls https://www.servercow.de/docker-compose/latest.php)/docker-compose-$(uname -s)-$(uname -m) &gt; /usr/local/bin/docker-compose
