@@ -397,8 +397,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#creating-a-dmarc-record" title="Creating a DMARC record" class="md-nav__link">
-    Creating a DMARC record
+  <a href="#creating-dkim-key-in-openemal-ui" title="Creating DKIM key in openemal UI" class="md-nav__link">
+    Creating DKIM key in openemal UI
   </a>
   
 </li>
@@ -1691,8 +1691,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#creating-a-dmarc-record" title="Creating a DMARC record" class="md-nav__link">
-    Creating a DMARC record
+  <a href="#creating-dkim-key-in-openemal-ui" title="Creating DKIM key in openemal UI" class="md-nav__link">
+    Creating DKIM key in openemal UI
   </a>
   
 </li>
@@ -1809,10 +1809,9 @@ You will get an output like below. It is actually the TXT record for <code>bind<
       &quot;p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtIfYQWd16SotLpDAIe+9CRda6+KmExTSM4lQsO8XsbJsECqEuUer+xrJTVA4N5tEM53MeuH36tCjsKynlKMKmNQtMpblg3fHL0Z57FUyAUoHO9GOK1lS8vOA5wbf68FQ06YHAd/Dgq21/sYrERnnXYVvH5jSA44YBfiwrvuzopl/ekMp71WJMR73TmEQ1BTf6SZA6STvCJVj8d&quot;
       &quot;pAuLekL1EYQzsGsp1kcOFYOee9c9VjfgkuZnJkAkQmz94L3YTd/08i6rZrKUSRXcx8dfitx7k12IrBsKCqlXgRIpWYWJW58gAM1Fif6gjDmugj4mAIQJ4oyWJdNDZPYpKEG+6VQQIDAQAB&quot; )  ; ----- DKIM key dkim for openemail.io
 </pre></div></p>
-<h3 id="creating-a-dmarc-record">Creating a DMARC record<a class="headerlink" href="#creating-a-dmarc-record" title="Permanent link">&para;</a></h3>
-<p>The last step in protecting yourself and others is the implementation of a <strong>DMARC</strong> TXT record, for example by using the <a href="http://www.kitterman.com/dmarc/assistant.html">DMARC Assistant</a> (<a href="https://dmarcian.com/dmarc-inspector/google.com">check</a>).</p>
-<p>If you have already setup a DMARC record for your domain you can query it and find like below.
-<div class="codehilite"><pre><span></span>$ dig TXT _dmarc.openemail.io  +short
+<h3 id="creating-dkim-key-in-openemal-ui">Creating DKIM key in openemal UI<a class="headerlink" href="#creating-dkim-key-in-openemal-ui" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../images/openemail-dkim-add.png" /></p>
+<p><div class="codehilite"><pre><span></span>$ dig TXT _dmarc.openemail.io  +short
 </pre></div>
 You will get an output like below.
 <div class="codehilite"><pre><span></span>&quot;v=DMARC1; p=quarantine; pct=5; rua=mailto:postmaster@openemail.io&quot;
