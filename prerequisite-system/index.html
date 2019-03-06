@@ -2038,9 +2038,13 @@ systemd-timesyncd.service active: yes</p>
 </pre></div>
 
 <h3 id="to-update-your-settings-run">To update your settings run:<a class="headerlink" href="#to-update-your-settings-run" title="Permanent link">&para;</a></h3>
-<p><code>sudo netplan apply</code></p>
+<div class="codehilite"><pre><span></span>sudo netplan apply
+</pre></div>
+
 <h3 id="to-check-your-network-configuration-run">To check your network configuration run<a class="headerlink" href="#to-check-your-network-configuration-run" title="Permanent link">&para;</a></h3>
-<p><code>ip addr sh eth0</code></p>
+<div class="codehilite"><pre><span></span>ip addr sh eth0
+</pre></div>
+
 <p>You will get an output like Below</p>
 <div class="codehilite"><pre><span></span>eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000
    link/ether 0a:17:6b:4f:06:ed brd ff:ff:ff:ff:ff:ff
