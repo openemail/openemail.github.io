@@ -1795,9 +1795,9 @@ Using "v=spf1 mx -all" authorizes any IP that is also a MX for the sending domai
 <p>It is highly recommended to create a <strong>DKIM</strong> TXT record in your **openemal UI##  and set the corresponding TXT record in your DNS records. Please refer to <a href="http://www.opendkim.org">OpenDKIM</a> for further reading.</p>
 <p>The below steps can be used to create DKIM key in you Linux command line in case if you are using your own mail server like postfix. You do not need to execute below. We have listed those commands to understand how the back-end has been configured for DKIM validations.</p>
 <p><strong>Install required tools</strong>
-<div class="codehilite"><pre><span></span>$ sudo apt-get install opendkim opendkim-tools
+<div class="codehilite"><pre><span></span>sudo apt-get install opendkim opendkim-tools
 </pre></div>
-<strong>Crete the _domainkey</strong></p>
+<strong>create the _domainkey</strong></p>
 <p>Now create DKIM key pair using <code>opendkim-genkey</code> command line utility. For this guide we are using domain name <code>openemail.io</code>, Change this name with your actual domain name.
 <div class="codehilite"><pre><span></span>$ mkdir -p dkim-keys/openemail.io
 $ <span class="nb">cd</span> dkim-keys/openemail.io
