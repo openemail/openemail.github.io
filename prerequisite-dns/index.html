@@ -1811,13 +1811,13 @@ According to the above output the domain <code>openemal.io</code> has two <code>
 <h2 id="reverse-dns-of-your-mx-ip">Reverse DNS of your MX IP<a class="headerlink" href="#reverse-dns-of-your-mx-ip" title="Permanent link">&para;</a></h2>
 <p>Make sure that the PTR record of your IP matches the FQDN of your openemal host: <code>${OPENEMAIL_HOSTNAME}</code> <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>. This record is usually set at the provider you leased the IP (server) from.</p>
 <h3 id="to-find-the-ip-of-your-mx-run">To find the IP of your <code>MX</code> run:<a class="headerlink" href="#to-find-the-ip-of-your-mx-run" title="Permanent link">&para;</a></h3>
-<p><div class="codehilite"><pre><span></span>$ dig mail.openemail.io +short
+<p><div class="codehilite"><pre><span></span>dig mail.openemail.io +short
 </pre></div>
 The above query should return an <code>IP</code> address like below.
 <div class="codehilite"><pre><span></span>68.183.186.231
 </pre></div></p>
 <h3 id="to-find-your-ptr-record-run">To find your PTR record run:<a class="headerlink" href="#to-find-your-ptr-record-run" title="Permanent link">&para;</a></h3>
-<p><div class="codehilite"><pre><span></span>$ host  <span class="m">68</span>.183.186.231
+<p><div class="codehilite"><pre><span></span>host  68.183.186.231
 </pre></div>
 You will get an output like Below
 <div class="codehilite"><pre><span></span>231.186.183.68.in-addr.arpa domain name pointer mail.openemail.io
@@ -1862,7 +1862,7 @@ You will get an output like below. It is actually the TXT record for <code>bind<
 <h3 id="setup-dmarc-record">Setup DMARC record<a class="headerlink" href="#setup-dmarc-record" title="Permanent link">&para;</a></h3>
 <p>You can setup a TXT record for your domains' DMARC using the example below.</p>
 <p><strong>To query DNS for an existing entry you can run:</strong></p>
-<p><div class="codehilite"><pre><span></span>$ dig TXT _dmarc.openemail.io  +short
+<p><div class="codehilite"><pre><span></span>dig TXT _dmarc.openemail.io  +short
 </pre></div>
 You will get an output like below.</p>
 <p><div class="codehilite"><pre><span></span>&quot;v=DMARC1; p=quarantine; pct=5; rua=mailto:postmaster@openemail.io&quot;
