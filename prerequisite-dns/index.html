@@ -423,8 +423,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#misc" title="Misc" class="md-nav__link">
-    Misc
+  <a href="#getting-additional-statistics" title="Getting additional statistics" class="md-nav__link">
+    Getting additional statistics
   </a>
   
 </li>
@@ -1717,8 +1717,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#misc" title="Misc" class="md-nav__link">
-    Misc
+  <a href="#getting-additional-statistics" title="Getting additional statistics" class="md-nav__link">
+    Getting additional statistics
   </a>
   
 </li>
@@ -1797,12 +1797,12 @@ Using "v=spf1 mx -all" authorizes any IP that is also a MX for the sending domai
 <p><strong>Install required tools</strong>
 <div class="codehilite"><pre><span></span>sudo apt-get install opendkim opendkim-tools
 </pre></div>
-<strong>create the _domainkey</strong></p>
+<strong>Create the _domainkey</strong></p>
 <p>Now create DKIM key pair using <code>opendkim-genkey</code> command line utility. For this guide we are using domain name <code>openemail.io</code>, Change this name with your actual domain name.
-<div class="codehilite"><pre><span></span>$ mkdir -p dkim-keys/openemail.io
-$ <span class="nb">cd</span> dkim-keys/openemail.io
-$ opendkim-genkey -t -s dkim -d openemail.io
-$ cat dkim.txt
+<div class="codehilite"><pre><span></span>mkdir -p dkim-keys/openemail.io
+cd dkim-keys/openemail.io
+opendkim-genkey -t -s dkim -d openemail.io
+cat dkim.txt
 </pre></div>
 You will get an output like below. It is actually the TXT record for <code>bind</code> and compatible DNS servers.
 <div class="codehilite"><pre><span></span>dkim._domainkey IN  TXT ( &quot;v=DKIM1; h=sha256; k=rsa; t=y; &quot;
@@ -1844,7 +1844,7 @@ _caldavs._tcp       IN TXT     &quot;path=/SOGo/dav/&quot;
 <li><a href="https://www.mail-tester.com/">Mail-tester</a> (DKIM, DMARC, SPF)</li>
 <li><a href="https://www.dmarcanalyzer.com/spf/checker/">DMARC Analyzer</a> (DMARC, SPF)</li>
 </ul>
-<h2 id="misc">Misc<a class="headerlink" href="#misc" title="Permanent link">&para;</a></h2>
+<h2 id="getting-additional-statistics">Getting additional statistics<a class="headerlink" href="#getting-additional-statistics" title="Permanent link">&para;</a></h2>
 <p>If you are interested in statistics, you can additionally register with the <a href="https://gmail.com/postmaster">Postmaster Tool</a>  by Google and supply a <strong>google-site-verification</strong> TXT record, which will give you details about spam-classified mails by your domain. This is clearly optional. You can add a TXT records in your DNS server like the one below.</p>
 <div class="codehilite"><pre><span></span>@                   IN TXT     &quot;google-site-verification=...&quot;
 </pre></div>
