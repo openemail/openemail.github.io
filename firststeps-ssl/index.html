@@ -445,8 +445,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#usin-your-own-certificates" title="Usin your own certificates" class="md-nav__link">
-    Usin your own certificates
+  <a href="#using-your-own-certificates" title="Using your own certificates" class="md-nav__link">
+    Using your own certificates
   </a>
   
 </li>
@@ -1600,8 +1600,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#usin-your-own-certificates" title="Usin your own certificates" class="md-nav__link">
-    Usin your own certificates
+  <a href="#using-your-own-certificates" title="Using your own certificates" class="md-nav__link">
+    Using your own certificates
   </a>
   
 </li>
@@ -1634,7 +1634,7 @@
                 
                   <h1>SSL</h1>
                 
-                <h2 id="lets-encrypt-ssl-certificates">Let's Encrypt SSL certificates<a class="headerlink" href="#lets-encrypt-ssl-certificates" title="Permanent link">&para;</a></h2>
+                <h2 id="lets-encrypt-ssl-certificates"><strong>Let's Encrypt SSL certificates</strong><a class="headerlink" href="#lets-encrypt-ssl-certificates" title="Permanent link">&para;</a></h2>
 <p>Let’s Encrypt uses the ACME protocol to verify that you control a given domain name and to issue you a certificate. To get a Let’s Encrypt certificate, you’ll need to choose a piece of ACME client software to use.</p>
 <p>The ACME clients are offered by third parties. Let’s Encrypt does not control or review third party clients and cannot make any guarantees about their safety or reliability.</p>
 <p>The newly introduced <code>acme-openemail</code> container is based on <a href="https://github.com/diafygi/acme-tiny">ACME Tiny</a>. It will try to obtain a valid LE certificate for you.</p>
@@ -1644,15 +1644,14 @@
 </div>
 <p>By default, which means <strong>0 domains</strong> are added to openemail, it will try to obtain a certificate for ${OPENEMAIL_HOSTNAME}.</p>
 <p>For each domain you add, it will try to resolve <code>autodiscover.ADDED_MAIL_DOMAIN</code> and <code>autoconfig.ADDED_MAIL_DOMAIN</code> to your servers IPv4 address. If it succeeds, these names will be added as SANs to the certificate request.</p>
-<p>You can skip the IP verification by adding SKIP_IP_CHECK=y to openemail.conf (no quotes). Be warned that a misconfiguration will get you ratelimited by Let's Encrypt! This is primarily useful for multi-IP setups where the IP check would return the incorrect source IP. Due to using dynamic IPs for acme-openemail, source NAT is not consistent over restarts.</p>
+<p>You can skip the IP verification by adding <code>SKIP_IP_CHECK=y</code> to <code>openemail.conf</code> (no quotes). Be warned that a misconfiguration will get you ratelimited by Let's Encrypt! This is primarily useful for multi-IP setups where the IP check would return the incorrect source IP. Due to using dynamic IPs for <code>acme-openemail</code>, source NAT is not consistent over restarts.</p>
 <p>You could add an A record for <code>autodiscover</code> but omit <code>autoconfig</code>, the client will only validate <code>autodiscover</code> and skip <code>autoconfig</code> then.</p>
 <p>For every domain you remove, the certificate will be moved and a new certificate will be requested. It is not possible to keep domains in a certificate, when we are not able validate the challenge for those.</p>
 <p>If you want to re-run the ACME client, use
-<div class="codehilite"><pre><span></span>cd /opt/openemail
-docker-compose restart acme-openemail
+<div class="codehilite"><pre><span></span>docker-compose restart acme-openemail
 </pre></div></p>
-<h3 id="additional-domain-names">Additional domain names<a class="headerlink" href="#additional-domain-names" title="Permanent link">&para;</a></h3>
-<p>Edit <code>openemail.conf</code> and add a parameter "ADDITIONAL_SAN" like this:</p>
+<h3 id="additional-domain-names"><strong>Additional domain names</strong><a class="headerlink" href="#additional-domain-names" title="Permanent link">&para;</a></h3>
+<p>Edit <code>openemail.conf</code> and add a parameter <code>ADDITIONAL_SAN</code> like this:</p>
 <p>Do not use quotes (<code>"</code>)!</p>
 <div class="codehilite"><pre><span></span>ADDITIONAL_SAN=cert1.example.org,cert1.example.com,cert2.example.org,cert3.example.org
 </pre></div>
@@ -1662,19 +1661,19 @@ docker-compose restart acme-openemail
 <div class="codehilite"><pre><span></span>docker-compose up -d
 </pre></div></p>
 <h3 id="skip-lets-encrypt-function"><strong>Skip Let's Encrypt function</strong><a class="headerlink" href="#skip-lets-encrypt-function" title="Permanent link">&para;</a></h3>
-<p>Change <code>SKIP_LETS_ENCRYPT=y</code> in openemail.conf and restart the stack by running
+<p>Change <code>SKIP_LETS_ENCRYPT=y</code> in <code>openemail.conf</code> and restart the stack by running
 <div class="codehilite"><pre><span></span>docker-compose down &amp;&amp; docker-compose up -d
 </pre></div></p>
-<h2 id="usin-your-own-certificates">Usin your own certificates<a class="headerlink" href="#usin-your-own-certificates" title="Permanent link">&para;</a></h2>
+<h2 id="using-your-own-certificates"><strong>Using your own certificates</strong><a class="headerlink" href="#using-your-own-certificates" title="Permanent link">&para;</a></h2>
 <p>To use your own certificates, just save the combined certificate (containing the certificate and intermediate CA/CA if any) to <code>data/assets/ssl/cert.pem</code> and the corresponding key to <code>data/assets/ssl/key.pem</code>.</p>
 <p>Restart changed containers by running
 <div class="codehilite"><pre><span></span>docker-compose up -d
 </pre></div></p>
-<h2 id="check-your-configuration">Check your configuration<a class="headerlink" href="#check-your-configuration" title="Permanent link">&para;</a></h2>
+<h2 id="check-your-configuration"><strong>Check your configuration</strong><a class="headerlink" href="#check-your-configuration" title="Permanent link">&para;</a></h2>
 <p>To find out why a validation fails, run:
 <div class="codehilite"><pre><span></span>docker-compose logs acme-openemail
 </pre></div>
-To check if nginx serves the correct certificate, simply use a browser of your choice and check the displayed certificate.</p>
+To check if <code>nginx</code> serves the correct certificate, simply use a browser of your choice and check the displayed certificate.</p>
 <p>To check the certificate served by dovecot or postfix we will use <code>openssl</code>:</p>
 <p><strong>1.</strong> Connect via SMTP (25)
 <div class="codehilite"><pre><span></span>openssl s_client -starttls smtp -crlf -connect mail.openemail.io:25
