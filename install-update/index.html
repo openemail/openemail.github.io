@@ -416,6 +416,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#step-2" title="Step 2" class="md-nav__link">
+    Step 2
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1613,6 +1620,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#step-2" title="Step 2" class="md-nav__link">
+    Step 2
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1686,20 +1700,19 @@ Some minor conflicts will be auto-corrected (in favour for the openemail reposit
 <p><strong>5.</strong> If it conflicts with files that were deleted from the mailcow repository, just run...
 <div class="codehilite"><pre><span></span>git status --porcelain | grep -E &quot;UD|DU&quot; | awk &#39;{print $2}&#39; | xargs rm -v
 </pre></div></p>
-<p><strong>6.</strong> Repeat step 2 and 3
-<div class="codehilite"><pre><span></span>**<span class="mi">7</span>\.** <span class="n">Check</span> <span class="n">data</span><span class="o">/</span><span class="n">assets</span><span class="o">/</span><span class="n">ssl</span> <span class="k">for</span> <span class="n">your</span> <span class="n">certificates</span> (<span class="o">and</span> <span class="n">dhparams</span>.<span class="n">pem</span>). <span class="n">If</span> <span class="n">you</span> <span class="n">miss</span> <span class="n">them</span>, <span class="n">recover</span> <span class="n">your</span> <span class="n">files:</span>
+<p><strong>6.</strong> Repeat step 2 and 3</p>
+<p><strong>7.</strong> Check data/assets/ssl for your certificates (and dhparams.pem). If you miss them, recover your files:</p>
+<div class="codehilite"><pre><span></span>cp -rp /tmp/ssl_backup_mailcow/* data/assets/ssl/
 </pre></div>
-cp -rp /tmp/ssl_backup_mailcow/* data/assets/ssl/
-<div class="codehilite"><pre><span></span>### Step 2
 
-**Clean-up dangling (unused) images and volumes:**
-
-It is **very important** to _not_ run these commands when your containers are deleted.
-Running `docker-compose down` - for example - will delete your containers. Your volumes are now in a dangling state! Running the commands shown below, _will_ remove your volumes and therefore your data.
-</pre></div>
-docker rmi -f $(docker images -f "dangling=true" -q)
+<h3 id="step-2">Step 2<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
+<p><strong>Clean-up dangling (unused) images and volumes:</strong></p>
+<p>It is <strong>very important</strong> to <em>not</em> run these commands when your containers are deleted.
+Running <code>docker-compose down</code> - for example - will delete your containers. Your volumes are now in a dangling state! Running the commands shown below, <em>will</em> remove your volumes and therefore your data.</p>
+<div class="codehilite"><pre><span></span>docker rmi -f $(docker images -f &quot;dangling=true&quot; -q)
 docker volume rm $(docker volume ls -qf dangling=true)
-```</p>
+</pre></div>
+
 <h2 id="footnotes">Footnotes<a class="headerlink" href="#footnotes" title="Permanent link">&para;</a></h2>
 <p>At the moment there is no release cycle regarding updates.</p>
                 
