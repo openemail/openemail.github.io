@@ -1643,9 +1643,9 @@
 <p>openemai <strong>must</strong> be available on port 80 for the acme-client to work.</p>
 </div>
 <p>By default, which means <strong>0 domains</strong> are added to openemail, it will try to obtain a certificate for ${OPENEMAIL_HOSTNAME}.</p>
-<p>For each domain you add, it will try to resolve autodiscover.ADDED_MAIL_DOMAIN and autoconfig.ADDED_MAIL_DOMAIN to your servers IPv4 address. If it succeeds, these names will be added as SANs to the certificate request.</p>
+<p>For each domain you add, it will try to resolve <code>autodiscover.ADDED_MAIL_DOMAIN</code> and <code>autoconfig.ADDED_MAIL_DOMAIN</code> to your servers IPv4 address. If it succeeds, these names will be added as SANs to the certificate request.</p>
 <p>You can skip the IP verification by adding SKIP_IP_CHECK=y to openemail.conf (no quotes). Be warned that a misconfiguration will get you ratelimited by Let's Encrypt! This is primarily useful for multi-IP setups where the IP check would return the incorrect source IP. Due to using dynamic IPs for acme-openemail, source NAT is not consistent over restarts.</p>
-<p>You could add an A record for "autodiscover" but omit "autoconfig", the client will only validate "autodiscover" and skip "autoconfig" then.</p>
+<p>You could add an A record for <code>autodiscover</code> but omit <code>autoconfig</code>, the client will only validate <code>autodiscover</code> and skip <code>autoconfig</code> then.</p>
 <p>For every domain you remove, the certificate will be moved and a new certificate will be requested. It is not possible to keep domains in a certificate, when we are not able validate the challenge for those.</p>
 <p>If you want to re-run the ACME client, use
 <div class="codehilite"><pre><span></span>cd /opt/openemail
