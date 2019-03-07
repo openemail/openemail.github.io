@@ -1664,7 +1664,9 @@
 <p>There is an update script in your <code>/opt/openemail</code> directory will take care of updates.</p>
 <p>But use it with caution! If you think you made a lot of changes to the openemail code, you should use the manual update guide below.</p>
 <p>Run the update script:
-<div class="codehilite"><pre><span></span>./update.sh
+<div class="codehilite"><pre><span></span>sudo su -
+cd /opt/openemail
+./update.sh
 </pre></div></p>
 <p>If it needs to, it will ask you how you wish to proceed.
 Merge errors will be reported.
