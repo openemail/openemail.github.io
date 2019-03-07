@@ -1699,7 +1699,7 @@ Some minor conflicts will be auto-corrected (in favour for the openemail reposit
 <p><strong>4.</strong>  Merge changes, prefer openemail repository, replace "theirs" by "ours" to change merge strategy
 <div class="codehilite"><pre><span></span>git merge -Xtheirs -Xpatience
 </pre></div></p>
-<p><strong>5.</strong> If it conflicts with files that were deleted from the mailcow repository, just run...
+<p><strong>5.</strong> If it conflicts with files that were deleted from the openemail repository, just run...
 <div class="codehilite"><pre><span></span>git status --porcelain | grep -E &quot;UD|DU&quot; | awk &#39;{print $2}&#39; | xargs rm -v
 </pre></div></p>
 <p><strong>6.</strong> Repeat step 2 and 3</p>
