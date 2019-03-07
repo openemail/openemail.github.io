@@ -390,8 +390,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#options" title="Options" class="md-nav__link">
-    Options
+  <a href="#update-options" title="Update options" class="md-nav__link">
+    Update options
   </a>
   
 </li>
@@ -412,20 +412,6 @@
           <li class="md-nav__item">
   <a href="#step-1" title="Step 1" class="md-nav__link">
     Step 1
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2" title="Step 2" class="md-nav__link">
-    Step 2
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3" title="Step 3" class="md-nav__link">
-    Step 3
   </a>
   
 </li>
@@ -1601,8 +1587,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#options" title="Options" class="md-nav__link">
-    Options
+  <a href="#update-options" title="Update options" class="md-nav__link">
+    Update options
   </a>
   
 </li>
@@ -1623,20 +1609,6 @@
           <li class="md-nav__item">
   <a href="#step-1" title="Step 1" class="md-nav__link">
     Step 1
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2" title="Step 2" class="md-nav__link">
-    Step 2
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3" title="Step 3" class="md-nav__link">
-    Step 3
   </a>
   
 </li>
@@ -1675,70 +1647,61 @@
                   <h1>Update</h1>
                 
                 <h2 id="automatic-update">Automatic update<a class="headerlink" href="#automatic-update" title="Permanent link">&para;</a></h2>
-<p>An update script in your mailcow-dockerized directory will take care of updates.</p>
-<p>But use it with caution! If you think you made a lot of changes to the mailcow code, you should use the manual update guide below.</p>
+<p>There is an update script in your <code>/opt/openemail</code> directory will take care of updates.</p>
+<p>But use it with caution! If you think you made a lot of changes to the openemail code, you should use the manual update guide below.</p>
 <p>Run the update script:
 <div class="codehilite"><pre><span></span>./update.sh
 </pre></div></p>
 <p>If it needs to, it will ask you how you wish to proceed.
 Merge errors will be reported.
-Some minor conflicts will be auto-corrected (in favour for the mailcow: dockerized repository code).</p>
-<h3 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span># Check for updates
-./update.sh --check
-
-# Update with merge strategy &quot;ours&quot; instead of &quot;theirs&quot; 
-# This will merge in favor for your local changes.
-./update.sh --ours
+Some minor conflicts will be auto-corrected (in favour for the openemail repository code).</p>
+<h3 id="update-options">Update options<a class="headerlink" href="#update-options" title="Permanent link">&para;</a></h3>
+<p><strong>Check for updates</strong>
+<div class="codehilite"><pre><span></span>./update.sh --check
 </pre></div>
-
+*<em>Update with merge strategy "ours" instead of "theirs" *</em></p>
+<p>This will merge in favor for your local changes.
+<div class="codehilite"><pre><span></span>./update.sh --ours
+</pre></div></p>
 <h2 id="manual-update">Manual update<a class="headerlink" href="#manual-update" title="Permanent link">&para;</a></h2>
 <h3 id="step-1">Step 1<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
-<p>You may want to backup your certificates, as an upgrade from an older mailcow: dockerized version may remove these files:</p>
-<div class="codehilite"><pre><span></span>cp -rp data/assets/ssl /tmp/ssl_backup_mailcow
+<p>You may want to backup your certificates, as an upgrade from an older <strong>openemail</strong> version may remove these files:</p>
+<div class="codehilite"><pre><span></span>cp -rp data/assets/ssl /tmp/ssl_backup_openemail
 </pre></div>
 
-<p>Fetch new data from GitHub, commit changes and merge remote repository:</p>
-<div class="codehilite"><pre><span></span># 1. Get updates/changes
-git fetch origin master
-# 2. Add all changed files to local clone
-git add -A
-# 3. Commit changes, ignore git complaining about username and mail address
-git commit -m &quot;Local config at $(date)&quot;
-# 4. Merge changes, prefer mailcow repository, replace &quot;theirs&quot; by &quot;ours&quot; to change merge strategy
-git merge -Xtheirs -Xpatience
-
-# If it conflicts with files that were deleted from the mailcow repository, just run...
-git status --porcelain | grep -E &quot;UD|DU&quot; | awk &#39;{print $2}&#39; | xargs rm -v
-# ...and repeat step 2 and 3
+<p>Fetch new data from GitHub, commit changes and merge remote repository:```</p>
+<p><strong>1.</strong> Get updates/changes
+<div class="codehilite"><pre><span></span>git fetch origin master
+</pre></div></p>
+<p><strong>2.</strong> Add all changed files to local clone</p>
+<div class="codehilite"><pre><span></span>git add -A
 </pre></div>
 
-<p>Check data/assets/ssl for your certificates (and dhparams.pem). If you miss them, recover your files:</p>
-<div class="codehilite"><pre><span></span>cp -rp /tmp/ssl_backup_mailcow/* data/assets/ssl/
+<p><strong>3.</strong>  Commit changes, ignore git complaining about username and mail address
+<div class="codehilite"><pre><span></span>git commit -m &quot;Local config at $(date)&quot;
+</pre></div></p>
+<p><strong>4.</strong>  Merge changes, prefer openemail repository, replace "theirs" by "ours" to change merge strategy
+<div class="codehilite"><pre><span></span>git merge -Xtheirs -Xpatience
+</pre></div></p>
+<p><strong>5.</strong> If it conflicts with files that were deleted from the mailcow repository, just run...
+<div class="codehilite"><pre><span></span>git status --porcelain | grep -E &quot;UD|DU&quot; | awk &#39;{print $2}&#39; | xargs rm -v
+</pre></div></p>
+<p><strong>6.</strong> Repeat step 2 and 3
+<div class="codehilite"><pre><span></span>**<span class="mi">7</span>\.** <span class="n">Check</span> <span class="n">data</span><span class="o">/</span><span class="n">assets</span><span class="o">/</span><span class="n">ssl</span> <span class="k">for</span> <span class="n">your</span> <span class="n">certificates</span> (<span class="o">and</span> <span class="n">dhparams</span>.<span class="n">pem</span>). <span class="n">If</span> <span class="n">you</span> <span class="n">miss</span> <span class="n">them</span>, <span class="n">recover</span> <span class="n">your</span> <span class="n">files:</span>
 </pre></div>
+cp -rp /tmp/ssl_backup_mailcow/* data/assets/ssl/
+<div class="codehilite"><pre><span></span>### Step 2
 
-<h3 id="step-2">Step 2<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
-<p>When upgrading from a version older than May 13th, 2017 to a version released after that date, you need to run the following command first as network settings have been changed:</p>
-<div class="codehilite"><pre><span></span>docker-compose down
+**Clean-up dangling (unused) images and volumes:**
+
+It is **very important** to _not_ run these commands when your containers are deleted.
+Running `docker-compose down` - for example - will delete your containers. Your volumes are now in a dangling state! Running the commands shown below, _will_ remove your volumes and therefore your data.
 </pre></div>
-
-<p>Pull new images (if any) and recreate changed containers:</p>
-<div class="codehilite"><pre><span></span>docker-compose pull
-docker-compose up -d --remove-orphans
-</pre></div>
-
-<h3 id="step-3">Step 3<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
-<p>Clean-up dangling (unused) images and volumes:</p>
-<p>It is <strong>very important</strong> to <em>not</em> run these commands when your containers are deleted.
-Running <code>docker-compose down</code> - for example - will delete your containers. Your volumes are now in a dangling state! Running the commands shown below, <em>will</em> remove your volumes and therefore your data.</p>
-<div class="codehilite"><pre><span></span>docker rmi -f $(docker images -f &quot;dangling=true&quot; -q)
+docker rmi -f $(docker images -f "dangling=true" -q)
 docker volume rm $(docker volume ls -qf dangling=true)
-</pre></div>
-
+```</p>
 <h2 id="footnotes">Footnotes<a class="headerlink" href="#footnotes" title="Permanent link">&para;</a></h2>
-<ul>
-<li>There is no release cycle regarding updates.</li>
-</ul>
+<p>At the moment there is no release cycle regarding updates.</p>
                 
                   
                 
