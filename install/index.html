@@ -1723,6 +1723,13 @@ This command downloads a test image and runs it in a container. When the contain
 </div>
 <h2 id="install-docker-compose-on-linux-systems">Install Docker Compose on Linux systems<a class="headerlink" href="#install-docker-compose-on-linux-systems" title="Permanent link">&para;</a></h2>
 <p>On Linux, you can download the Docker Compose binary from the <a href="https://github.com/docker/compose/releases">Compose repository release page on GitHub</a>. Follow the instructions from the link, which involve running the curl command in your terminal to download the binaries. These step by step instructions are also included below.</p>
+<p>*<em>1.*</em> Run this command to download the latest version of Docker Compose:</p>
+<p><div class="codehilite"><pre><span></span>sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
+</pre></div>
+<strong>2.</strong> Apply executable permissions to the binary:</p>
+<div class="codehilite"><pre><span></span>sudo chmod +x /usr/local/bin/docker-compose
+</pre></div>
+
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If the command docker-compose fails after installation, check your path. You can also create a symbolic link to /usr/bin or any other directory in your path.</p>
