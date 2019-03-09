@@ -131,7 +131,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#apache-24-as-a-reverse-proxy" tabindex="1" class="md-skip">
+      <a href="#setting-up-reverse-proxy" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -442,30 +442,43 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#apache-24-as-a-reverse-proxy" title="Apache 2.4 as a reverse proxy" class="md-nav__link">
-    Apache 2.4 as a reverse proxy
+  <a href="#setting-up-reverse-proxy" title="Setting Up Reverse Proxy" class="md-nav__link">
+    Setting Up Reverse Proxy
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apache-24-as-a-reverse-proxy" title="Apache 2.4 as a Reverse Proxy" class="md-nav__link">
+    Apache 2.4 as a Reverse Proxy
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#nginx" title="Nginx" class="md-nav__link">
-    Nginx
+        
+          <li class="md-nav__item">
+  <a href="#nginx-as-a-reverse-proxy" title="Nginx as a Reverse Proxy" class="md-nav__link">
+    Nginx as a Reverse Proxy
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#haproxy" title="HAProxy" class="md-nav__link">
-    HAProxy
+        
+          <li class="md-nav__item">
+  <a href="#haproxy-as-a-reverse-proxy" title="HAProxy as a Reverse Proxy" class="md-nav__link">
+    HAProxy as a Reverse Proxy
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#optional-post-hook-script-for-non-openemail-acme-clients" title="Optional: Post-hook script for non-openemail ACME clients" class="md-nav__link">
-    Optional: Post-hook script for non-openemail ACME clients
+        
+          <li class="md-nav__item">
+  <a href="#using-post-hook-scripts" title="Using post-hook Scripts" class="md-nav__link">
+    Using post-hook Scripts
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1560,30 +1573,43 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#apache-24-as-a-reverse-proxy" title="Apache 2.4 as a reverse proxy" class="md-nav__link">
-    Apache 2.4 as a reverse proxy
+  <a href="#setting-up-reverse-proxy" title="Setting Up Reverse Proxy" class="md-nav__link">
+    Setting Up Reverse Proxy
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apache-24-as-a-reverse-proxy" title="Apache 2.4 as a Reverse Proxy" class="md-nav__link">
+    Apache 2.4 as a Reverse Proxy
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#nginx" title="Nginx" class="md-nav__link">
-    Nginx
+        
+          <li class="md-nav__item">
+  <a href="#nginx-as-a-reverse-proxy" title="Nginx as a Reverse Proxy" class="md-nav__link">
+    Nginx as a Reverse Proxy
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#haproxy" title="HAProxy" class="md-nav__link">
-    HAProxy
+        
+          <li class="md-nav__item">
+  <a href="#haproxy-as-a-reverse-proxy" title="HAProxy as a Reverse Proxy" class="md-nav__link">
+    HAProxy as a Reverse Proxy
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#optional-post-hook-script-for-non-openemail-acme-clients" title="Optional: Post-hook script for non-openemail ACME clients" class="md-nav__link">
-    Optional: Post-hook script for non-openemail ACME clients
+        
+          <li class="md-nav__item">
+  <a href="#using-post-hook-scripts" title="Using post-hook Scripts" class="md-nav__link">
+    Using post-hook Scripts
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1608,8 +1634,9 @@
                 
                   <h1>Reverse Proxy</h1>
                 
-                <p>This section explains you how to setup a reverse procxy for <strong>openemail dockers</strong></p>
-<p>You don't need to change the Nginx site that comes with <code>nginx-openemail</code> container. openemail trusts the default gateway IP 172.22.1.1 as proxy.</p>
+                <h2 id="setting-up-reverse-proxy"><strong>Setting Up Reverse Proxy</strong><a class="headerlink" href="#setting-up-reverse-proxy" title="Permanent link">&para;</a></h2>
+<p>This section explains you how to setup a reverse procxy for <strong>Openemail dockers</strong></p>
+<p>You don't need to change the Nginx site that comes with <code>nginx-openemail</code> container. Openemail trusts the default gateway IP 172.22.1.1 as proxy.</p>
 <p><strong>1.</strong>  Make sure you change HTTP_BIND and HTTPS_BIND in <code>openemail.conf</code> to a local address and set the ports accordingly, for example:
 <div class="codehilite"><pre><span></span>HTTP_BIND=127.0.0.1
 HTTP_PORT=8080
@@ -1623,17 +1650,17 @@ HTTPS_PORT=8443
 </div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>Using the site configs below will <strong>forward ACME requests to openemail</strong> and let it handle certificates itself. The downside of using openemail as ACME client behind a reverse proxy is, that you will need to reload your webserver after acme-openemail changed/renewed/created the certificate. You can either reload your webserver daily or write a script to watch the file for changes. On many servers logrotate will reload the webserver daily anyway.</p>
+<p>Using the site configs below will <strong>forward ACME requests to Openemail</strong> and let it handle certificates itself. The downside of using Openemail as ACME client behind a reverse proxy is, that you will need to reload your webserver after acme-openemail changed/renewed/created the certificate. You can either reload your webserver daily or write a script to watch the file for changes. On many servers logrotate will reload the webserver daily anyway.</p>
 <p>If you want to use a local certbot installation, you will need to change the SSL certificate parameters accordingly.  <strong>Make sure you run a post-hook script</strong> when you decide to use external ACME clients. You will find an example at the bottom of this page.</p>
 </div>
 <p><strong>2.</strong> Configure your local webserver as reverse proxy:</p>
-<h3 id="apache-24-as-a-reverse-proxy"><strong>Apache 2.4 as a reverse proxy</strong><a class="headerlink" href="#apache-24-as-a-reverse-proxy" title="Permanent link">&para;</a></h3>
+<h3 id="apache-24-as-a-reverse-proxy"><strong>Apache 2.4 as a Reverse Proxy</strong><a class="headerlink" href="#apache-24-as-a-reverse-proxy" title="Permanent link">&para;</a></h3>
 <p>** Install Required modules:
 <div class="codehilite"><pre><span></span>a2enmod rewrite proxy proxy_http headers ssl
 </pre></div>
-We rewrite to HTTPS, but keep requests to autoconfig.* on a plain session.</p>
+We rewrite to <code>HTTPS</code>,<code>but keep requests to</code>autoconfig.*`` on a plain session.</p>
 <p>Let's Encrypt will follow our rewrite, certificate requests will work fine.</p>
-<p><strong>Take care of highlighted lines.</strong></p>
+<p><strong>Take care of highlighted lines.</strong>. You need to asjut</p>
 <div class="codehilite"><pre><span></span><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
 <span class="hll">  <span class="nb">ServerName</span> CHANGE_TO_openemail_HOSTNAME
 </span>  <span class="nb">ServerAlias</span> autodiscover.*
@@ -1652,7 +1679,7 @@ We rewrite to HTTPS, but keep requests to autoconfig.* on a plain session.</p>
   <span class="nb">RequestHeader</span> set X-Forwarded-Proto <span class="s2">&quot;http&quot;</span>
 <span class="nt">&lt;/VirtualHost&gt;</span>
 <span class="nt">&lt;VirtualHost</span> <span class="s">*:443</span><span class="nt">&gt;</span>
-<span class="hll">  <span class="nb">ServerName</span> CHANGE_TO_openemail_HOSTNAME
+<span class="hll">  <span class="nb">ServerName</span> CHANGE_TO_Openemail_HOSTNAME
 </span>  <span class="nb">ServerAlias</span> autodiscover.*
 
   <span class="c"># You should proxy to a plain HTTP session to offload SSL processing</span>
@@ -1676,7 +1703,7 @@ We rewrite to HTTPS, but keep requests to autoconfig.* on a plain session.</p>
 <span class="nt">&lt;/VirtualHost&gt;</span>
 </pre></div>
 
-<h3 id="nginx">Nginx<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h3>
+<h3 id="nginx-as-a-reverse-proxy"><strong>Nginx as a Reverse Proxy</strong><a class="headerlink" href="#nginx-as-a-reverse-proxy" title="Permanent link">&para;</a></h3>
 <p>In our Nginx reverse proxy template, we rewrite all requests to HTTPS, while keeping autoconfig.* domains on a plain session.</p>
 <p>Let's Encrypt will follow our rewrite, certificate requests will work fine.</p>
 <p><strong>Take care of highlighted lines.</strong></p>
@@ -1721,8 +1748,8 @@ We rewrite to HTTPS, but keep requests to autoconfig.* on a plain session.</p>
 <span class="err">}</span>
 </pre></div>
 
-<h3 id="haproxy">HAProxy<a class="headerlink" href="#haproxy" title="Permanent link">&para;</a></h3>
-<p><strong>Important/Fixme</strong>: This example only forwards HTTPS traffic and does not use openemails built-in ACME client.</p>
+<h3 id="haproxy-as-a-reverse-proxy"><strong>HAProxy as a Reverse Proxy</strong><a class="headerlink" href="#haproxy-as-a-reverse-proxy" title="Permanent link">&para;</a></h3>
+<p><strong>Important/Fixme</strong>: This example only forwards HTTPS traffic and does not use Openemails built-in ACME client.</p>
 <div class="codehilite"><pre><span></span>frontend https-in
   bind :::443 v4v6 ssl crt openemail.pem
   default_backend openemail
@@ -1734,12 +1761,13 @@ backend openemail
   server openemail 127.0.0.1:8080 check
 </pre></div>
 
-<h3 id="optional-post-hook-script-for-non-openemail-acme-clients">Optional: Post-hook script for non-openemail ACME clients<a class="headerlink" href="#optional-post-hook-script-for-non-openemail-acme-clients" title="Permanent link">&para;</a></h3>
+<h3 id="using-post-hook-scripts"><strong>Using post-hook Scripts</strong><a class="headerlink" href="#using-post-hook-scripts" title="Permanent link">&para;</a></h3>
+<p>Optional: Post-hook script for non-openemail ACME clients</p>
 <p>Using a local certbot (or any other ACME client) requires to restart some containers, you can do this with a post-hook script.
 Make sure you change the pathes accordingly:
 <div class="codehilite"><pre><span></span><span class="ch">#!/bin/bash</span>
-cp /etc/letsencrypt/live/my.domain.tld/fullchain.pem /opt/openemail-dockerized/data/assets/ssl/cert.pem
-cp /etc/letsencrypt/live/my.domain.tld/privkey.pem /opt/openemail-dockerized/data/assets/ssl/key.pem
+cp /etc/letsencrypt/live/my.domain.tld/fullchain.pem /opt/openemail/data/assets/ssl/cert.pem
+cp /etc/letsencrypt/live/my.domain.tld/privkey.pem /opt/openemail/data/assets/ssl/key.pem
 <span class="c1"># Either restart...</span>
 <span class="c1">#postfix_c=$(docker ps -qaf name=postfix-openemail)</span>
 <span class="c1">#dovecot_c=$(docker ps -qaf name=dovecot-openemail)</span>
