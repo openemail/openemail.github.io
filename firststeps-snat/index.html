@@ -1566,10 +1566,10 @@
                 
                   <h1>SNAT</h1>
                 
-                <h2 id="snat">SNAT<a class="headerlink" href="#snat" title="Permanent link">&para;</a></h2>
-<p>SNAT is used to change the source address of the packets sent by mailcow.
+                <h2 id="snat"><strong>SNAT</strong><a class="headerlink" href="#snat" title="Permanent link">&para;</a></h2>
+<p>SNAT is used to change the source address of the packets sent by <strong>Openemail</strong>.
 It can be used to change the outgoing IP on systems with multiple IP addresses.</p>
-<p>Open <code>mailcow.conf</code>, set either or both of the following parameters:</p>
+<p>Open <code>openemail.conf</code>, set either or both of the following parameters:</p>
 <div class="codehilite"><pre><span></span># Use this IPv4 for outgoing connections (SNAT)
 SNAT_TO_SOURCE=1.2.3.4
 
@@ -1577,9 +1577,11 @@ SNAT_TO_SOURCE=1.2.3.4
 SNAT6_TO_SOURCE=dead:beef
 </pre></div>
 
-<p>Run <code>docker-compose up -d</code>.</p>
-<p>The values are read by netfilter-mailcow. netfilter-mailcow will make sure, the post-routing rules are on position 1 in the netfilter table. It does automatically delete and re-create them if they are found on another position than 1.</p>
-<p>Check the output of <code>docker-compose logs --tail=200 netfilter-mailcow</code> to ensure the SNAT settings have been applied.</p>
+<p><strong>To update the new settings run:</strong></p>
+<p><div class="codehilite"><pre><span></span>docker-compose up -d
+</pre></div>
+The values are read by netfilter-openemail. The container <code>netfilter-op enemail</code> will make sure, the post-routing rules are on position 1 in the netfilter table. It does automatically delete and re-create them if they are found on another position than 1.</p>
+<p>Check the output of `docker-compose logs --tail=200 netfilter-openemail to ensure the SNAT settings have been applied.</p>
                 
                   
                 
