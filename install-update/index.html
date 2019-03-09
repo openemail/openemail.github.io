@@ -382,16 +382,16 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#automatic-update" title="Automatic update" class="md-nav__link">
-    Automatic update
+  <a href="#automatic-update" title="Automatic Update" class="md-nav__link">
+    Automatic Update
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#update-options" title="Update options" class="md-nav__link">
-    Update options
+  <a href="#update-options" title="Update Options" class="md-nav__link">
+    Update Options
   </a>
   
 </li>
@@ -402,8 +402,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#manual-update" title="Manual update" class="md-nav__link">
-    Manual update
+  <a href="#manual-update" title="Manual Update" class="md-nav__link">
+    Manual Update
   </a>
   
     <nav class="md-nav">
@@ -1586,16 +1586,16 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#automatic-update" title="Automatic update" class="md-nav__link">
-    Automatic update
+  <a href="#automatic-update" title="Automatic Update" class="md-nav__link">
+    Automatic Update
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#update-options" title="Update options" class="md-nav__link">
-    Update options
+  <a href="#update-options" title="Update Options" class="md-nav__link">
+    Update Options
   </a>
   
 </li>
@@ -1606,8 +1606,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#manual-update" title="Manual update" class="md-nav__link">
-    Manual update
+  <a href="#manual-update" title="Manual Update" class="md-nav__link">
+    Manual Update
   </a>
   
     <nav class="md-nav">
@@ -1660,18 +1660,18 @@
                 
                   <h1>Update</h1>
                 
-                <h2 id="automatic-update">Automatic update<a class="headerlink" href="#automatic-update" title="Permanent link">&para;</a></h2>
+                <h2 id="automatic-update"><strong>Automatic Update</strong><a class="headerlink" href="#automatic-update" title="Permanent link">&para;</a></h2>
 <p>There is an update script in your <code>/opt/openemail</code> directory will take care of updates.</p>
-<p>But use it with caution! If you think you made a lot of changes to the openemail code, you should use the manual update guide below.</p>
+<p>But use it with caution! If you think you made a lot of changes to the Openemail code, you should use the manual update guide below.</p>
 <p>Run the update script:
 <div class="codehilite"><pre><span></span>sudo su -
 cd /opt/openemail
 ./update.sh
-</pre></div></p>
-<p>If it needs to, it will ask you how you wish to proceed.
-Merge errors will be reported.
-Some minor conflicts will be auto-corrected (in favour for the openemail repository code).</p>
-<h3 id="update-options">Update options<a class="headerlink" href="#update-options" title="Permanent link">&para;</a></h3>
+</pre></div>
+- If it needs to, it will ask you how you wish to proceed.
+- Merge errors will be reported.
+- Some minor conflicts will be auto-corrected</p>
+<h3 id="update-options"><strong>Update Options</strong><a class="headerlink" href="#update-options" title="Permanent link">&para;</a></h3>
 <p><strong>Check for updates</strong>
 <div class="codehilite"><pre><span></span>./update.sh --check
 </pre></div>
@@ -1679,13 +1679,13 @@ Some minor conflicts will be auto-corrected (in favour for the openemail reposit
 <p>This will merge in favor for your local changes.
 <div class="codehilite"><pre><span></span>./update.sh --ours
 </pre></div></p>
-<h2 id="manual-update">Manual update<a class="headerlink" href="#manual-update" title="Permanent link">&para;</a></h2>
-<h3 id="step-1">Step 1<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
-<p>You may want to backup your certificates, as an upgrade from an older <strong>openemail</strong> version may remove these files:</p>
+<h2 id="manual-update"><strong>Manual Update</strong><a class="headerlink" href="#manual-update" title="Permanent link">&para;</a></h2>
+<h3 id="step-1"><strong>Step 1</strong><a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p>You may want to backup your certificates, as an upgrade from an older <strong>Openemail</strong> version may remove these files:</p>
 <div class="codehilite"><pre><span></span>cp -rp data/assets/ssl /tmp/ssl_backup_openemail
 </pre></div>
 
-<p>Fetch new data from GitHub, commit changes and merge remote repository:```</p>
+<p>Fetch new data from GitHub, commit changes and merge remote repository:</p>
 <p><strong>1.</strong> Get updates/changes
 <div class="codehilite"><pre><span></span>git fetch origin master
 </pre></div></p>
@@ -1696,10 +1696,10 @@ Some minor conflicts will be auto-corrected (in favour for the openemail reposit
 <p><strong>3.</strong>  Commit changes, ignore git complaining about username and mail address
 <div class="codehilite"><pre><span></span>git commit -m &quot;Local config at $(date)&quot;
 </pre></div></p>
-<p><strong>4.</strong>  Merge changes, prefer openemail repository, replace "theirs" by "ours" to change merge strategy
+<p><strong>4.</strong>  Merge changes, prefer Openemail repository, replace "theirs" by "ours" to change merge strategy
 <div class="codehilite"><pre><span></span>git merge -Xtheirs -Xpatience
 </pre></div></p>
-<p><strong>5.</strong> If it conflicts with files that were deleted from the openemail repository, just run...
+<p><strong>5.</strong> If it conflicts with files that were deleted from the Openemail repository, just run...
 <div class="codehilite"><pre><span></span>git status --porcelain | grep -E &quot;UD|DU&quot; | awk &#39;{print $2}&#39; | xargs rm -v
 </pre></div></p>
 <p><strong>6.</strong> Repeat step 2 and 3</p>
@@ -1707,15 +1707,14 @@ Some minor conflicts will be auto-corrected (in favour for the openemail reposit
 <div class="codehilite"><pre><span></span>cp -rp /tmp/ssl_backup_openemail/* data/assets/ssl/
 </pre></div>
 
-<h3 id="step-2">Step 2<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
+<h3 id="step-2"><strong>Step 2</strong><a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
 <p><strong>Clean-up dangling (unused) images and volumes:</strong></p>
-<p>It is <strong>very important</strong> to <em>not</em> run these commands when your containers are deleted.
-Running <code>docker-compose down</code> - for example - will delete your containers. Your volumes are now in a dangling state! Running the commands shown below, <em>will</em> remove your volumes and therefore your data.</p>
+<p>It is <strong>very important</strong> to <em>not</em> run these commands when your containers are deleted. Running <code>docker-compose down</code> - for example - will delete your containers. Your volumes are now in a dangling state! Running the commands shown below, <em>will</em> remove your volumes and therefore your data.</p>
 <div class="codehilite"><pre><span></span>docker rmi -f $(docker images -f &quot;dangling=true&quot; -q)
 docker volume rm $(docker volume ls -qf dangling=true)
 </pre></div>
 
-<h2 id="footnotes">Footnotes<a class="headerlink" href="#footnotes" title="Permanent link">&para;</a></h2>
+<h2 id="footnotes"><strong>Footnotes</strong><a class="headerlink" href="#footnotes" title="Permanent link">&para;</a></h2>
 <p>At the moment there is no release cycle regarding updates.</p>
                 
                   
