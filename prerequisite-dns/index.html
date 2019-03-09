@@ -341,8 +341,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#setting-up-mx-records" title="**Setting up MX Records" class="md-nav__link">
-    **Setting up MX Records
+  <a href="#setting-up-mx-records" title="Setting up MX Records" class="md-nav__link">
+    Setting up MX Records
   </a>
   
     <nav class="md-nav">
@@ -417,15 +417,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#creating-a-dkim-key-and-dns-record" title="**Creating a DKIM Key and DNS Record" class="md-nav__link">
-    **Creating a DKIM Key and DNS Record
+  <a href="#creating-a-dkim-key-and-dns-record" title="Creating a DKIM Key and DNS Record" class="md-nav__link">
+    Creating a DKIM Key and DNS Record
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#creating-dkim-key-in-openemail-ui" title="Creating DKIM key in openemail UI" class="md-nav__link">
-    Creating DKIM key in openemail UI
+  <a href="#creating-dkim-key-in-openemail-ui" title="Creating DKIM key in Openemail UI" class="md-nav__link">
+    Creating DKIM key in Openemail UI
   </a>
   
 </li>
@@ -1696,8 +1696,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#setting-up-mx-records" title="**Setting up MX Records" class="md-nav__link">
-    **Setting up MX Records
+  <a href="#setting-up-mx-records" title="Setting up MX Records" class="md-nav__link">
+    Setting up MX Records
   </a>
   
     <nav class="md-nav">
@@ -1772,15 +1772,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#creating-a-dkim-key-and-dns-record" title="**Creating a DKIM Key and DNS Record" class="md-nav__link">
-    **Creating a DKIM Key and DNS Record
+  <a href="#creating-a-dkim-key-and-dns-record" title="Creating a DKIM Key and DNS Record" class="md-nav__link">
+    Creating a DKIM Key and DNS Record
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#creating-dkim-key-in-openemail-ui" title="Creating DKIM key in openemail UI" class="md-nav__link">
-    Creating DKIM key in openemail UI
+  <a href="#creating-dkim-key-in-openemail-ui" title="Creating DKIM key in Openemail UI" class="md-nav__link">
+    Creating DKIM key in Openemail UI
   </a>
   
 </li>
@@ -1869,7 +1869,7 @@
                 <h2 id="dns-and-email-security"><strong>DNS and Email Security</strong><a class="headerlink" href="#dns-and-email-security" title="Permanent link">&para;</a></h2>
 <p>DNS infrastructure of the Internet plays a major role in email security today. Proper DNS setup for your email domain requires prior to setting up <strong>Openemail</strong> for your domain.</p>
 <p>This section of the document guides you in setting up <strong>recommended DNS records</strong>. While some are mandatory for a mail server (A, MX), others are recommended to build a good reputation score (TXT/SPF) or used for auto-configuration of mail clients (SRV).</p>
-<h2 id="setting-up-mx-records">**Setting up MX Records<a class="headerlink" href="#setting-up-mx-records" title="Permanent link">&para;</a></h2>
+<h2 id="setting-up-mx-records"><strong>Setting up MX Records</strong><a class="headerlink" href="#setting-up-mx-records" title="Permanent link">&para;</a></h2>
 <p><strong>Querying for Existing MX records</strong></p>
 <p>Let's first first find your MX records by running the <code>dig</code> command in your Linux system. Run the following query to view the MX records for an eample domain <code>openemail.io</code>. Simply change this domain to your domains to query MX for your domain.</p>
 <p><div class="codehilite"><pre><span></span>dig openemail.io MX +short
@@ -1938,9 +1938,9 @@ You will get an output like below.</p>
 <p>When an email server receives your email, it checks the public key to determine if your private key was used to generate the email signature. If your private key was not used, the email is considered to be a phishing or spam attempt.</p>
 <p>The diagram below will make you understand about DKIM authentication process.</p>
 <p><img alt="" src="../images/dkim-process.png" /></p>
-<h3 id="creating-a-dkim-key-and-dns-record">**Creating a DKIM Key and DNS Record<a class="headerlink" href="#creating-a-dkim-key-and-dns-record" title="Permanent link">&para;</a></h3>
+<h3 id="creating-a-dkim-key-and-dns-record"><strong>Creating a DKIM Key and DNS Record</strong><a class="headerlink" href="#creating-a-dkim-key-and-dns-record" title="Permanent link">&para;</a></h3>
 <p>It is highly recommended to create a <strong>DKIM</strong> TXT record in your **openemal UI##  and set the corresponding TXT record in your DNS records. Please refer to <a href="http://www.opendkim.org">OpenDKIM</a> for further reading.</p>
-<h3 id="creating-dkim-key-in-openemail-ui">Creating DKIM key in openemail UI<a class="headerlink" href="#creating-dkim-key-in-openemail-ui" title="Permanent link">&para;</a></h3>
+<h3 id="creating-dkim-key-in-openemail-ui"><strong>Creating DKIM key in Openemail UI</strong><a class="headerlink" href="#creating-dkim-key-in-openemail-ui" title="Permanent link">&para;</a></h3>
 <p>Do the following steps  which are marked in red color in the  configuration window screenshot of <strong>openemail-UI</strong> below.</p>
 <p><strong>1.</strong> Click on <code>Select domains with missing keys</code> to select your domain.</p>
 <p><strong>2.</strong> Set <code>dkim</code> key length as <code>2048</code></p>
