@@ -131,7 +131,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#lets-encrypt-ssl-certificates" tabindex="1" class="md-skip">
+      <a href="#lets-encrypt-ssl-cxertificates" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -418,23 +418,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lets-encrypt-ssl-certificates" title="Let's Encrypt SSL certificates" class="md-nav__link">
-    Let's Encrypt SSL certificates
+  <a href="#lets-encrypt-ssl-cxertificates" title="Let's Encrypt SSL CXertificates" class="md-nav__link">
+    Let's Encrypt SSL CXertificates
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#additional-domain-names" title="Additional domain names" class="md-nav__link">
-    Additional domain names
+  <a href="#additional-domain-names" title="Additional Domain Names" class="md-nav__link">
+    Additional Domain Names
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#skip-lets-encrypt-function" title="Skip Let's Encrypt function" class="md-nav__link">
-    Skip Let's Encrypt function
+  <a href="#skip-lets-encrypt-function" title="Skip Let's Encrypt Function" class="md-nav__link">
+    Skip Let's Encrypt Function
   </a>
   
 </li>
@@ -445,15 +445,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-your-own-certificates" title="Using your own certificates" class="md-nav__link">
-    Using your own certificates
+  <a href="#using-your-own-certificates" title="Using Your Own Certificates" class="md-nav__link">
+    Using Your Own Certificates
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-your-configuration" title="Check your configuration" class="md-nav__link">
-    Check your configuration
+  <a href="#check-your-configuration" title="Check Your Configuration" class="md-nav__link">
+    Check Your Configuration
   </a>
   
 </li>
@@ -1573,23 +1573,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lets-encrypt-ssl-certificates" title="Let's Encrypt SSL certificates" class="md-nav__link">
-    Let's Encrypt SSL certificates
+  <a href="#lets-encrypt-ssl-cxertificates" title="Let's Encrypt SSL CXertificates" class="md-nav__link">
+    Let's Encrypt SSL CXertificates
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#additional-domain-names" title="Additional domain names" class="md-nav__link">
-    Additional domain names
+  <a href="#additional-domain-names" title="Additional Domain Names" class="md-nav__link">
+    Additional Domain Names
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#skip-lets-encrypt-function" title="Skip Let's Encrypt function" class="md-nav__link">
-    Skip Let's Encrypt function
+  <a href="#skip-lets-encrypt-function" title="Skip Let's Encrypt Function" class="md-nav__link">
+    Skip Let's Encrypt Function
   </a>
   
 </li>
@@ -1600,15 +1600,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-your-own-certificates" title="Using your own certificates" class="md-nav__link">
-    Using your own certificates
+  <a href="#using-your-own-certificates" title="Using Your Own Certificates" class="md-nav__link">
+    Using Your Own Certificates
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-your-configuration" title="Check your configuration" class="md-nav__link">
-    Check your configuration
+  <a href="#check-your-configuration" title="Check Your Configuration" class="md-nav__link">
+    Check Your Configuration
   </a>
   
 </li>
@@ -1634,13 +1634,13 @@
                 
                   <h1>SSL</h1>
                 
-                <h2 id="lets-encrypt-ssl-certificates"><strong>Let's Encrypt SSL certificates</strong><a class="headerlink" href="#lets-encrypt-ssl-certificates" title="Permanent link">&para;</a></h2>
+                <h2 id="lets-encrypt-ssl-cxertificates"><strong>Let's Encrypt SSL CXertificates</strong><a class="headerlink" href="#lets-encrypt-ssl-cxertificates" title="Permanent link">&para;</a></h2>
 <p>Let’s Encrypt uses the ACME protocol to verify that you control a given domain name and to issue you a certificate. To get a Let’s Encrypt certificate, you’ll need to choose a piece of ACME client software to use.</p>
 <p>The ACME clients are offered by third parties. Let’s Encrypt does not control or review third party clients and cannot make any guarantees about their safety or reliability.</p>
-<p>The newly introduced <code>acme-openemail</code> container is based on <a href="https://github.com/diafygi/acme-tiny">ACME Tiny</a>. It will try to obtain a valid LE certificate for you.</p>
+<p>The newly introduced <code>acme-openemail</code> container is based on <a href="https://github.com/diafygi/acme-tiny">ACME Tiny</a>. It will try to obtain a valid LE certificate  automatically for you.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>openemai <strong>must</strong> be available on port 80 for the acme-client to work.</p>
+<p>Openemai <strong>must</strong> be available on port 80 for the acme-client to work.</p>
 </div>
 <p>By default, which means <strong>0 domains</strong> are added to openemail, it will try to obtain a certificate for ${OPENEMAIL_HOSTNAME}.</p>
 <p>For each domain you add, it will try to resolve <code>autodiscover.ADDED_MAIL_DOMAIN</code> and <code>autoconfig.ADDED_MAIL_DOMAIN</code> to your servers IPv4 address. If it succeeds, these names will be added as SANs to the certificate request.</p>
@@ -1650,7 +1650,7 @@
 <p>If you want to re-run the ACME client, use
 <div class="codehilite"><pre><span></span>docker-compose restart acme-openemail
 </pre></div></p>
-<h3 id="additional-domain-names"><strong>Additional domain names</strong><a class="headerlink" href="#additional-domain-names" title="Permanent link">&para;</a></h3>
+<h3 id="additional-domain-names"><strong>Additional Domain Names</strong><a class="headerlink" href="#additional-domain-names" title="Permanent link">&para;</a></h3>
 <p>Edit <code>openemail.conf</code> and add a parameter <code>ADDITIONAL_SAN</code> like this:</p>
 <p>Do not use quotes (<code>"</code>)!</p>
 <div class="codehilite"><pre><span></span>ADDITIONAL_SAN=cert1.example.org,cert1.example.com,cert2.example.org,cert3.example.org
@@ -1660,16 +1660,16 @@
 <p>Run <code>docker-compose up -d</code> to recreate changed containers.
 <div class="codehilite"><pre><span></span>docker-compose up -d
 </pre></div></p>
-<h3 id="skip-lets-encrypt-function"><strong>Skip Let's Encrypt function</strong><a class="headerlink" href="#skip-lets-encrypt-function" title="Permanent link">&para;</a></h3>
+<h3 id="skip-lets-encrypt-function"><strong>Skip Let's Encrypt Function</strong><a class="headerlink" href="#skip-lets-encrypt-function" title="Permanent link">&para;</a></h3>
 <p>Change <code>SKIP_LETS_ENCRYPT=y</code> in <code>openemail.conf</code> and restart the stack by running
 <div class="codehilite"><pre><span></span>docker-compose down &amp;&amp; docker-compose up -d
 </pre></div></p>
-<h2 id="using-your-own-certificates"><strong>Using your own certificates</strong><a class="headerlink" href="#using-your-own-certificates" title="Permanent link">&para;</a></h2>
+<h2 id="using-your-own-certificates"><strong>Using Your Own Certificates</strong><a class="headerlink" href="#using-your-own-certificates" title="Permanent link">&para;</a></h2>
 <p>To use your own certificates, just save the combined certificate (containing the certificate and intermediate CA/CA if any) to <code>data/assets/ssl/cert.pem</code> and the corresponding key to <code>data/assets/ssl/key.pem</code>.</p>
 <p>Restart changed containers by running
 <div class="codehilite"><pre><span></span>docker-compose up -d
 </pre></div></p>
-<h2 id="check-your-configuration"><strong>Check your configuration</strong><a class="headerlink" href="#check-your-configuration" title="Permanent link">&para;</a></h2>
+<h2 id="check-your-configuration"><strong>Check Your Configuration</strong><a class="headerlink" href="#check-your-configuration" title="Permanent link">&para;</a></h2>
 <p>To find out why a validation fails, run:
 <div class="codehilite"><pre><span></span>docker-compose logs acme-openemail
 </pre></div>
