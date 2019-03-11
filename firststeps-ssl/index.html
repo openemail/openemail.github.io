@@ -1640,7 +1640,7 @@
 <p>The container <code>acme-openemail</code> container is based on <a href="https://github.com/diafygi/acme-tiny">ACME Tiny</a>. It will try to obtain a valid LE certificate  automatically for your domains configured in Openemail.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Openemai <strong>must</strong> be available on port 80 for the acme-client to work.</p>
+<p>Openemail <strong>must</strong> be available on port 80 for the acme-client to work.</p>
 </div>
 <p>By default, which means <strong>0 domains</strong> are added to Openemail, it will try to obtain a certificate for <code>${OPENEMAIL_HOSTNAME}</code></p>
 <p>For each domain you add, it will try to resolve <code>autodiscover.ADDED_MAIL_DOMAIN</code> and <code>autoconfig.ADDED_MAIL_DOMAIN</code> to your servers IPv4 address. If it succeeds, these names will be added as SANs to the certificate request.</p>
