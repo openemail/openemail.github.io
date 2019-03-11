@@ -1642,7 +1642,7 @@
 <p class="admonition-title">Warning</p>
 <p>Openemai <strong>must</strong> be available on port 80 for the acme-client to work.</p>
 </div>
-<p>By default, which means <strong>0 domains</strong> are added to Openemail, it will try to obtain a certificate for ${OPENEMAIL_HOSTNAME}.</p>
+<p>By default, which means <strong>0 domains</strong> are added to Openemail, it will try to obtain a certificate for <code>${OPENEMAIL_HOSTNAME}</code></p>
 <p>For each domain you add, it will try to resolve <code>autodiscover.ADDED_MAIL_DOMAIN</code> and <code>autoconfig.ADDED_MAIL_DOMAIN</code> to your servers IPv4 address. If it succeeds, these names will be added as SANs to the certificate request.</p>
 <p>You can skip the IP verification by adding <code>SKIP_IP_CHECK=y</code> to <code>openemail.conf</code>. Be warned that a misconfiguration will get you ratelimited by Let's Encrypt! This is primarily useful for multi-IP setups where the IP check would return the incorrect source IP. Due to using dynamic IPs for <code>acme-openemail</code>, source NAT is not consistent over restarts.</p>
 <p>If you have added an A record for <code>autodiscover</code> but omitted <code>autoconfig</code>, the client will only validate <code>autodiscover</code> and skip <code>autoconfig</code> then.</p>
@@ -1653,7 +1653,6 @@
 
 <h3 id="additional-domain-names">Additional Domain Names<a class="headerlink" href="#additional-domain-names" title="Permanent link">&para;</a></h3>
 <p>Edit <code>openemail.conf</code> and add a parameter <code>ADDITIONAL_SAN</code> like this:</p>
-<p>Do not use quotes (<code>"</code>)!</p>
 <div class="codehilite"><pre><span></span>ADDITIONAL_SAN=cert1.example.org,cert1.example.com,cert2.example.org,cert3.example.org
 </pre></div>
 
@@ -1661,16 +1660,16 @@
 <p>Run <code>docker-compose up -d</code> to recreate changed containers.
 <div class="codehilite"><pre><span></span>docker-compose up -d
 </pre></div></p>
-<h3 id="skip-lets-encrypt-function"><strong>Skip Let's Encrypt Function</strong><a class="headerlink" href="#skip-lets-encrypt-function" title="Permanent link">&para;</a></h3>
+<h3 id="skip-lets-encrypt-function">Skip Let's Encrypt Function<a class="headerlink" href="#skip-lets-encrypt-function" title="Permanent link">&para;</a></h3>
 <p>Change <code>SKIP_LETS_ENCRYPT=y</code> in <code>openemail.conf</code> and restart the stack by running
 <div class="codehilite"><pre><span></span>docker-compose down &amp;&amp; docker-compose up -d
 </pre></div></p>
-<h2 id="using-your-own-certificates"><strong>Using Your Own Certificates</strong><a class="headerlink" href="#using-your-own-certificates" title="Permanent link">&para;</a></h2>
+<h2 id="using-your-own-certificates">Using Your Own Certificates<a class="headerlink" href="#using-your-own-certificates" title="Permanent link">&para;</a></h2>
 <p>To use your own certificates, just save the combined certificate (containing the certificate and intermediate CA/CA if any) to <code>data/assets/ssl/cert.pem</code> and the corresponding key to <code>data/assets/ssl/key.pem</code>.</p>
 <p>Restart changed containers by running
 <div class="codehilite"><pre><span></span>docker-compose up -d
 </pre></div></p>
-<h2 id="check-your-configuration"><strong>Check Your Configuration</strong><a class="headerlink" href="#check-your-configuration" title="Permanent link">&para;</a></h2>
+<h2 id="check-your-configuration">Check Your Configuration<a class="headerlink" href="#check-your-configuration" title="Permanent link">&para;</a></h2>
 <p>To find out why a validation fails, run:
 <div class="codehilite"><pre><span></span>docker-compose logs acme-openemail
 </pre></div>
