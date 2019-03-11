@@ -329,8 +329,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#choosing-a-linux-dribution-for-the-docker-host" title="Choosing a Linux Dribution for the Docker Host" class="md-nav__link">
-    Choosing a Linux Dribution for the Docker Host
+  <a href="#choosing-a-linux-distribution-for-the-docker-host" title="Choosing a Linux Distribution for the Docker Host" class="md-nav__link">
+    Choosing a Linux Distribution for the Docker Host
   </a>
   
 </li>
@@ -1601,8 +1601,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#choosing-a-linux-dribution-for-the-docker-host" title="Choosing a Linux Dribution for the Docker Host" class="md-nav__link">
-    Choosing a Linux Dribution for the Docker Host
+  <a href="#choosing-a-linux-distribution-for-the-docker-host" title="Choosing a Linux Distribution for the Docker Host" class="md-nav__link">
+    Choosing a Linux Distribution for the Docker Host
   </a>
   
 </li>
@@ -1691,15 +1691,15 @@
 <li>Make sure that your system has a correct date and <a href="#date-and-time">time setup</a>. This is crucial for stuff like two factor TOTP authentication.</li>
 </ul>
 </div>
-<h2 id="choosing-a-linux-dribution-for-the-docker-host"><strong>Choosing a Linux Dribution for the Docker Host</strong><a class="headerlink" href="#choosing-a-linux-dribution-for-the-docker-host" title="Permanent link">&para;</a></h2>
-<p>During the creation of this installation guide I have used <a href="http://releases.ubuntu.com/18.04/">Ubuntu 18.04.2 LTS (Bionic Beaver)</a>. Some of the examples shown in this document may largely depend on this Linux distribution.  But with a minor adjustment  on it you can make it prepare to get working in your Linux distribution of choice as your docker host. It may be Ubuntu, Debian, CentOS, or an another.</p>
+<h2 id="choosing-a-linux-distribution-for-the-docker-host"><strong>Choosing a Linux Distribution for the Docker Host</strong><a class="headerlink" href="#choosing-a-linux-distribution-for-the-docker-host" title="Permanent link">&para;</a></h2>
+<p>During the creation of this installation guide I used <a href="http://releases.ubuntu.com/18.04/">Ubuntu 18.04.2 LTS (Bionic Beaver)</a>. Some of the examples shown in this document may largely depend on this Linux distribution.   But with a minor adjustment  on it you can make it prepare to get working in your Linux distribution of choice as your docker host. It may be Ubuntu, Debian, CentOS, or an another.</p>
 <h2 id="minimum-system-resources"><strong>Minimum System Resources</strong><a class="headerlink" href="#minimum-system-resources" title="Permanent link">&para;</a></h2>
 <p>Please make sure that your system has at least the following resources:</p>
 <table>
 <thead>
 <tr>
 <th>Resource</th>
-<th>openemail</th>
+<th>Openemail</th>
 </tr>
 </thead>
 <tbody>
@@ -1729,7 +1729,7 @@
 
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>There are several problems with running openemail on a firewalld/ufw enabled system. You should disable it (if possible) and move your ruleset to the DOCKER-USER chain, which is not cleared by a Docker service restart, instead. See <a href="https://blog.donnex.net/docker-and-iptables-filtering/">this blog post</a> for information about how to use iptables-persistent with the DOCKER-USER chain.
+<p>There are several problems with running Openemail on a firewalld/ufw enabled system. You should disable it (if possible) and move your ruleset to the DOCKER-USER chain, which is not cleared by a Docker service restart, instead. See <a href="https://blog.donnex.net/docker-and-iptables-filtering/">this blog post</a> for information about how to use iptables-persistent with the DOCKER-USER chain.
 As openemail runs dockerized, INPUT rules have no effect on restricting access to openemail. Use the FORWARD chain instead.</p>
 </div>
 <p>If this command returns any results please remove or stop the application running on that port. You may also adjust openemail ports via the openemail.conf` configuration file.</p>
