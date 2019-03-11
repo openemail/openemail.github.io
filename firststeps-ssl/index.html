@@ -131,7 +131,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#lets-encrypt-ssl-cxertificates" tabindex="1" class="md-skip">
+      <a href="#lets-encrypt-ssl-certificates" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -418,8 +418,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lets-encrypt-ssl-cxertificates" title="Let's Encrypt SSL CXertificates" class="md-nav__link">
-    Let's Encrypt SSL CXertificates
+  <a href="#lets-encrypt-ssl-certificates" title="Let's Encrypt SSL Certificates" class="md-nav__link">
+    Let's Encrypt SSL Certificates
   </a>
   
     <nav class="md-nav">
@@ -1573,8 +1573,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lets-encrypt-ssl-cxertificates" title="Let's Encrypt SSL CXertificates" class="md-nav__link">
-    Let's Encrypt SSL CXertificates
+  <a href="#lets-encrypt-ssl-certificates" title="Let's Encrypt SSL Certificates" class="md-nav__link">
+    Let's Encrypt SSL Certificates
   </a>
   
     <nav class="md-nav">
@@ -1634,23 +1634,24 @@
                 
                   <h1>SSL</h1>
                 
-                <h2 id="lets-encrypt-ssl-cxertificates"><strong>Let's Encrypt SSL CXertificates</strong><a class="headerlink" href="#lets-encrypt-ssl-cxertificates" title="Permanent link">&para;</a></h2>
+                <h2 id="lets-encrypt-ssl-certificates">Let's Encrypt SSL Certificates<a class="headerlink" href="#lets-encrypt-ssl-certificates" title="Permanent link">&para;</a></h2>
 <p>Let’s Encrypt uses the ACME protocol to verify that you control a given domain name and to issue you a certificate. To get a Let’s Encrypt certificate, you’ll need to choose a piece of ACME client software to use.</p>
 <p>The ACME clients are offered by third parties. Let’s Encrypt does not control or review third party clients and cannot make any guarantees about their safety or reliability.</p>
-<p>The newly introduced <code>acme-openemail</code> container is based on <a href="https://github.com/diafygi/acme-tiny">ACME Tiny</a>. It will try to obtain a valid LE certificate  automatically for you.</p>
+<p>The container <code>acme-openemail</code> container is based on <a href="https://github.com/diafygi/acme-tiny">ACME Tiny</a>. It will try to obtain a valid LE certificate  automatically for your domains configured in Openemail.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Openemai <strong>must</strong> be available on port 80 for the acme-client to work.</p>
 </div>
-<p>By default, which means <strong>0 domains</strong> are added to openemail, it will try to obtain a certificate for ${OPENEMAIL_HOSTNAME}.</p>
+<p>By default, which means <strong>0 domains</strong> are added to Openemail, it will try to obtain a certificate for ${OPENEMAIL_HOSTNAME}.</p>
 <p>For each domain you add, it will try to resolve <code>autodiscover.ADDED_MAIL_DOMAIN</code> and <code>autoconfig.ADDED_MAIL_DOMAIN</code> to your servers IPv4 address. If it succeeds, these names will be added as SANs to the certificate request.</p>
-<p>You can skip the IP verification by adding <code>SKIP_IP_CHECK=y</code> to <code>openemail.conf</code> (no quotes). Be warned that a misconfiguration will get you ratelimited by Let's Encrypt! This is primarily useful for multi-IP setups where the IP check would return the incorrect source IP. Due to using dynamic IPs for <code>acme-openemail</code>, source NAT is not consistent over restarts.</p>
-<p>You could add an A record for <code>autodiscover</code> but omit <code>autoconfig</code>, the client will only validate <code>autodiscover</code> and skip <code>autoconfig</code> then.</p>
+<p>You can skip the IP verification by adding <code>SKIP_IP_CHECK=y</code> to <code>openemail.conf</code>. Be warned that a misconfiguration will get you ratelimited by Let's Encrypt! This is primarily useful for multi-IP setups where the IP check would return the incorrect source IP. Due to using dynamic IPs for <code>acme-openemail</code>, source NAT is not consistent over restarts.</p>
+<p>If you have added an A record for <code>autodiscover</code> but omitted <code>autoconfig</code>, the client will only validate <code>autodiscover</code> and skip <code>autoconfig</code> then.</p>
 <p>For every domain you remove, the certificate will be moved and a new certificate will be requested. It is not possible to keep domains in a certificate, when we are not able validate the challenge for those.</p>
-<p>If you want to re-run the ACME client, use
+<p>If you want to re-run the ACME client, use</p>
 <div class="codehilite"><pre><span></span>docker-compose restart acme-openemail
-</pre></div></p>
-<h3 id="additional-domain-names"><strong>Additional Domain Names</strong><a class="headerlink" href="#additional-domain-names" title="Permanent link">&para;</a></h3>
+</pre></div>
+
+<h3 id="additional-domain-names">Additional Domain Names<a class="headerlink" href="#additional-domain-names" title="Permanent link">&para;</a></h3>
 <p>Edit <code>openemail.conf</code> and add a parameter <code>ADDITIONAL_SAN</code> like this:</p>
 <p>Do not use quotes (<code>"</code>)!</p>
 <div class="codehilite"><pre><span></span>ADDITIONAL_SAN=cert1.example.org,cert1.example.com,cert2.example.org,cert3.example.org
