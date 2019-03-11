@@ -131,7 +131,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#preparing-your-docker-host" tabindex="1" class="md-skip">
+      <a href="#preparing-openemail-docker-host" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -322,8 +322,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#preparing-your-docker-host" title="Preparing Your Docker Host" class="md-nav__link">
-    Preparing Your Docker Host
+  <a href="#preparing-openemail-docker-host" title="Preparing Openemail Docker Host" class="md-nav__link">
+    Preparing Openemail Docker Host
   </a>
   
 </li>
@@ -351,8 +351,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#default-ports" title="Default Ports" class="md-nav__link">
-    Default Ports
+  <a href="#openemail-default-ports" title="Openemail Default Ports" class="md-nav__link">
+    Openemail Default Ports
   </a>
   
 </li>
@@ -1594,8 +1594,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#preparing-your-docker-host" title="Preparing Your Docker Host" class="md-nav__link">
-    Preparing Your Docker Host
+  <a href="#preparing-openemail-docker-host" title="Preparing Openemail Docker Host" class="md-nav__link">
+    Preparing Openemail Docker Host
   </a>
   
 </li>
@@ -1623,8 +1623,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#default-ports" title="Default Ports" class="md-nav__link">
-    Default Ports
+  <a href="#openemail-default-ports" title="Openemail Default Ports" class="md-nav__link">
+    Openemail Default Ports
   </a>
   
 </li>
@@ -1676,7 +1676,7 @@
                 
                   <h1>Prepare Your System</h1>
                 
-                <h2 id="preparing-your-docker-host"><strong>Preparing Your Docker Host</strong><a class="headerlink" href="#preparing-your-docker-host" title="Permanent link">&para;</a></h2>
+                <h2 id="preparing-openemail-docker-host">Preparing Openemail Docker Host<a class="headerlink" href="#preparing-openemail-docker-host" title="Permanent link">&para;</a></h2>
 <p>Before you run <strong>openemail</strong>, there are a few requirements that you should check:</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1691,9 +1691,9 @@
 <li>Make sure that your system has a correct date and <a href="#date-and-time">time setup</a>. This is crucial for stuff like two factor TOTP authentication.</li>
 </ul>
 </div>
-<h2 id="choosing-a-linux-distribution-for-the-docker-host"><strong>Choosing a Linux Distribution for the Docker Host</strong><a class="headerlink" href="#choosing-a-linux-distribution-for-the-docker-host" title="Permanent link">&para;</a></h2>
+<h2 id="choosing-a-linux-distribution-for-the-docker-host">Choosing a Linux Distribution for the Docker Host<a class="headerlink" href="#choosing-a-linux-distribution-for-the-docker-host" title="Permanent link">&para;</a></h2>
 <p>During the creation of this installation guide I used <a href="http://releases.ubuntu.com/18.04/">Ubuntu 18.04.2 LTS (Bionic Beaver)</a>. Some of the examples shown in this document may largely depend on this Linux distribution.   But with a minor adjustment  on it you can make it prepare to get working in your Linux distribution of choice as your docker host. It may be Ubuntu, Debian, CentOS, or an another.</p>
-<h2 id="minimum-system-resources"><strong>Minimum System Resources</strong><a class="headerlink" href="#minimum-system-resources" title="Permanent link">&para;</a></h2>
+<h2 id="minimum-system-resources">Minimum System Resources<a class="headerlink" href="#minimum-system-resources" title="Permanent link">&para;</a></h2>
 <p>Please make sure that your system has at least the following resources:</p>
 <table>
 <thead>
@@ -1722,7 +1722,7 @@
 </tbody>
 </table>
 <p>ClamAV and Solr are greedy RAM munchers. You can disable them in <code>openemail.conf</code> by settings SKIP_CLAMD=y and SKIP_SOLR=y.</p>
-<h2 id="firewall-and-ports"><strong>Firewall and Ports</strong><a class="headerlink" href="#firewall-and-ports" title="Permanent link">&para;</a></h2>
+<h2 id="firewall-and-ports">Firewall and Ports<a class="headerlink" href="#firewall-and-ports" title="Permanent link">&para;</a></h2>
 <p>Please check if any of openemail's standard ports are open and not in use by other applications:</p>
 <div class="codehilite"><pre><span></span># netstat -tulpn | grep -E -w &#39;25|80|110|143|443|465|587|993|995&#39;
 </pre></div>
@@ -1733,7 +1733,7 @@
 As openemail runs dockerized, INPUT rules have no effect on restricting access to openemail. Use the FORWARD chain instead.</p>
 </div>
 <p>If this command returns any results please remove or stop the application running on that port. You may also adjust openemail ports via the openemail.conf` configuration file.</p>
-<h3 id="default-ports"><strong>Default Ports</strong><a class="headerlink" href="#default-ports" title="Permanent link">&para;</a></h3>
+<h3 id="openemail-default-ports">Openemail Default Ports<a class="headerlink" href="#openemail-default-ports" title="Permanent link">&para;</a></h3>
 <p>If you have a firewall in front of openemail docker host, please make sure that these ports are open for incoming connections:</p>
 <table>
 <thead>
@@ -1813,7 +1813,7 @@ As openemail runs dockerized, INPUT rules have no effect on restricting access t
 </table>
 <p>To bind a service to an IP address, you can prepend the IP like this: <code>SMTP_PORT=1.2.3.4:25</code></p>
 <p><strong>Important</strong>: You cannot use IP:PORT bindings in HTTP_PORT and HTTPS_PORT. Please use <code>HTTP_PORT=1234</code> and <code>HTTP_BIND=1.2.3.4</code> instead.</p>
-<h2 id="setting-date-and-time"><strong>Setting Date and Time</strong><a class="headerlink" href="#setting-date-and-time" title="Permanent link">&para;</a></h2>
+<h2 id="setting-date-and-time">Setting Date and Time<a class="headerlink" href="#setting-date-and-time" title="Permanent link">&para;</a></h2>
 <p>You need to ensure that date and time is accurate. This is required for the operation of openemail as well and accurate system logging.</p>
 <p><strong>To check your current time run:</strong><br />
 <div class="codehilite"><pre><span></span>$ timedatectl status
@@ -1892,7 +1892,7 @@ systemd-timesyncd.service active: yes
 <span class="nt">Mar</span> <span class="nt">06</span> <span class="nt">03</span><span class="p">:</span><span class="nd">30</span><span class="p">:</span><span class="nd">08</span> <span class="nt">mail</span><span class="p">.</span><span class="nc">openemail</span><span class="p">.</span><span class="nc">io</span> <span class="nt">systemd-timesyncd</span><span class="cp">[</span><span class="mi">29018</span><span class="cp">]</span><span class="o">:</span> <span class="nt">Synchronized</span> <span class="nt">to</span> <span class="nt">time</span> <span class="nt">server</span> <span class="nt">91</span><span class="p">.</span><span class="nc">189</span><span class="p">.</span><span class="nc">89</span><span class="p">.</span><span class="nc">198</span><span class="p">:</span><span class="nd">123</span> <span class="o">(</span><span class="nt">ntp</span><span class="p">.</span><span class="nc">ubuntu</span><span class="p">.</span><span class="nc">com</span><span class="o">).</span>
 </pre></div>
 
-<h2 id="set-up-static-ip"><strong>Set Up Static IP</strong><a class="headerlink" href="#set-up-static-ip" title="Permanent link">&para;</a></h2>
+<h2 id="set-up-static-ip">Set Up Static IP<a class="headerlink" href="#set-up-static-ip" title="Permanent link">&para;</a></h2>
 <p>Ubuntu 18.04 has changed its network interface configuration subsystem with new netplan configuration. The yml syntaxes are used in network configuration.</p>
 <p><strong>To configure the network</strong></p>
 <p><div class="codehilite"><pre><span></span>sudo nano  /etc/netplan/50-cloud-init.yaml
