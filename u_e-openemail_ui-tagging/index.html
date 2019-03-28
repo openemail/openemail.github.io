@@ -38,7 +38,7 @@
     
     
       
-        <title>U e openemail ui tagging - Openemail Deployers Guide</title>
+        <title>Tagging - Openemail Deployers Guide</title>
       
     
     
@@ -156,7 +156,7 @@
               Openemail Deployers Guide
             </span>
             <span class="md-header-nav__topic">
-              U e openemail ui tagging
+              Tagging
             </span>
           
         </div>
@@ -768,10 +768,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
     
     <label class="md-nav__link" for="nav-8">
       Usage and Examples
@@ -787,10 +789,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-1" type="checkbox" id="nav-8-1">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-1" type="checkbox" id="nav-8-1" checked>
     
     <label class="md-nav__link" for="nav-8-1">
       Openemail UI
@@ -808,7 +812,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-config/" title="Configuration" class="md-nav__link">
+    <a href="../u_e-openemail_ui-config.md" title="Configuration" class="md-nav__link">
       Configuration
     </a>
   </li>
@@ -820,7 +824,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-bl_wl.md" title="Blacklist / Whitelist" class="md-nav__link">
+    <a href="../u_e-openemail_ui-bl_wl/" title="Blacklist / Whitelist" class="md-nav__link">
       Blacklist / Whitelist
     </a>
   </li>
@@ -832,7 +836,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamfilter.md" title="Spamfilter" class="md-nav__link">
+    <a href="../u_e-openemail_ui-spamfilter/" title="Spamfilter" class="md-nav__link">
       Spamfilter
     </a>
   </li>
@@ -844,7 +848,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamalias.md" title="Temporary Email Aliases" class="md-nav__link">
+    <a href="../u_e-openemail_ui-spamalias/" title="Temporary Email Aliases" class="md-nav__link">
       Temporary Email Aliases
     </a>
   </li>
@@ -854,11 +858,45 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tagging.md" title="Tagging" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Tagging
+      </label>
+    
+    <a href="./" title="Tagging" class="md-nav__link md-nav__link--active">
       Tagging
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#available-actions" title="Available Actions" class="md-nav__link">
+    Available Actions
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -868,7 +906,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tfa.md" title="Two-Factor Authentication" class="md-nav__link">
+    <a href="../u_e-openemail_ui-tfa/" title="Two-Factor Authentication" class="md-nav__link">
       Two-Factor Authentication
     </a>
   </li>
@@ -1353,7 +1391,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../client/client-thunderbird/" title="Mozilla Thunderbird" class="md-nav__link">
+    <a href="../client-thunderbird.md" title="Mozilla Thunderbird" class="md-nav__link">
       Mozilla Thunderbird
     </a>
   </li>
@@ -1576,7 +1614,7 @@
                   <a href="https://github.com/openemail/openemail-docs/edit/master/docs/u_e-openemail_ui-tagging.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>U e openemail ui tagging</h1>
+                  <h1>Tagging</h1>
                 
                 <p>Mailbox users can tag their mail address like in <code>me+facebook@example.org</code>. They can control the tag handling in the users <strong>openemail UI</strong> panel.</p>
 <p><img alt="mailcow mail tagging settings" src="../images/mailcow-tagging.png" /></p>
@@ -1599,6 +1637,41 @@
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../u_e-openemail_ui-spamalias/" title="Temporary Email Aliases" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Temporary Email Aliases
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../u_e-openemail_ui-tfa/" title="Two-Factor Authentication" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Two-Factor Authentication
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
