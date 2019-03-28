@@ -1567,7 +1567,7 @@ volumes:
 </pre></div></p>
 <p>Moving an existing vmail folder:</p>
 <ul>
-<li>Locate the current vmail folder by its "Mountpoint" attribute: <code>docker volume inspect openemaildockerized_vmail-vol-1</code> </li>
+<li>Locate the current vmail folder by its "Mountpoint" attribute: <code>docker volume inspect openemaildockerized_vmail-vol-1</code></li>
 <li>Copy the <code>_data</code> folder to the new folder using <code>cp -a</code>, <code>rsync -a</code> or a similar non strcuture breaking copy command</li>
 <li>Stop mailcow by executing <code>docker-compose down</code> from within your openemail root folder (e.g. "/opt/openemail-dockerized")</li>
 <li>Create the file <code>docker-compose.override.yml</code></li>
