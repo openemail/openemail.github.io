@@ -896,7 +896,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-bl_wl/" title="Blacklist / Whitelist" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-bl_wl.md" title="Blacklist / Whitelist" class="md-nav__link">
       Blacklist / Whitelist
     </a>
   </li>
@@ -908,7 +908,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamfilter/" title="Spamfilter" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamfilter.md" title="Spamfilter" class="md-nav__link">
       Spamfilter
     </a>
   </li>
@@ -920,7 +920,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamalias/" title="Temporary Email Aliases" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamalias.md" title="Temporary Email Aliases" class="md-nav__link">
       Temporary Email Aliases
     </a>
   </li>
@@ -932,7 +932,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tagging/" title="Tagging" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tagging.md" title="Tagging" class="md-nav__link">
       Tagging
     </a>
   </li>
@@ -944,7 +944,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tfa/" title="Two-Factor Authentication" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tfa.md" title="Two-Factor Authentication" class="md-nav__link">
       Two-Factor Authentication
     </a>
   </li>
@@ -1700,14 +1700,14 @@
 </pre></div>
 
 <h3 id="connecting-to-services">Connecting to Services<a class="headerlink" href="#connecting-to-services" title="Permanent link">&para;</a></h3>
-<p>If you want to connect to a service / application directly it is always a good idea to <code>source mailcow.conf</code> to get all relevant variables into your environment.</p>
+<p>If you want to connect to a service / application directly it is always a good idea to <code>source openemail.conf</code> to get all relevant variables into your environment.</p>
 <h4 id="mysql">MySQL<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span>source mailcow.conf
-docker-compose exec mysql-mailcow mysql -u<span class="cp">${</span><span class="n">DBUSER</span><span class="cp">}</span> -p<span class="cp">${</span><span class="n">DBPASS</span><span class="cp">}</span> <span class="cp">${</span><span class="n">DBNAME</span><span class="cp">}</span>
+<div class="codehilite"><pre><span></span>source openemail.conf
+docker-compose exec mysql-openemail mysql -u<span class="cp">${</span><span class="n">DBUSER</span><span class="cp">}</span> -p<span class="cp">${</span><span class="n">DBPASS</span><span class="cp">}</span> <span class="cp">${</span><span class="n">DBNAME</span><span class="cp">}</span>
 </pre></div>
 
 <h4 id="redis">Redis<a class="headerlink" href="#redis" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span>docker-compose exec redis-mailcow redis-cli
+<div class="codehilite"><pre><span></span>docker-compose exec redis-openemail redis-cli
 </pre></div>
 
 <h2 id="service-descriptions">Service Descriptions<a class="headerlink" href="#service-descriptions" title="Permanent link">&para;</a></h2>
@@ -1721,59 +1721,59 @@ docker-compose exec mysql-mailcow mysql -u<span class="cp">${</span><span class=
 </thead>
 <tbody>
 <tr>
-<td>unbound-mailcow</td>
+<td>unbound-openemail</td>
 <td>Local (DNSSEC) DNS Resolver</td>
 </tr>
 <tr>
-<td>mysql-mailcow</td>
-<td>Stores SOGo's and most of mailcow's settings</td>
+<td>mysql-openemail</td>
+<td>Stores SOGo's and most of openemail's settings</td>
 </tr>
 <tr>
-<td>postfix-mailcow</td>
+<td>postfix-openemail</td>
 <td>Receives and sends mails</td>
 </tr>
 <tr>
-<td>dovecot-mailcow</td>
+<td>dovecot-openemail</td>
 <td>User logins and sieve filter</td>
 </tr>
 <tr>
-<td>redis-mailcow</td>
+<td>redis-openemail</td>
 <td>Storage back-end for DKIM keys and Rspamd</td>
 </tr>
 <tr>
-<td>rspamd-mailcow</td>
+<td>rspamd-openemail</td>
 <td>Mail filtering system. Used for av handling, dkim signing, spam handling</td>
 </tr>
 <tr>
-<td>clamd-mailcow</td>
+<td>clamd-openemail</td>
 <td>Scans attachments for viruses</td>
 </tr>
 <tr>
-<td>sogo-mailcow</td>
+<td>sogo-openemail</td>
 <td>Webmail client that handles Microsoft ActiveSync and Cal- / CardDav</td>
 </tr>
 <tr>
-<td>nginx-mailcow</td>
+<td>nginx-openemail</td>
 <td>Nginx remote proxy that handles all mailcow related HTTP / HTTPS requests</td>
 </tr>
 <tr>
-<td>acme-mailcow</td>
+<td>acme-openemail</td>
 <td>Automates HTTPS (SSL/TLS) certificate deployment</td>
 </tr>
 <tr>
-<td>memcached-mailcow</td>
-<td>Internal caching system for mailcow services</td>
+<td>memcached-openemail</td>
+<td>Internal caching system for openemail services</td>
 </tr>
 <tr>
-<td>watchdog-mailcow</td>
+<td>watchdog-openemail</td>
 <td>Allows the monitoring of docker containers / services</td>
 </tr>
 <tr>
-<td>php-fpm-mailcow</td>
-<td>Powers the mailcow web UI</td>
+<td>php-fpm-openemail</td>
+<td>Powers the openemail web UI</td>
 </tr>
 <tr>
-<td>netfilter-mailcow</td>
+<td>netfilter-openemail</td>
 <td>Fail2Ban like integration</td>
 </tr>
 </tbody>

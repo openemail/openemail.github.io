@@ -822,7 +822,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-bl_wl/" title="Blacklist / Whitelist" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-bl_wl.md" title="Blacklist / Whitelist" class="md-nav__link">
       Blacklist / Whitelist
     </a>
   </li>
@@ -834,7 +834,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamfilter/" title="Spamfilter" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamfilter.md" title="Spamfilter" class="md-nav__link">
       Spamfilter
     </a>
   </li>
@@ -846,7 +846,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamalias/" title="Temporary Email Aliases" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamalias.md" title="Temporary Email Aliases" class="md-nav__link">
       Temporary Email Aliases
     </a>
   </li>
@@ -858,7 +858,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tagging/" title="Tagging" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tagging.md" title="Tagging" class="md-nav__link">
       Tagging
     </a>
   </li>
@@ -870,7 +870,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tfa/" title="Two-Factor Authentication" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tfa.md" title="Two-Factor Authentication" class="md-nav__link">
       Two-Factor Authentication
     </a>
   </li>
@@ -1678,17 +1678,17 @@ This is achieved by using the Dovecot plugin "antispam" and a simple parser scri
 <h3 id="learn-spam-or-ham-from-existing-directory">Learn Spam or Ham from existing directory<a class="headerlink" href="#learn-spam-or-ham-from-existing-directory" title="Permanent link">&para;</a></h3>
 <p>You can use a one-liner to learn mail in plain-text (uncompressed) format:
 <div class="codehilite"><pre><span></span># Ham
-for file in /my/folder/cur/*; do docker exec -i $(docker-compose ps -q rspamd-mailcow) rspamc learn_ham &lt; $file; done
+for file in /my/folder/cur/*; do docker exec -i $(docker-compose ps -q rspamd-openemail) rspamc learn_ham &lt; $file; done
 # Spam
-for file in /my/folder/.Junk/cur/*; do docker exec -i $(docker-compose ps -q rspamd-mailcow) rspamc learn_spam &lt; $file; done
+for file in /my/folder/.Junk/cur/*; do docker exec -i $(docker-compose ps -q rspamd-openemail) rspamc learn_spam &lt; $file; done
 </pre></div></p>
-<p>Consider attaching a local folder as new volume to <code>rspamd-mailcow</code> in <code>docker-compose.yml</code> and learn given files inside the container. This can be used as workaround to parse compressed data with zcat. Example:</p>
+<p>Consider attaching a local folder as new volume to <code>rspamd-openemail</code> in <code>docker-compose.yml</code> and learn given files inside the container. This can be used as workaround to parse compressed data with zcat. Example:</p>
 <div class="codehilite"><pre><span></span>for file in /data/old_mail/.Junk/cur/*; do rspamc learn_spam &lt; zcat $file; done
 </pre></div>
 
 <h2 id="cli-tools">CLI tools<a class="headerlink" href="#cli-tools" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>docker-compose exec rspamd-mailcow rspamc --help
-docker-compose exec rspamd-mailcow rspamadm --help
+<div class="codehilite"><pre><span></span>docker-compose exec rspamd-openemail rspamc --help
+docker-compose exec rspamd-openemail rspamadm --help
 </pre></div>
 
 <h2 id="disable-greylisting">Disable Greylisting<a class="headerlink" href="#disable-greylisting" title="Permanent link">&para;</a></h2>

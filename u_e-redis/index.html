@@ -822,7 +822,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-bl_wl/" title="Blacklist / Whitelist" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-bl_wl.md" title="Blacklist / Whitelist" class="md-nav__link">
       Blacklist / Whitelist
     </a>
   </li>
@@ -834,7 +834,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamfilter/" title="Spamfilter" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamfilter.md" title="Spamfilter" class="md-nav__link">
       Spamfilter
     </a>
   </li>
@@ -846,7 +846,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamalias/" title="Temporary Email Aliases" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamalias.md" title="Temporary Email Aliases" class="md-nav__link">
       Temporary Email Aliases
     </a>
   </li>
@@ -858,7 +858,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tagging/" title="Tagging" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tagging.md" title="Tagging" class="md-nav__link">
       Tagging
     </a>
   </li>
@@ -870,7 +870,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tfa/" title="Two-Factor Authentication" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tfa.md" title="Two-Factor Authentication" class="md-nav__link">
       Two-Factor Authentication
     </a>
   </li>
@@ -1694,17 +1694,17 @@
                 
                   <h1>Redis</h1>
                 
-                <p>Redis is used as a key-value store for rspamd's and (some of) mailcow's settings and data. If you are unfamiliar with redis please read the <a href="https://redis.io/topics/introduction">introduction to redis</a> and maybe visit this <a href="http://try.redis.io/">wonderfull guide</a> on how to use it.</p>
+                <p>Redis is used as a key-value store for rspamd's and (some of) openemail's settings and data. If you are unfamiliar with redis please read the <a href="https://redis.io/topics/introduction">introduction to redis</a> and maybe visit this <a href="http://try.redis.io/">wonderfull guide</a> on how to use it.</p>
 <h2 id="client">Client<a class="headerlink" href="#client" title="Permanent link">&para;</a></h2>
 <p>To connect to the redis cli execute:</p>
-<div class="codehilite"><pre><span></span>docker-compose exec redis-mailcow redis-cli
+<div class="codehilite"><pre><span></span>docker-compose exec redis-openemail redis-cli
 </pre></div>
 
 <h3 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">&para;</a></h3>
 <p>Here are some usefull commands for the redis-cli for debugging:</p>
 <h5 id="monitor">MONITOR<a class="headerlink" href="#monitor" title="Permanent link">&para;</a></h5>
 <p>Listens for all requests received by the server in real time:</p>
-<div class="codehilite"><pre><span></span># docker-compose exec redis-mailcow redis-cli
+<div class="codehilite"><pre><span></span># docker-compose exec redis-openemail redis-cli
 127.0.0.1:6379&gt; monitor
 OK
 1494077286.401963 [0 172.22.1.253:41228] &quot;SMEMBERS&quot; &quot;BAYES_SPAM_keys&quot;

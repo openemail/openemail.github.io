@@ -905,7 +905,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-bl_wl/" title="Blacklist / Whitelist" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-bl_wl.md" title="Blacklist / Whitelist" class="md-nav__link">
       Blacklist / Whitelist
     </a>
   </li>
@@ -917,7 +917,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamfilter/" title="Spamfilter" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamfilter.md" title="Spamfilter" class="md-nav__link">
       Spamfilter
     </a>
   </li>
@@ -929,7 +929,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamalias/" title="Temporary Email Aliases" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamalias.md" title="Temporary Email Aliases" class="md-nav__link">
       Temporary Email Aliases
     </a>
   </li>
@@ -941,7 +941,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tagging/" title="Tagging" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tagging.md" title="Tagging" class="md-nav__link">
       Tagging
     </a>
   </li>
@@ -953,7 +953,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tfa/" title="Two-Factor Authentication" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tfa.md" title="Two-Factor Authentication" class="md-nav__link">
       Two-Factor Authentication
     </a>
   </li>
@@ -1737,17 +1737,17 @@ Escape character is &#39;^]&#39;.
 <li><code>AttributeError: 'NoneType' object has no attribute 'keys'</code>.</li>
 <li><code>ERROR: In file './docker-compose.yml' service 'version' doesn't have any configuration options</code>.</li>
 </ul>
-<p>When you encounter one or similar messages while trying to run mailcow: dockerized please check if you have the <strong>latest</strong> version of <strong>Docker</strong> and <strong>docker-compose</strong></p>
+<p>When you encounter one or similar messages while trying to run openemail: dockerized please check if you have the <strong>latest</strong> version of <strong>Docker</strong> and <strong>docker-compose</strong></p>
 <h2 id="container-xy-is-unhealthy">Container XY is unhealthy<a class="headerlink" href="#container-xy-is-unhealthy" title="Permanent link">&para;</a></h2>
 <p>This error tries to tell you that one of the (health) conditions for a certain container are not met. Therefore it can't be started. This can have several reasons, the most common one is an updated git clone but old docker image or vice versa.</p>
 <p>A wrong configured firewall could also cause such a failure. The containers need to be able to talk to each other over the network 172.22.1.1/24.</p>
 <p>It might also be wrongly linked file (i.e. SSL certificate) that prevents a crucial container (nginx) from starting, so always check your logs to get an Idea where your problem is coming from.</p>
 <h2 id="address-already-in-use">Address already in use<a class="headerlink" href="#address-already-in-use" title="Permanent link">&para;</a></h2>
 <p>If you get an error message like:</p>
-<div class="codehilite"><pre><span></span><span class="n">ERROR</span><span class="o">:</span> <span class="k">for</span> <span class="n">postfix</span><span class="o">-</span><span class="n">mailcow</span>  <span class="n">Cannot</span> <span class="n">start</span> <span class="n">service</span> <span class="n">postfix</span><span class="o">-</span><span class="n">mailcow</span><span class="o">:</span> <span class="n">driver</span> <span class="n">failed</span> <span class="n">programming</span> <span class="n">external</span>     <span class="n">connectivity</span> <span class="n">on</span> <span class="n">endpoint</span> <span class="n">mailcowdockerized_postfix</span><span class="o">-</span><span class="n">mailcow_1</span><span class="o">:</span> <span class="n">Error</span> <span class="n">starting</span> <span class="n">userland</span> <span class="n">proxy</span><span class="o">:</span> <span class="n">listen</span> <span class="n">tcp</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span><span class="o">:</span><span class="mi">25</span><span class="o">:</span> <span class="n">bind</span><span class="o">:</span> <span class="n">address</span> <span class="n">already</span> <span class="k">in</span> <span class="n">use</span>
+<div class="codehilite"><pre><span></span><span class="n">ERROR</span><span class="o">:</span> <span class="k">for</span> <span class="n">postfix</span><span class="o">-</span><span class="n">openemail</span>  <span class="n">Cannot</span> <span class="n">start</span> <span class="n">service</span> <span class="n">postfix</span><span class="o">-</span><span class="n">openemail</span><span class="o">:</span> <span class="n">driver</span> <span class="n">failed</span> <span class="n">programming</span> <span class="n">external</span>     <span class="n">connectivity</span> <span class="n">on</span> <span class="n">endpoint</span> <span class="n">openemaildockerized_postfix</span><span class="o">-</span><span class="n">openemail_1</span><span class="o">:</span> <span class="n">Error</span> <span class="n">starting</span> <span class="n">userland</span> <span class="n">proxy</span><span class="o">:</span> <span class="n">listen</span> <span class="n">tcp</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span><span class="o">:</span><span class="mi">25</span><span class="o">:</span> <span class="n">bind</span><span class="o">:</span> <span class="n">address</span> <span class="n">already</span> <span class="k">in</span> <span class="n">use</span>
 </pre></div>
 
-<p>while trying to start / install mailcow: dockerized, make sure you've followed our section on the <a href="prerequisite-system/#firewall-ports">prerequisites</a>.</p>
+<p>while trying to start / install openemail: dockerized, make sure you've followed our section on the <a href="prerequisite-system/#firewall-ports">prerequisites</a>.</p>
 <h2 id="xyz-cant-connect-to">XYZ can't connect to ...<a class="headerlink" href="#xyz-cant-connect-to" title="Permanent link">&para;</a></h2>
 <p>Please check your local firewall!
 Docker and iptables-based firewalls sometimes create conflicting rules, so disable the firewall on your host to determine whether your connection issues are caused by such conflicts. If they are, you need to manually create appropriate rules in your host firewall to permit the necessary connections.</p>
@@ -1757,7 +1757,7 @@ Docker and iptables-based firewalls sometimes create conflicting rules, so disab
 <div class="codehilite"><pre><span></span>dism /online /Enable-Feature /FeatureName:TelnetClient
 </pre></div>
 
-<h2 id="inotify-instance-limit-for-user-5000-uid-vmail-exceeded-see-453">Inotify instance limit for user 5000 (UID vmail) exceeded (<a href="https://github.com/mailcow/mailcow-dockerized/issues/453#issuecomment-314711232">see #453</a>)<a class="headerlink" href="#inotify-instance-limit-for-user-5000-uid-vmail-exceeded-see-453" title="Permanent link">&para;</a></h2>
+<h2 id="inotify-instance-limit-for-user-5000-uid-vmail-exceeded-see-453">Inotify instance limit for user 5000 (UID vmail) exceeded (<a href="https://github.com/openemail/openemail-dockerized/issues/453#issuecomment-314711232">see #453</a>)<a class="headerlink" href="#inotify-instance-limit-for-user-5000-uid-vmail-exceeded-see-453" title="Permanent link">&para;</a></h2>
 <p>Docker containers use the Docker hosts inotify limits. Setting them on your Docker host will pass them to the container.</p>
 <div class="footnote">
 <hr />

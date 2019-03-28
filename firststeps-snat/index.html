@@ -856,7 +856,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-bl_wl/" title="Blacklist / Whitelist" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-bl_wl.md" title="Blacklist / Whitelist" class="md-nav__link">
       Blacklist / Whitelist
     </a>
   </li>
@@ -868,7 +868,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamfilter/" title="Spamfilter" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamfilter.md" title="Spamfilter" class="md-nav__link">
       Spamfilter
     </a>
   </li>
@@ -880,7 +880,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamalias/" title="Temporary Email Aliases" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamalias.md" title="Temporary Email Aliases" class="md-nav__link">
       Temporary Email Aliases
     </a>
   </li>
@@ -892,7 +892,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tagging/" title="Tagging" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tagging.md" title="Tagging" class="md-nav__link">
       Tagging
     </a>
   </li>
@@ -904,7 +904,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tfa/" title="Two-Factor Authentication" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tfa.md" title="Two-Factor Authentication" class="md-nav__link">
       Two-Factor Authentication
     </a>
   </li>
@@ -1615,7 +1615,7 @@
                   <h1>SNAT</h1>
                 
                 <h2 id="snat"><strong>SNAT</strong><a class="headerlink" href="#snat" title="Permanent link">&para;</a></h2>
-<p>SNAT is used to change the source address of the packets sent by <strong>Openemail</strong>.
+<p>SNAT is used to change the source address of the packets sent by <strong>openemail</strong>.
 It can be used to change the outgoing IP on systems with multiple IP addresses.</p>
 <p>Open <code>openemail.conf</code>, set either or both of the following parameters:</p>
 <div class="codehilite"><pre><span></span># Use this IPv4 for outgoing connections (SNAT)
@@ -1628,7 +1628,7 @@ SNAT6_TO_SOURCE=dead:beef
 <p><strong>To update the new settings run:</strong></p>
 <p><div class="codehilite"><pre><span></span>docker-compose up -d
 </pre></div>
-The values are read by netfilter-openemail. The container <code>netfilter-op enemail</code> will make sure, the post-routing rules are on position 1 in the netfilter table. It does automatically delete and re-create them if they are found on another position than 1.</p>
+The values are read by netfilter-openemail. The container <code>netfilter-openemail</code> will make sure, the post-routing rules are on position 1 in the netfilter table. It does automatically delete and re-create them if they are found on another position than 1.</p>
 <p>Check the output of `docker-compose logs --tail=200 netfilter-openemail to ensure the SNAT settings have been applied.</p>
                 
                   

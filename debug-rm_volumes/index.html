@@ -825,7 +825,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-bl_wl/" title="Blacklist / Whitelist" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-bl_wl.md" title="Blacklist / Whitelist" class="md-nav__link">
       Blacklist / Whitelist
     </a>
   </li>
@@ -837,7 +837,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamfilter/" title="Spamfilter" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamfilter.md" title="Spamfilter" class="md-nav__link">
       Spamfilter
     </a>
   </li>
@@ -849,7 +849,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamalias/" title="Temporary Email Aliases" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamalias.md" title="Temporary Email Aliases" class="md-nav__link">
       Temporary Email Aliases
     </a>
   </li>
@@ -861,7 +861,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tagging/" title="Tagging" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tagging.md" title="Tagging" class="md-nav__link">
       Tagging
     </a>
   </li>
@@ -873,7 +873,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tfa/" title="Two-Factor Authentication" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tfa.md" title="Two-Factor Authentication" class="md-nav__link">
       Two-Factor Authentication
     </a>
   </li>
@@ -1555,17 +1555,17 @@
                   <h1>Remove Persistent Data</h1>
                 
                 <p>You may want to remove a set of persistent data to resolve a conflict or to start over:</p>
-<div class="codehilite"><pre><span></span>docker volume rm mailcowdockerized_<span class="cp">${</span><span class="n">VOLUME_NAME</span><span class="cp">}</span>
+<div class="codehilite"><pre><span></span>docker volume rm openemaildockerized_<span class="cp">${</span><span class="n">VOLUME_NAME</span><span class="cp">}</span>
 </pre></div>
 
 <ul>
 <li>Remove volume <code>mysql-vol-1</code> to remove all MySQL data.</li>
 <li>Remove volume <code>redis-vol-1</code> to remove all Redis data.</li>
-<li>Remove volume <code>vmail-vol-1</code> to remove all contents of <code>/var/vmail</code> mounted to <code>dovecot-mailcow</code>.</li>
+<li>Remove volume <code>vmail-vol-1</code> to remove all contents of <code>/var/vmail</code> mounted to <code>dovecot-openemail</code>.</li>
 <li>Remove volume <code>rspamd-vol-1</code> to remove all Rspamd data.</li>
 <li>Remove volume <code>crypt-vol-1</code> to remove all crypto data. This will render <strong>all mails</strong> unreadable.</li>
 </ul>
-<p>Running <code>docker-compose down -v</code> will <strong>destroy all mailcow: dockerized volumes</strong> and delete any related containers and networks.</p>
+<p>Running <code>docker-compose down -v</code> will <strong>destroy all openemail: dockerized volumes</strong> and delete any related containers and networks.</p>
                 
                   
                 

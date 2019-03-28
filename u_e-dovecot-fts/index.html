@@ -822,7 +822,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-bl_wl/" title="Blacklist / Whitelist" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-bl_wl.md" title="Blacklist / Whitelist" class="md-nav__link">
       Blacklist / Whitelist
     </a>
   </li>
@@ -834,7 +834,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamfilter/" title="Spamfilter" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamfilter.md" title="Spamfilter" class="md-nav__link">
       Spamfilter
     </a>
   </li>
@@ -846,7 +846,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamalias/" title="Temporary Email Aliases" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamalias.md" title="Temporary Email Aliases" class="md-nav__link">
       Temporary Email Aliases
     </a>
   </li>
@@ -858,7 +858,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tagging/" title="Tagging" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tagging.md" title="Tagging" class="md-nav__link">
       Tagging
     </a>
   </li>
@@ -870,7 +870,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tfa/" title="Two-Factor Authentication" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tfa.md" title="Two-Factor Authentication" class="md-nav__link">
       Two-Factor Authentication
     </a>
   </li>
@@ -1633,24 +1633,24 @@
                 <p>Solr is used for setups with memory &gt;= 3.5 GiB to provide full-text search in Dovecot.</p>
 <p>Please be aware that applications like Solr <em>may</em> need maintenance from time to time.</p>
 <p>Besides that, Solr will eat a lot of RAM, depending on the usage of your server. Please avoid it on machines with less than 3 GB RAM.</p>
-<p>The default heap size (1024 M) is defined in mailcow.conf.</p>
+<p>The default heap size (1024 M) is defined in openemail.conf.</p>
 <p>Since we run in Docker and create our containers with the "restart: always" flag, a oom situation will at least only trigger a restart of the container.</p>
 <h2 id="fts-related-dovecot-commands">FTS related Dovecot commands<a class="headerlink" href="#fts-related-dovecot-commands" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>docker-compose exec dovecot-mailcow doveadm fts rescan -u user@domain
+<div class="codehilite"><pre><span></span>docker-compose exec dovecot-openemail doveadm fts rescan -u user@domain
 `# All:
-docker-compose exec dovecot-mailcow doveadm fts rescan -A
+docker-compose exec dovecot-openemail doveadm fts rescan -A
 </pre></div>
 
 <p>Dovecot Wiki: "Scan what mails exist in the full text search index and compare those to what actually exist in mailboxes. This removes mails from the index that have already been expunged and makes sure that the next doveadm index will index all the missing mails (if any)."</p>
 <p>This does <strong>not</strong> re-index a mailbox. It basically repairs a given index.</p>
 <p>If you want to re-index a users data, you can run the followig command, where '*' can also be a mailbox mask like 'Sent':</p>
-<div class="codehilite"><pre><span></span>docker-compose exec dovecot-mailcow doveadm index -u user@domain &#39;*&#39;
+<div class="codehilite"><pre><span></span>docker-compose exec dovecot-openemail doveadm index -u user@domain &#39;*&#39;
 </pre></div>
 
 <p>This <strong>will</strong> take some time depending on your machine and Solr may even run oom.</p>
 <p>Because re-indexing is very sensible, we did not include it to mailcow UI. You will need to take care of any errors while re-indexing a mailbox.</p>
 <h2 id="delete-mailbox-data">Delete mailbox data<a class="headerlink" href="#delete-mailbox-data" title="Permanent link">&para;</a></h2>
-<p>mailcow will purge index data of a user when deleting a mailbox.</p>
+<p>openemail will purge index data of a user when deleting a mailbox.</p>
                 
                   
                 

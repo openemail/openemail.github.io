@@ -816,7 +816,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-bl_wl/" title="Blacklist / Whitelist" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-bl_wl.md" title="Blacklist / Whitelist" class="md-nav__link">
       Blacklist / Whitelist
     </a>
   </li>
@@ -828,7 +828,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamfilter/" title="Spamfilter" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamfilter.md" title="Spamfilter" class="md-nav__link">
       Spamfilter
     </a>
   </li>
@@ -840,7 +840,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamalias/" title="Temporary Email Aliases" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamalias.md" title="Temporary Email Aliases" class="md-nav__link">
       Temporary Email Aliases
     </a>
   </li>
@@ -852,7 +852,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tagging/" title="Tagging" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tagging.md" title="Tagging" class="md-nav__link">
       Tagging
     </a>
   </li>
@@ -864,7 +864,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tfa/" title="Two-Factor Authentication" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tfa.md" title="Two-Factor Authentication" class="md-nav__link">
       Two-Factor Authentication
     </a>
   </li>
@@ -1554,17 +1554,17 @@
                 
                   <h1>Gogs</h1>
                 
-                <p>With Gogs' ability to authenticate over SMTP it is trivial to integrate it with mailcow. Few changes are needed:</p>
+                <p>With Gogs' ability to authenticate over SMTP it is trivial to integrate it with openemail. Few changes are needed:</p>
 <p>1. Open <code>docker-compose.override.yml</code> and add Gogs:</p>
 <div class="codehilite"><pre><span></span><span class="nn">version</span><span class="p">:</span> <span class="s s-Atom">&#39;2.1&#39;</span>
 <span class="nn">services</span><span class="p">:</span>
 
-    <span class="s s-Atom">gogs</span><span class="o">-</span><span class="nn">mailcow</span><span class="p">:</span>
+    <span class="s s-Atom">gogs</span><span class="o">-</span><span class="nn">openemail</span><span class="p">:</span>
       <span class="nn">image</span><span class="p">:</span> <span class="s s-Atom">gogs</span><span class="o">/</span><span class="s s-Atom">gogs</span>
       <span class="nn">volumes</span><span class="p">:</span>
         <span class="o">-</span> <span class="p">.</span><span class="o">/</span><span class="s s-Atom">data</span><span class="o">/</span><span class="nn">gogs</span><span class="p">:</span><span class="o">/</span><span class="s s-Atom">data</span>
       <span class="nn">networks</span><span class="p">:</span>
-        <span class="s s-Atom">mailcow</span><span class="o">-</span><span class="nn">network</span><span class="p">:</span>
+        <span class="s s-Atom">openemail</span><span class="o">-</span><span class="nn">network</span><span class="p">:</span>
           <span class="nn">aliases</span><span class="p">:</span>
             <span class="o">-</span> <span class="s s-Atom">gogs</span>
       <span class="nn">ports</span><span class="p">:</span>
@@ -1576,24 +1576,24 @@
     <span class="err">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">gogs</span><span class="o">:</span><span class="mi">3000</span><span class="o">/</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div></p>
-<p>3. Open <code>mailcow.conf</code> and define the binding you want Gogs to use for SSH. Example:</p>
+<p>3. Open <code>openemail.conf</code> and define the binding you want Gogs to use for SSH. Example:</p>
 <div class="codehilite"><pre><span></span>GOGS_SSH_PORT=127.0.0.1:4000
 </pre></div>
 
-<p>5. Run <code>docker-compose up -d</code> to bring up the Gogs container and run <code>docker-compose restart nginx-mailcow</code> afterwards.</p>
-<p>6. Open <code>http://${MAILCOW_HOSTNAME}/gogs/</code>, for example <code>http://mx.example.org/gogs/</code>. For database details set <code>mysql</code> as database host. Use the value of DBNAME found in mailcow.conf as database name, DBUSER as database user and DBPASS as database password.</p>
+<p>5. Run <code>docker-compose up -d</code> to bring up the Gogs container and run <code>docker-compose restart nginx-openemail</code> afterwards.</p>
+<p>6. Open <code>http://${OPENEMAIL_HOSTNAME}/gogs/</code>, for example <code>http://mx.example.org/gogs/</code>. For database details set <code>mysql</code> as database host. Use the value of DBNAME found in openemail.conf as database name, DBUSER as database user and DBPASS as database password.</p>
 <p>7. Once the installation is complete, login as admin and set "settings" -&gt; "authorization" -&gt; "enable SMTP". SMTP Host should be <code>postfix</code> with port <code>587</code>, set <code>Skip TLS Verify</code> as we are using an unlisted SAN ("postfix" is most likely not part of your certificate).</p>
 <p>8. Create <code>data/gogs/gogs/conf/app.ini</code> and set following values. You can consult <a href="https://gogs.io/docs/advanced/configuration_cheat_sheet">Gogs cheat sheet</a> for their meaning and other possible values.</p>
 <div class="codehilite"><pre><span></span><span class="k">[server]</span>
 <span class="na">SSH_LISTEN_PORT</span> <span class="o">=</span> <span class="s">22</span>
-<span class="c1"># For GOGS_SSH_PORT=127.0.0.1:4000 in mailcow.conf, set:</span>
+<span class="c1"># For GOGS_SSH_PORT=127.0.0.1:4000 in openemail.conf, set:</span>
 <span class="na">SSH_DOMAIN</span> <span class="o">=</span> <span class="s">127.0.0.1</span>
 <span class="na">SSH_PORT</span> <span class="o">=</span> <span class="s">4000</span>
-<span class="c1"># For MAILCOW_HOSTNAME=mx.example.org in mailcow.conf (and default ports for HTTPS), set:</span>
+<span class="c1"># For OPENEMAIL_HOSTNAME=mx.example.org in openemail.conf (and default ports for HTTPS), set:</span>
 <span class="na">ROOT_URL</span> <span class="o">=</span> <span class="s">https://mx.example.org/gogs/</span>
 </pre></div>
 
-<p>9. Restart Gogs with <code>docker-compose restart gogs-mailcow</code>. Your users should be able to login with mailcow managed accounts.</p>
+<p>9. Restart Gogs with <code>docker-compose restart gogs-openemail</code>. Your users should be able to login with openemail managed accounts.</p>
                 
                   
                 

@@ -822,7 +822,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-bl_wl/" title="Blacklist / Whitelist" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-bl_wl.md" title="Blacklist / Whitelist" class="md-nav__link">
       Blacklist / Whitelist
     </a>
   </li>
@@ -834,7 +834,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamfilter/" title="Spamfilter" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamfilter.md" title="Spamfilter" class="md-nav__link">
       Spamfilter
     </a>
   </li>
@@ -846,7 +846,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamalias/" title="Temporary Email Aliases" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamalias.md" title="Temporary Email Aliases" class="md-nav__link">
       Temporary Email Aliases
     </a>
   </li>
@@ -858,7 +858,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tagging/" title="Tagging" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tagging.md" title="Tagging" class="md-nav__link">
       Tagging
     </a>
   </li>
@@ -870,7 +870,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tfa/" title="Two-Factor Authentication" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tfa.md" title="Two-Factor Authentication" class="md-nav__link">
       Two-Factor Authentication
     </a>
   </li>
@@ -1634,15 +1634,15 @@
 <h2 id="the-manual-way">The manual way<a class="headerlink" href="#the-manual-way" title="Permanent link">&para;</a></h2>
 <p>That said, let's dive in:</p>
 <p>Delete a user's mails inside the junk folder that <strong>are read</strong> and <strong>older</strong> than 4 hours</p>
-<div class="codehilite"><pre><span></span>docker-compose exec dovecot-mailcow doveadm expunge -u &#39;mailbox@example.com&#39; mailbox &#39;Junk&#39; SEEN not SINCE 4h
+<div class="codehilite"><pre><span></span>docker-compose exec dovecot-openemail doveadm expunge -u &#39;mailbox@example.com&#39; mailbox &#39;Junk&#39; SEEN not SINCE 4h
 </pre></div>
 
 <p>Delete <strong>all</strong> user's mails in the junk folder that are <strong>older</strong> than 7 days</p>
-<div class="codehilite"><pre><span></span>docker-compose exec dovecot-mailcow doveadm expunge -A mailbox &#39;Junk&#39; savedbefore 7d
+<div class="codehilite"><pre><span></span>docker-compose exec dovecot-openemail doveadm expunge -A mailbox &#39;Junk&#39; savedbefore 7d
 </pre></div>
 
 <p>Delete mails inside a custom folder <strong>inside</strong> a user's inbox that are <strong>not</strong> flagged and <strong>older</strong> than 2 weeks</p>
-<div class="codehilite"><pre><span></span>docker-compose exec dovecot-mailcow doveadm expunge -u &#39;mailbox@example.com&#39; mailbox &#39;INBOX/custom-folder&#39; not FLAGGED not SINCE 2w
+<div class="codehilite"><pre><span></span>docker-compose exec dovecot-openemail doveadm expunge -u &#39;mailbox@example.com&#39; mailbox &#39;INBOX/custom-folder&#39; not FLAGGED not SINCE 2w
 </pre></div>
 
 <div class="admonition info">
@@ -1652,11 +1652,11 @@
 <h2 id="make-it-automatic">Make it automatic<a class="headerlink" href="#make-it-automatic" title="Permanent link">&para;</a></h2>
 <p>If you want to automate such a task you can create a cron job on your host that calls a script like the one below:</p>
 <div class="codehilite"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1"># Path to mailcow-dockerized, e.g. /opt/mailcow-dockerized</span>
+<span class="c1"># Path to openemail-dockerized, e.g. /opt/openemail-dockerized</span>
 <span class="nb">cd</span> /path/to/your/mailcow-dockerized
 
-/usr/local/bin/docker-compose <span class="nb">exec</span> -T dovecot-mailcow doveadm expunge -A mailbox <span class="s1">&#39;Junk&#39;</span> savedbefore 2w
-/usr/local/bin/docker-compose <span class="nb">exec</span> -T dovecot-mailcow doveadm expunge -A mailbox <span class="s1">&#39;Junk&#39;</span> SEEN not SINCE 12h
+/usr/local/bin/docker-compose <span class="nb">exec</span> -T dovecot-openemail doveadm expunge -A mailbox <span class="s1">&#39;Junk&#39;</span> savedbefore 2w
+/usr/local/bin/docker-compose <span class="nb">exec</span> -T dovecot-openemail doveadm expunge -A mailbox <span class="s1">&#39;Junk&#39;</span> SEEN not SINCE 12h
 <span class="o">[</span>...<span class="o">]</span>
 </pre></div>
 

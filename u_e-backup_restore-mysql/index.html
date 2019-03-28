@@ -865,7 +865,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-bl_wl/" title="Blacklist / Whitelist" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-bl_wl.md" title="Blacklist / Whitelist" class="md-nav__link">
       Blacklist / Whitelist
     </a>
   </li>
@@ -877,7 +877,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamfilter/" title="Spamfilter" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamfilter.md" title="Spamfilter" class="md-nav__link">
       Spamfilter
     </a>
   </li>
@@ -889,7 +889,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamalias/" title="Temporary Email Aliases" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamalias.md" title="Temporary Email Aliases" class="md-nav__link">
       Temporary Email Aliases
     </a>
   </li>
@@ -901,7 +901,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tagging/" title="Tagging" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tagging.md" title="Tagging" class="md-nav__link">
       Tagging
     </a>
   </li>
@@ -913,7 +913,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tfa/" title="Two-Factor Authentication" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tfa.md" title="Two-Factor Authentication" class="md-nav__link">
       Two-Factor Authentication
     </a>
   </li>
@@ -1631,10 +1631,10 @@
                   <h1>MySQL</h1>
                 
                 <h2 id="backup">Backup<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>cd /path/to/mailcow-dockerized
-source mailcow.conf
+<div class="codehilite"><pre><span></span>cd /path/to/openemail-dockerized
+source openemail.conf
 DATE=$(date +&quot;%Y%m%d_%H%M%S&quot;)
-docker-compose exec -T mysql-mailcow mysqldump --default-character-set=utf8mb4 -u<span class="cp">${</span><span class="n">DBUSER</span><span class="cp">}</span> -p<span class="cp">${</span><span class="n">DBPASS</span><span class="cp">}</span> <span class="cp">${</span><span class="n">DBNAME</span><span class="cp">}</span> &gt; backup_<span class="cp">${</span><span class="n">DBNAME</span><span class="cp">}</span>_<span class="cp">${</span><span class="n">DATE</span><span class="cp">}</span>.sql
+docker-compose exec -T mysql-openemail mysqldump --default-character-set=utf8mb4 -u<span class="cp">${</span><span class="n">DBUSER</span><span class="cp">}</span> -p<span class="cp">${</span><span class="n">DBPASS</span><span class="cp">}</span> <span class="cp">${</span><span class="n">DBNAME</span><span class="cp">}</span> &gt; backup_<span class="cp">${</span><span class="n">DBNAME</span><span class="cp">}</span>_<span class="cp">${</span><span class="n">DATE</span><span class="cp">}</span>.sql
 </pre></div>
 
 <h2 id="restore">Restore<a class="headerlink" href="#restore" title="Permanent link">&para;</a></h2>
@@ -1642,9 +1642,9 @@ docker-compose exec -T mysql-mailcow mysqldump --default-character-set=utf8mb4 -
 <p class="admonition-title">Warning</p>
 <p>You should redirect the SQL dump without <code>docker-compose</code> to prevent parsing errors.</p>
 </div>
-<div class="codehilite"><pre><span></span>cd /path/to/mailcow-dockerized
-source mailcow.conf
-docker exec -i $(docker-compose ps -q mysql-mailcow) mysql -u<span class="cp">${</span><span class="n">DBUSER</span><span class="cp">}</span> -p<span class="cp">${</span><span class="n">DBPASS</span><span class="cp">}</span> <span class="cp">${</span><span class="n">DBNAME</span><span class="cp">}</span> <span class="nt">&lt; backup</span><span class="err">_file.sql</span>
+<div class="codehilite"><pre><span></span>cd /path/to/openemail-dockerized
+source openemail.conf
+docker exec -i $(docker-compose ps -q mysql-openemail) mysql -u<span class="cp">${</span><span class="n">DBUSER</span><span class="cp">}</span> -p<span class="cp">${</span><span class="n">DBPASS</span><span class="cp">}</span> <span class="cp">${</span><span class="n">DBNAME</span><span class="cp">}</span> <span class="nt">&lt; backup</span><span class="err">_file.sql</span>
 </pre></div>
                 
                   

@@ -818,7 +818,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-bl_wl/" title="Blacklist / Whitelist" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-bl_wl.md" title="Blacklist / Whitelist" class="md-nav__link">
       Blacklist / Whitelist
     </a>
   </li>
@@ -830,7 +830,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamfilter/" title="Spamfilter" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamfilter.md" title="Spamfilter" class="md-nav__link">
       Spamfilter
     </a>
   </li>
@@ -842,7 +842,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamalias/" title="Temporary Email Aliases" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamalias.md" title="Temporary Email Aliases" class="md-nav__link">
       Temporary Email Aliases
     </a>
   </li>
@@ -854,7 +854,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tagging/" title="Tagging" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tagging.md" title="Tagging" class="md-nav__link">
       Tagging
     </a>
   </li>
@@ -866,7 +866,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tfa/" title="Two-Factor Authentication" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tfa.md" title="Two-Factor Authentication" class="md-nav__link">
       Two-Factor Authentication
     </a>
   </li>
@@ -1559,7 +1559,7 @@
 <div class="codehilite"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$autodiscover_config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
   <span class="c1">// General autodiscover service type: &quot;activesync&quot; or &quot;imap&quot;</span>
-  <span class="c1">// emClient uses autodiscover, but does not support ActiveSync. mailcow excludes emClient from ActiveSync.</span>
+  <span class="c1">// emClient uses autodiscover, but does not support ActiveSync. openemail excludes emClient from ActiveSync.</span>
   <span class="s1">&#39;autodiscoverType&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;activesync&#39;</span><span class="p">,</span>
   <span class="c1">// If autodiscoverType =&gt; activesync, also use ActiveSync (EAS) for Outlook desktop clients (&gt;= Outlook 2013 on Windows)</span>
   <span class="c1">// Outlook for Mac does not support ActiveSync</span>
@@ -1568,29 +1568,29 @@
   <span class="c1">// The autodiscover service will always point to SMTPS and IMAPS (TLS-wrapped services).</span>
   <span class="c1">// The autoconfig service will additionally announce the STARTTLS-enabled ports, specified in the &quot;tlsport&quot; variable.</span>
   <span class="s1">&#39;imap&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">&#39;server&#39;</span> <span class="o">=&gt;</span> <span class="nv">$mailcow_hostname</span><span class="p">,</span>
+    <span class="s1">&#39;server&#39;</span> <span class="o">=&gt;</span> <span class="nv">$openemail_hostname</span><span class="p">,</span>
     <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="nb">array_pop</span><span class="p">(</span><span class="nb">explode</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="nb">getenv</span><span class="p">(</span><span class="s1">&#39;IMAPS_PORT&#39;</span><span class="p">))),</span>
     <span class="s1">&#39;tlsport&#39;</span> <span class="o">=&gt;</span> <span class="nb">array_pop</span><span class="p">(</span><span class="nb">explode</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="nb">getenv</span><span class="p">(</span><span class="s1">&#39;IMAP_PORT&#39;</span><span class="p">))),</span>
   <span class="p">),</span>
   <span class="s1">&#39;pop3&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">&#39;server&#39;</span> <span class="o">=&gt;</span> <span class="nv">$mailcow_hostname</span><span class="p">,</span>
+    <span class="s1">&#39;server&#39;</span> <span class="o">=&gt;</span> <span class="nv">$openemail_hostname</span><span class="p">,</span>
     <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="nb">array_pop</span><span class="p">(</span><span class="nb">explode</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="nb">getenv</span><span class="p">(</span><span class="s1">&#39;POPS_PORT&#39;</span><span class="p">))),</span>
     <span class="s1">&#39;tlsport&#39;</span> <span class="o">=&gt;</span> <span class="nb">array_pop</span><span class="p">(</span><span class="nb">explode</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="nb">getenv</span><span class="p">(</span><span class="s1">&#39;POP_PORT&#39;</span><span class="p">))),</span>
   <span class="p">),</span>
   <span class="s1">&#39;smtp&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">&#39;server&#39;</span> <span class="o">=&gt;</span> <span class="nv">$mailcow_hostname</span><span class="p">,</span>
+    <span class="s1">&#39;server&#39;</span> <span class="o">=&gt;</span> <span class="nv">$openemail_hostname</span><span class="p">,</span>
     <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="nb">array_pop</span><span class="p">(</span><span class="nb">explode</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="nb">getenv</span><span class="p">(</span><span class="s1">&#39;SMTPS_PORT&#39;</span><span class="p">))),</span>
     <span class="s1">&#39;tlsport&#39;</span> <span class="o">=&gt;</span> <span class="nb">array_pop</span><span class="p">(</span><span class="nb">explode</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="nb">getenv</span><span class="p">(</span><span class="s1">&#39;SUBMISSION_PORT&#39;</span><span class="p">))),</span>
   <span class="p">),</span>
   <span class="s1">&#39;activesync&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;https://&#39;</span><span class="o">.</span><span class="nv">$mailcow_hostname</span><span class="o">.</span><span class="p">(</span><span class="nv">$https_port</span> <span class="o">==</span> <span class="mi">443</span> <span class="o">?</span> <span class="s1">&#39;&#39;</span> <span class="o">:</span> <span class="s1">&#39;:&#39;</span><span class="o">.</span><span class="nv">$https_port</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;/Microsoft-Server-ActiveSync&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;https://&#39;</span><span class="o">.</span><span class="nv">$openemail_hostname</span><span class="o">.</span><span class="p">(</span><span class="nv">$https_port</span> <span class="o">==</span> <span class="mi">443</span> <span class="o">?</span> <span class="s1">&#39;&#39;</span> <span class="o">:</span> <span class="s1">&#39;:&#39;</span><span class="o">.</span><span class="nv">$https_port</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;/Microsoft-Server-ActiveSync&#39;</span><span class="p">,</span>
   <span class="p">),</span>
   <span class="s1">&#39;caldav&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">&#39;server&#39;</span> <span class="o">=&gt;</span> <span class="nv">$mailcow_hostname</span><span class="p">,</span>
+    <span class="s1">&#39;server&#39;</span> <span class="o">=&gt;</span> <span class="nv">$openemail_hostname</span><span class="p">,</span>
     <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="nv">$https_port</span><span class="p">,</span>
   <span class="p">),</span>
   <span class="s1">&#39;carddav&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">&#39;server&#39;</span> <span class="o">=&gt;</span> <span class="nv">$mailcow_hostname</span><span class="p">,</span>
+    <span class="s1">&#39;server&#39;</span> <span class="o">=&gt;</span> <span class="nv">$openemail_hostname</span><span class="p">,</span>
     <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="nv">$https_port</span><span class="p">,</span>
   <span class="p">),</span>
 <span class="p">);</span>

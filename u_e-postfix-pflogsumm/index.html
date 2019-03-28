@@ -818,7 +818,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-bl_wl/" title="Blacklist / Whitelist" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-bl_wl.md" title="Blacklist / Whitelist" class="md-nav__link">
       Blacklist / Whitelist
     </a>
   </li>
@@ -830,7 +830,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamfilter/" title="Spamfilter" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamfilter.md" title="Spamfilter" class="md-nav__link">
       Spamfilter
     </a>
   </li>
@@ -842,7 +842,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-spamalias/" title="Temporary Email Aliases" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-spamalias.md" title="Temporary Email Aliases" class="md-nav__link">
       Temporary Email Aliases
     </a>
   </li>
@@ -854,7 +854,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tagging/" title="Tagging" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tagging.md" title="Tagging" class="md-nav__link">
       Tagging
     </a>
   </li>
@@ -866,7 +866,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../u_e-mailcow_ui-tfa/" title="Two-Factor Authentication" class="md-nav__link">
+    <a href="../u_e-mailcow_ui-tfa.md" title="Two-Factor Authentication" class="md-nav__link">
       Two-Factor Authentication
     </a>
   </li>
@@ -1556,14 +1556,14 @@
                 
                   <h1>Statistics with Pflogsumm</h1>
                 
-                <p>To use pflogsumm with the default logging driver, we need to query postfix-mailcow via docker logs and pipe the output to pflogsumm:</p>
-<div class="codehilite"><pre><span></span>docker logs --since 24h $(docker ps -qf name=postfix-mailcow) | pflogsumm
+                <p>To use pflogsumm with the default logging driver, we need to query postfix-openemail via docker logs and pipe the output to pflogsumm:</p>
+<div class="codehilite"><pre><span></span>docker logs --since 24h $(docker ps -qf name=postfix-openemail) | pflogsumm
 </pre></div>
 
 <p>The above log output is limited to the past 24 hours.</p>
 <p>It's also possible to create a daily pflogsumm report via cron. Create the file /etc/cron.d/pflogsumm with the following content:</p>
 <div class="codehilite"><pre><span></span>SHELL=/bin/bash
-59 23 * * * root docker logs --since 24h $(docker ps -qf name=postfix-mailcow) | /usr/sbin/pflogsumm -d today | mail -s &quot;Postfix Report of $(date)&quot; postmaster@example.net
+59 23 * * * root docker logs --since 24h $(docker ps -qf name=postfix-openemail) | /usr/sbin/pflogsumm -d today | mail -s &quot;Postfix Report of $(date)&quot; postmaster@example.net
 </pre></div>
 
 <p>Based on the last 24h postfix logs, this example sends every day at 23:59:00 a pflogsumm report to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#112;&#111;&#115;&#116;&#109;&#97;&#115;&#116;&#101;&#114;&#64;&#101;&#120;&#97;&#109;&#112;&#108;&#101;&#46;&#110;&#101;&#116;">&#112;&#111;&#115;&#116;&#109;&#97;&#115;&#116;&#101;&#114;&#64;&#101;&#120;&#97;&#109;&#112;&#108;&#101;&#46;&#110;&#101;&#116;</a>.</p>
