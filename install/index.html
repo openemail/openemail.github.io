@@ -989,13 +989,12 @@ Add the new driver_opts parameter like this:</p>
     <span class="o">...</span>
 </pre></div>
 <h2 id="pull-openemail-docker-images"><strong>Pull Openemail Docker Images</strong><a class="headerlink" href="#pull-openemail-docker-images" title="Permanent link">¶</a></h2>
-<p>Pull the images and run the composer file. The parameter <code>-d</code> will start openemail docker containers detached:
-<div class="codehilite"><pre><span></span>docker-compose pull
-docker-compose up -d
+<p>Run <code>install.sh</code>. It will pull the images and run the composer file and  start Openemail docker containers detached:
+<div class="codehilite"><pre><span></span>./install.sh
 </pre></div></p>
 <h2 id="accessing-openemail-web-ui"><strong>Accessing Openemail Web UI</strong><a class="headerlink" href="#accessing-openemail-web-ui" title="Permanent link">¶</a></h2>
-<p>You can now access <strong>https://${OPENEMAIL_HOSTNAME}</strong> with the default credentials <code>admin</code> + password <code>openemail</code></p>
-<p>For an example: <a href="https://hasuna.openemail.io">https://hasuna.openemail.io</a></p>
+<p>You can now access <strong>https://${OPENEMAIL_HOSTNAME}</strong> with the default credentials <code>admin</code> and  password <code>openemail</code></p>
+<p>For an example: <a href="https://mail.openemail.io">https://mail.openemail.io</a></p>
 <p>The database will be initialized right after a connection to MySQL can be established.</p>
 <p>Done!</p>
 </article>
