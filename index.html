@@ -322,6 +322,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#openemail-containers" title="OpenEMAIL Containers" class="md-nav__link">
+    OpenEMAIL Containers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openemail-docker-volumes" title="OpenEMAIL Docker Volumes" class="md-nav__link">
+    OpenEMAIL Docker Volumes
+  </a>
+  
+</li>
+      
       
       
       
@@ -1665,6 +1679,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#openemail-containers" title="OpenEMAIL Containers" class="md-nav__link">
+    OpenEMAIL Containers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openemail-docker-volumes" title="OpenEMAIL Docker Volumes" class="md-nav__link">
+    OpenEMAIL Docker Volumes
+  </a>
+  
+</li>
+      
       
       
       
@@ -1757,36 +1785,131 @@
 <li>Integrated basic monitoring</li>
 <li>A lot more...</li>
 </ul>
+<h2 id="openemail-containers">OpenEMAIL Containers<a class="headerlink" href="#openemail-containers" title="Permanent link">&para;</a></h2>
 <p>OpenEMAIL comes with multiple containers linked in one bridged network.
 Each container represents a single application.</p>
-<ul>
-<li>Dovecot</li>
-<li>ClamAV (optional)</li>
-<li>Solr (optional)</li>
-<li>Oletools via Olefy</li>
-<li>Memcached</li>
-<li>Redis</li>
-<li>MySQL</li>
-<li>Unbound (DNS resolver)</li>
-<li>PHP-FPM</li>
-<li>Postfix</li>
-<li>ACME-Client</li>
-<li>Nginx</li>
-<li>Rspamd</li>
-<li>SOGo</li>
-<li>Netfilter (Fail2ban-like integration by @mkuron)</li>
-<li>Watchdog (basic monitoring)</li>
-</ul>
-<p><strong>Docker volumes</strong> to keep dynamic data - take care of them!</p>
-<ul>
-<li>vmail-vol-1</li>
-<li>solr-vol-1</li>
-<li>redis-vol-1</li>
-<li>mysql-vol-1</li>
-<li>rspamd-vol-1</li>
-<li>postfix-vol-1</li>
-<li>crypt-vol-1</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Container</th>
+<th>Service</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dovecot</td>
+<td>IMAP/POP3  services</td>
+</tr>
+<tr>
+<td>ClamAV (optional)</td>
+<td>Antivirus service for Rspamd to scan mails for email viruses</td>
+</tr>
+<tr>
+<td>Solr (optional)</td>
+<td>Email indexing and Full Text Search service for Dovecot</td>
+</tr>
+<tr>
+<td>Oletools via Olefy</td>
+<td>Helper socket to use oletools with rspamd for scanning Microsoft OLE documents</td>
+</tr>
+<tr>
+<td>Memcached</td>
+<td>A general-purpose distributed memory caching system</td>
+</tr>
+<tr>
+<td>Redis</td>
+<td>An in-memory data structure store, used as a database, cache and message broker</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>MariaDB database</td>
+</tr>
+<tr>
+<td>Postfix</td>
+<td>Postfix MTA Service</td>
+</tr>
+<tr>
+<td>ACME-Client</td>
+<td>Let's Encrypt client for automatic SSL certificate creation</td>
+</tr>
+<tr>
+<td>Nginx</td>
+<td>Nginx web server</td>
+</tr>
+<tr>
+<td>Rspamd</td>
+<td>Spamfiltering service</td>
+</tr>
+<tr>
+<td>SOGo</td>
+<td>Email groupware, ActiveSync and webmail service</td>
+</tr>
+<tr>
+<td>Netfilter</td>
+<td>Fail2ban-like netfilter integration by @mkuron</td>
+</tr>
+<tr>
+<td>Watchdog</td>
+<td>basic container  monitoring service</td>
+</tr>
+</tbody>
+</table>
+<h2 id="openemail-docker-volumes">OpenEMAIL Docker Volumes<a class="headerlink" href="#openemail-docker-volumes" title="Permanent link">&para;</a></h2>
+<p><strong>Docker volumes</strong> are used to keep dynamic data of the containers. We need to take care of them as they contain persistent data of containers. We need to backup them regularly. You will learn how to do it in <strong>Backup &amp; Restore</strong> section of this document.  </p>
+<table>
+<thead>
+<tr>
+<th>Volume Name</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vmail-vol-1</td>
+<td>Dovecot mailbox data</td>
+</tr>
+<tr>
+<td>vmail-attachments-vol-1</td>
+<td>Dovecot email attachments data with deduplication</td>
+</tr>
+<tr>
+<td>mysql-vol-1</td>
+<td>MariaDB database Container data</td>
+</tr>
+<tr>
+<td>mysql-socket-vol-1</td>
+<td>MariaDB Unix Socket for local access</td>
+</tr>
+<tr>
+<td>sogo-web-vol-1</td>
+<td>Sogo groupware container data</td>
+</tr>
+<tr>
+<td>solr-vol-1</td>
+<td>Apache Solr container data</td>
+</tr>
+<tr>
+<td>redis-vol-1</td>
+<td>Redis container data</td>
+</tr>
+<tr>
+<td>mysql-vol-1</td>
+<td>MariaDB Container data</td>
+</tr>
+<tr>
+<td>rspamd-vol-1</td>
+<td>Rspamd container Data</td>
+</tr>
+<tr>
+<td>postfix-vol-1</td>
+<td>Postfix container data</td>
+</tr>
+<tr>
+<td>crypt-vol-1</td>
+<td>Dovecot mailbox encryption keys</td>
+</tr>
+</tbody>
+</table>
                 
                   
                 
