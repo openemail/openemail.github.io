@@ -1773,7 +1773,7 @@
 </tr>
 </tbody>
 </table>
-<p>ClamAV and Solr are greedy RAM munchers. You can disable them in <code>openemail.conf</code> by settings SKIP_CLAMD=y and SKIP_SOLR=y.</p>
+<p>ClamAV and Solr are greedy RAM munchers. You can disable them in <code>openemail.conf</code> by settings <code>SKIP_CLAMD=y</code> and <code>SKIP_SOLR=y</code>.</p>
 <h2 id="firewall-and-ports">Firewall and Ports<a class="headerlink" href="#firewall-and-ports" title="Permanent link">&para;</a></h2>
 <p>Please check if any of OpenEMAIL's standard ports are open and not in use by other applications:</p>
 <div class="codehilite"><pre><span></span># netstat -tulpn | grep -E -w &#39;25|80|110|143|443|465|587|993|995&#39;
@@ -1784,7 +1784,6 @@
 <p>There are several problems with running OpenEMAIL on a firewalld/ufw enabled system. You should disable it (if possible) and move your ruleset to the DOCKER-USER chain, which is not cleared by a Docker service restart, instead. See <a href="https://blog.donnex.net/docker-and-iptables-filtering/">this blog post</a> for information about how to use iptables-persistent with the DOCKER-USER chain.
 As OpenEMAIL runs dockerized, INPUT rules have no effect on restricting access to OpenEMAIL. Use the FORWARD chain instead.</p>
 </div>
-<p>**</p>
 <p>If this command returns any results please remove or stop the application running on that port. You may also adjust OpenEMAILs ports via the <code>openemail.conf</code> configuration file.</p>
 <h3 id="default-ports">Default Ports<a class="headerlink" href="#default-ports" title="Permanent link">&para;</a></h3>
 <p>If you have a firewall in front of OpenEMAIL, please make sure that these ports are open for incoming connections:</p>
