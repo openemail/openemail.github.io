@@ -38,7 +38,7 @@
     
     
       
-        <title>Prepare Your System - OpenEmail Deployers Guide</title>
+        <title>Prepare Your System - OpeneEMAIL Deployers Guide</title>
       
     
     
@@ -132,7 +132,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://openemail.io" title="OpenEmail Deployers Guide" class="md-header-nav__button md-logo">
+        <a href="https://openemail.io" title="OpeneEMAIL Deployers Guide" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -145,7 +145,7 @@
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
             <span class="md-header-nav__topic">
-              OpenEmail Deployers Guide
+              OpeneEMAIL Deployers Guide
             </span>
             <span class="md-header-nav__topic">
               Prepare Your System
@@ -222,12 +222,12 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://openemail.io" title="OpenEmail Deployers Guide" class="md-nav__button md-logo">
+    <a href="https://openemail.io" title="OpeneEMAIL Deployers Guide" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
     </a>
-    OpenEmail Deployers Guide
+    OpeneEMAIL Deployers Guide
   </label>
   
     <div class="md-nav__source">
@@ -321,8 +321,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#firewall-ports" title="Firewall &amp; Ports" class="md-nav__link">
-    Firewall &amp; Ports
+  <a href="#firewall-and-ports" title="Firewall and Ports" class="md-nav__link">
+    Firewall and Ports
   </a>
   
     <nav class="md-nav">
@@ -348,8 +348,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#hetzner-cloud-and-probably-others" title="Hetzner Cloud (and probably others)" class="md-nav__link">
-    Hetzner Cloud (and probably others)
+  <a href="#set-up-static-ip" title="Set Up Static IP" class="md-nav__link">
+    Set Up Static IP
   </a>
   
 </li>
@@ -1639,8 +1639,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#firewall-ports" title="Firewall &amp; Ports" class="md-nav__link">
-    Firewall &amp; Ports
+  <a href="#firewall-and-ports" title="Firewall and Ports" class="md-nav__link">
+    Firewall and Ports
   </a>
   
     <nav class="md-nav">
@@ -1666,8 +1666,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#hetzner-cloud-and-probably-others" title="Hetzner Cloud (and probably others)" class="md-nav__link">
-    Hetzner Cloud (and probably others)
+  <a href="#set-up-static-ip" title="Set Up Static IP" class="md-nav__link">
+    Set Up Static IP
   </a>
   
 </li>
@@ -1700,17 +1700,17 @@
                 
                   <h1>Prepare Your System</h1>
                 
-                <p>Before you run <strong>mailcow: dockerized</strong>, there are a few requirements that you should check:</p>
+                <p>Before you run **OpenEMAIL, there are a few requirements that you should check:</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>When running mailcow: dockerized on a Debian 8 (Jessie) box, you should <a href="https://packages.debian.org/jessie-backports/linux-image-amd64">switch to kernel 4.9 from Jessie backports</a> to avoid a bug when running Docker containers with <em>healthchecks</em>! For more details read: <a href="https://github.com/docker/docker/issues/30402">github.com/docker/docker/issues/30402</a></p>
+<p>When running OpenEMAIL on a Debian 8 (Jessie) box, you should <a href="https://packages.debian.org/jessie-backports/linux-image-amd64">switch to kernel 4.9 from Jessie backports</a> to avoid a bug when running Docker containers with <em>healthchecks</em>! For more details read: <a href="https://github.com/docker/docker/issues/30402">github.com/docker/docker/issues/30402</a></p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <ul>
-<li>mailcow: dockerized requires <a href="#default-ports">some ports</a> to be open for incoming connections, so make sure that your firewall is not blocking these.</li>
-<li>Make sure that no other application is interfering with mailcow's configuration, such as another mail service</li>
-<li>A correct DNS setup is crucial to every good mailserver setup, so please make sure you got at least the <a href="../prerequisite-dns#the-minimal-dns-configuration">basics</a> covered before you begin!</li>
+<li>OpenEMAIL requires <a href="#default-ports">some ports</a> to be open for incoming connections, so make sure that your firewall is not blocking these.</li>
+<li>Make sure that no other application is interfering with OpenEMAIL's configuration, such as another mail service</li>
+<li>A correct DNS setup is crucial to every good mailserver setup, so please make sure you got OpenEMAILt the <a href="../prerequisite-dns#the-minimal-dns-configuration">basics</a> covered before you begin!</li>
 <li>Make sure that your system has a correct date and <a href="#date-and-time">time setup</a>. This is crucial for stuff like two factor TOTP authentication.</li>
 </ul>
 </div>
@@ -1720,7 +1720,7 @@
 <thead>
 <tr>
 <th>Resource</th>
-<th>mailcow: dockerized</th>
+<th>OpenEMAIL</th>
 </tr>
 </thead>
 <tbody>
@@ -1742,21 +1742,21 @@
 </tr>
 </tbody>
 </table>
-<p>ClamAV and Solr are greedy RAM munchers. You can disable them in <code>mailcow.conf</code> by settings SKIP_CLAMD=y and SKIP_SOLR=y.</p>
-<h2 id="firewall-ports">Firewall &amp; Ports<a class="headerlink" href="#firewall-ports" title="Permanent link">&para;</a></h2>
-<p>Please check if any of mailcow's standard ports are open and not in use by other applications:</p>
+<p>ClamAV and Solr are greedy RAM munchers. You can disable them in <code>openemail.conf</code> by settings SKIP_CLAMD=y and SKIP_SOLR=y.</p>
+<h2 id="firewall-and-ports">Firewall and Ports<a class="headerlink" href="#firewall-and-ports" title="Permanent link">&para;</a></h2>
+<p>Please check if any of OpenEMAIL's standard ports are open and not in use by other applications:</p>
 <div class="codehilite"><pre><span></span># netstat -tulpn | grep -E -w &#39;25|80|110|143|443|465|587|993|995&#39;
 </pre></div>
 
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>There are several problems with running mailcow on a firewalld/ufw enabled system. You should disable it (if possible) and move your ruleset to the DOCKER-USER chain, which is not cleared by a Docker service restart, instead. See <a href="https://blog.donnex.net/docker-and-iptables-filtering/">this blog post</a> for information about how to use iptables-persistent with the DOCKER-USER chain.
-As mailcow runs dockerized, INPUT rules have no effect on restricting access to mailcow. Use the FORWARD chain instead.</p>
+<p>There are several problems with running OpenEMAIL on a firewalld/ufw enabled system. You should disable it (if possible) and move your ruleset to the DOCKER-USER chain, which is not cleared by a Docker service restart, instead. See <a href="https://blog.donnex.net/docker-and-iptables-filtering/">this blog post</a> for information about how to use iptables-persistent with the DOCKER-USER chain.
+As OpenEMAIL runs dockerized, INPUT rules have no effect on restricting access to OpenEMAIL. Use the FORWARD chain instead.</p>
 </div>
 <p>**</p>
-<p>If this command returns any results please remove or stop the application running on that port. You may also adjust mailcows ports via the <code>mailcow.conf</code> configuration file.</p>
+<p>If this command returns any results please remove or stop the application running on that port. You may also adjust OpenEMAILs ports via the <code>openemail.conf</code> configuration file.</p>
 <h3 id="default-ports">Default Ports<a class="headerlink" href="#default-ports" title="Permanent link">&para;</a></h3>
-<p>If you have a firewall in front of mailcow, please make sure that these ports are open for incoming connections:</p>
+<p>If you have a firewall in front of OpenEMAIL, please make sure that these ports are open for incoming connections:</p>
 <table>
 <thead>
 <tr>
@@ -1772,63 +1772,63 @@ As mailcow runs dockerized, INPUT rules have no effect on restricting access to 
 <td>Postfix SMTP</td>
 <td align="center">TCP</td>
 <td align="left">25</td>
-<td align="left">postfix-mailcow</td>
+<td align="left">postfix-openemail</td>
 <td><code>${SMTP_PORT}</code></td>
 </tr>
 <tr>
 <td>Postfix SMTPS</td>
 <td align="center">TCP</td>
 <td align="left">465</td>
-<td align="left">postfix-mailcow</td>
+<td align="left">postfix-openemail</td>
 <td><code>${SMTPS_PORT}</code></td>
 </tr>
 <tr>
 <td>Postfix Submission</td>
 <td align="center">TCP</td>
 <td align="left">587</td>
-<td align="left">postfix-mailcow</td>
+<td align="left">postfix-openemail</td>
 <td><code>${SUBMISSION_PORT}</code></td>
 </tr>
 <tr>
 <td>Dovecot IMAP</td>
 <td align="center">TCP</td>
 <td align="left">143</td>
-<td align="left">dovecot-mailcow</td>
+<td align="left">dovecot-openemail</td>
 <td><code>${IMAP_PORT}</code></td>
 </tr>
 <tr>
 <td>Dovecot IMAPS</td>
 <td align="center">TCP</td>
 <td align="left">993</td>
-<td align="left">dovecot-mailcow</td>
+<td align="left">dovecot-openemail</td>
 <td><code>${IMAPS_PORT}</code></td>
 </tr>
 <tr>
 <td>Dovecot POP3</td>
 <td align="center">TCP</td>
 <td align="left">110</td>
-<td align="left">dovecot-mailcow</td>
+<td align="left">dovecot-openemail</td>
 <td><code>${POP_PORT}</code></td>
 </tr>
 <tr>
 <td>Dovecot POP3S</td>
 <td align="center">TCP</td>
 <td align="left">995</td>
-<td align="left">dovecot-mailcow</td>
+<td align="left">dovecot-openemail</td>
 <td><code>${POPS_PORT}</code></td>
 </tr>
 <tr>
 <td>Dovecot ManageSieve</td>
 <td align="center">TCP</td>
 <td align="left">4190</td>
-<td align="left">dovecot-mailcow</td>
+<td align="left">dovecot-openemail</td>
 <td><code>${SIEVE_PORT}</code></td>
 </tr>
 <tr>
 <td>HTTP(S)</td>
 <td align="center">TCP</td>
 <td align="left">80/443</td>
-<td align="left">nginx-mailcow</td>
+<td align="left">nginx-openemail</td>
 <td><code>${HTTP_PORT}</code> / <code>${HTTPS_PORT}</code></td>
 </tr>
 </tbody>
@@ -1837,44 +1837,128 @@ As mailcow runs dockerized, INPUT rules have no effect on restricting access to 
 <p><strong>Important</strong>: You cannot use IP:PORT bindings in HTTP_PORT and HTTPS_PORT. Please use <code>HTTP_PORT=1234</code> and <code>HTTP_BIND=1.2.3.4</code> instead.</p>
 <h2 id="date-and-time">Date and Time<a class="headerlink" href="#date-and-time" title="Permanent link">&para;</a></h2>
 <p>To ensure that you have the correct date and time setup on your system, please check the output of <code>timedatectl status</code>:</p>
+<p>You need to ensure that date and time is accurate. This is required for the operation of openemail as well and accurate system logging.</p>
+<p><strong>To check your current time run:</strong><br />
 <div class="codehilite"><pre><span></span>$ timedatectl status
-      Local time: Sat <span class="m">2017</span>-05-06 <span class="m">02</span>:12:33 CEST
-  Universal time: Sat <span class="m">2017</span>-05-06 <span class="m">00</span>:12:33 UTC
-        RTC time: Sat <span class="m">2017</span>-05-06 <span class="m">00</span>:12:32
-       Time zone: Europe/Berlin <span class="o">(</span>CEST, +0200<span class="o">)</span>
-     NTP enabled: yes
-NTP synchronized: yes
- RTC in <span class="nb">local</span> TZ: no
-      DST active: yes
- Last DST change: DST began at
-                  Sun <span class="m">2017</span>-03-26 <span class="m">01</span>:59:59 CET
-                  Sun <span class="m">2017</span>-03-26 <span class="m">03</span>:00:00 CEST
- Next DST change: DST ends <span class="o">(</span>the clock jumps one hour backwards<span class="o">)</span> at
-                  Sun <span class="m">2017</span>-10-29 <span class="m">02</span>:59:59 CEST
-                  Sun <span class="m">2017</span>-10-29 <span class="m">02</span>:00:00 CET
+</pre></div>
+You will get an output like below</p>
+<p><div class="codehilite"><pre><span></span>                      Local time: Tue 2019-03-05 09:17:54 UTC
+                  Universal time: Tue 2019-03-05 09:17:54 UTC
+                        RTC time: Tue 2019-03-05 09:17:55
+                       Time zone: Etc/UTC (UTC, +0000)
+       System clock synchronized: yes
+                      Local time: Tue 2019-03-05 09:17:54 UTC
+                  Universal time: Tue 2019-03-05 09:17:54 UTC
+                        RTC time: Tue 2019-03-05 09:17:55
+                       Time zone: Etc/UTC (UTC, +0000)
+       System clock synchronized: yes
+systemd-timesyncd.service active: no
+                 RTC in local TZ: no
+                 RTC in local TZ: no
+</pre></div>
+The value <code>systemd-timesyncd.service active: no</code> means your system hasn't been configured get it time synced using <code>systemd-timesyncd</code></p>
+<p><strong>To set your system time to sync with `systemd-timesyncd, run:</strong></p>
+<p><div class="codehilite"><pre><span></span>$ sudo sudo timedatectl set-ntp on
+</pre></div>
+Now run again run <code>timedatectl status</code>. You will observe that <code>systemd-timesyncd.service active: yes</code></p>
+<p><div class="codehilite"><pre><span></span>$ timedatectl status
+</pre></div>
+You will see this time <code>systemd-timesyncd.service active: yes</code> as in the below output
+<div class="codehilite"><pre><span></span>                      Local time: Tue 2019-03-05 09:26:24 UTC
+                  Universal time: Tue 2019-03-05 09:26:24 UTC
+                        RTC time: Tue 2019-03-05 09:26:25
+                       Time zone: Etc/UTC (UTC, +0000)
+       System clock synchronized: yes
+systemd-timesyncd.service active: yes
+</pre></div></p>
+<p><strong>To check to see whether <code>systemd-timesyncd</code> is running:</strong></p>
+<div class="codehilite"><pre><span></span>sudo systemctl status systemd-timesyncd
 </pre></div>
 
-<p>The lines <code>NTP enabled: yes</code> and <code>NTP synchronized: yes</code> indicate wether you have NTP enabled and if it's synchronized.</p>
-<p>To enable NTP you need to run the command <code>timedatectl set-ntp true</code>. You also need to edit your <code>/etc/systemd/timesyncd.conf</code>:</p>
+<p>If it is not running you will get an output like below.
+<div class="codehilite"><pre><span></span><span class="nt">systemctl</span> <span class="nt">status</span> <span class="nt">systemd-timesyncd</span>
+<span class="err">●</span> <span class="nt">systemd-timesyncd</span><span class="p">.</span><span class="nc">service</span> <span class="nt">-</span> <span class="nt">Network</span> <span class="nt">Time</span> <span class="nt">Synchronization</span>
+   <span class="nt">Loaded</span><span class="o">:</span> <span class="nt">loaded</span> <span class="o">(/</span><span class="nt">lib</span><span class="o">/</span><span class="nt">systemd</span><span class="o">/</span><span class="nt">system</span><span class="o">/</span><span class="nt">systemd-timesyncd</span><span class="p">.</span><span class="nc">service</span><span class="o">;</span> <span class="nt">enabled</span><span class="o">;</span> <span class="nt">vendor</span> <span class="nt">preset</span><span class="o">:</span> <span class="nt">enabled</span><span class="o">)</span>
+   <span class="nt">Active</span><span class="o">:</span> <span class="nt">inactive</span> <span class="o">(</span><span class="nt">dead</span><span class="o">)</span> <span class="nt">since</span> <span class="nt">Wed</span> <span class="nt">2019-03-06</span> <span class="nt">03</span><span class="p">:</span><span class="nd">18</span><span class="p">:</span><span class="nd">40</span> <span class="nt">UTC</span><span class="o">;</span> <span class="nt">2s</span> <span class="nt">ago</span>
+     <span class="nt">Docs</span><span class="o">:</span> <span class="nt">man</span><span class="p">:</span><span class="nd">systemd-timesyncd</span><span class="p">.</span><span class="nc">service</span><span class="o">(</span><span class="nt">8</span><span class="o">)</span>
+  <span class="nt">Process</span><span class="o">:</span> <span class="nt">21020</span> <span class="nt">ExecStart</span><span class="o">=/</span><span class="nt">lib</span><span class="o">/</span><span class="nt">systemd</span><span class="o">/</span><span class="nt">systemd-timesyncd</span> <span class="o">(</span><span class="nt">code</span><span class="o">=</span><span class="nt">exited</span><span class="o">,</span> <span class="nt">status</span><span class="o">=</span><span class="nt">0</span><span class="o">/</span><span class="nt">SUCCESS</span><span class="o">)</span>
+ <span class="nt">Main</span> <span class="nt">PID</span><span class="o">:</span> <span class="nt">21020</span> <span class="o">(</span><span class="nt">code</span><span class="o">=</span><span class="nt">exited</span><span class="o">,</span> <span class="nt">status</span><span class="o">=</span><span class="nt">0</span><span class="o">/</span><span class="nt">SUCCESS</span><span class="o">)</span>
+   <span class="nt">Status</span><span class="o">:</span> <span class="s2">&quot;Idle.&quot;</span>
+
+<span class="nt">Mar</span> <span class="nt">05</span> <span class="nt">09</span><span class="p">:</span><span class="nd">26</span><span class="p">:</span><span class="nd">13</span> <span class="nt">mail</span><span class="p">.</span><span class="nc">openemail</span><span class="p">.</span><span class="nc">io</span> <span class="nt">systemd</span><span class="cp">[</span><span class="mi">1</span><span class="cp">]</span><span class="o">:</span> <span class="nt">Starting</span> <span class="nt">Network</span> <span class="nt">Time</span> <span class="nt">Synchronization</span><span class="o">...</span>
+<span class="nt">Mar</span> <span class="nt">05</span> <span class="nt">09</span><span class="p">:</span><span class="nd">26</span><span class="p">:</span><span class="nd">13</span> <span class="nt">mail</span><span class="p">.</span><span class="nc">openemail</span><span class="p">.</span><span class="nc">io</span> <span class="nt">systemd</span><span class="cp">[</span><span class="mi">1</span><span class="cp">]</span><span class="o">:</span> <span class="nt">Started</span> <span class="nt">Network</span> <span class="nt">Time</span> <span class="nt">Synchronization</span><span class="o">.</span>
+<span class="nt">Mar</span> <span class="nt">05</span> <span class="nt">09</span><span class="p">:</span><span class="nd">26</span><span class="p">:</span><span class="nd">13</span> <span class="nt">mail</span><span class="p">.</span><span class="nc">openemail</span><span class="p">.</span><span class="nc">io</span> <span class="nt">systemd-timesyncd</span><span class="cp">[</span><span class="mi">21020</span><span class="cp">]</span><span class="o">:</span> <span class="nt">Synchronized</span> <span class="nt">to</span> <span class="nt">time</span> <span class="nt">server</span> <span class="nt">91</span><span class="p">.</span><span class="nc">189</span><span class="p">.</span><span class="nc">89</span><span class="p">.</span><span class="nc">198</span><span class="p">:</span><span class="nd">123</span> <span class="o">(</span><span class="nt">ntp</span><span class="p">.</span><span class="nc">ubuntu</span><span class="p">.</span><span class="nc">com</span><span class="o">).</span>
+<span class="nt">Mar</span> <span class="nt">06</span> <span class="nt">03</span><span class="p">:</span><span class="nd">18</span><span class="p">:</span><span class="nd">40</span> <span class="nt">mail</span><span class="p">.</span><span class="nc">openemail</span><span class="p">.</span><span class="nc">io</span> <span class="nt">systemd</span><span class="cp">[</span><span class="mi">1</span><span class="cp">]</span><span class="o">:</span> <span class="nt">Stopping</span> <span class="nt">Network</span> <span class="nt">Time</span> <span class="nt">Synchronization</span><span class="o">...</span>
+<span class="nt">Mar</span> <span class="nt">06</span> <span class="nt">03</span><span class="p">:</span><span class="nd">18</span><span class="p">:</span><span class="nd">40</span> <span class="nt">mail</span><span class="p">.</span><span class="nc">openemail</span><span class="p">.</span><span class="nc">io</span> <span class="nt">systemd</span><span class="cp">[</span><span class="mi">1</span><span class="cp">]</span><span class="o">:</span> <span class="nt">Stopped</span> <span class="nt">Network</span> <span class="nt">Time</span> <span class="nt">Synchronization</span><span class="o">.</span>
+</pre></div>
+<strong>To start <code>systemd-timesyncd</code> run:</strong></p>
+<div class="codehilite"><pre><span></span>sudo systemctl start systemd-timesyncd
+</pre></div>
+
+<p><strong>To see the status of <code>systemd-timesyncd</code> run:</strong></p>
+<div class="codehilite"><pre><span></span>sudo systemctl status systemd-timesyncd
+</pre></div>
+
+<p>Your output should be like below</p>
+<p><div class="codehilite"><pre><span></span><span class="err">●</span> <span class="nt">systemd-timesyncd</span><span class="p">.</span><span class="nc">service</span> <span class="nt">-</span> <span class="nt">Network</span> <span class="nt">Time</span> <span class="nt">Synchronization</span>
+   <span class="nt">Loaded</span><span class="o">:</span> <span class="nt">loaded</span> <span class="o">(/</span><span class="nt">lib</span><span class="o">/</span><span class="nt">systemd</span><span class="o">/</span><span class="nt">system</span><span class="o">/</span><span class="nt">systemd-timesyncd</span><span class="p">.</span><span class="nc">service</span><span class="o">;</span> <span class="nt">enabled</span><span class="o">;</span> <span class="nt">vendor</span> <span class="nt">preset</span><span class="o">:</span> <span class="nt">enabled</span><span class="o">)</span>
+   <span class="nt">Active</span><span class="o">:</span> <span class="nt">active</span> <span class="o">(</span><span class="nt">running</span><span class="o">)</span> <span class="nt">since</span> <span class="nt">Wed</span> <span class="nt">2019-03-06</span> <span class="nt">03</span><span class="p">:</span><span class="nd">30</span><span class="p">:</span><span class="nd">08</span> <span class="nt">UTC</span><span class="o">;</span> <span class="nt">8s</span> <span class="nt">ago</span>
+     <span class="nt">Docs</span><span class="o">:</span> <span class="nt">man</span><span class="p">:</span><span class="nd">systemd-timesyncd</span><span class="p">.</span><span class="nc">service</span><span class="o">(</span><span class="nt">8</span><span class="o">)</span>
+ <span class="nt">Main</span> <span class="nt">PID</span><span class="o">:</span> <span class="nt">29018</span> <span class="o">(</span><span class="nt">systemd-timesyn</span><span class="o">)</span>
+   <span class="nt">Status</span><span class="o">:</span> <span class="s2">&quot;Synchronized to time server 91.189.89.198:123 (ntp.ubuntu.com).&quot;</span>
+    <span class="nt">Tasks</span><span class="o">:</span> <span class="nt">2</span> <span class="o">(</span><span class="nt">limit</span><span class="o">:</span> <span class="nt">2361</span><span class="o">)</span>
+   <span class="nt">CGroup</span><span class="o">:</span> <span class="o">/</span><span class="nt">system</span><span class="p">.</span><span class="nc">slice</span><span class="o">/</span><span class="nt">systemd-timesyncd</span><span class="p">.</span><span class="nc">service</span>
+           <span class="err">└─</span><span class="nt">29018</span> <span class="o">/</span><span class="nt">lib</span><span class="o">/</span><span class="nt">systemd</span><span class="o">/</span><span class="nt">systemd-timesyncd</span>
+
+<span class="nt">Mar</span> <span class="nt">06</span> <span class="nt">03</span><span class="p">:</span><span class="nd">30</span><span class="p">:</span><span class="nd">08</span> <span class="nt">mail</span><span class="p">.</span><span class="nc">openemail</span><span class="p">.</span><span class="nc">io</span> <span class="nt">systemd</span><span class="cp">[</span><span class="mi">1</span><span class="cp">]</span><span class="o">:</span> <span class="nt">Starting</span> <span class="nt">Network</span> <span class="nt">Time</span> <span class="nt">Synchronization</span><span class="o">...</span>
+<span class="nt">Mar</span> <span class="nt">06</span> <span class="nt">03</span><span class="p">:</span><span class="nd">30</span><span class="p">:</span><span class="nd">08</span> <span class="nt">mail</span><span class="p">.</span><span class="nc">openemail</span><span class="p">.</span><span class="nc">io</span> <span class="nt">systemd</span><span class="cp">[</span><span class="mi">1</span><span class="cp">]</span><span class="o">:</span> <span class="nt">Started</span> <span class="nt">Network</span> <span class="nt">Time</span> <span class="nt">Synchronization</span><span class="o">.</span>
+<span class="nt">Mar</span> <span class="nt">06</span> <span class="nt">03</span><span class="p">:</span><span class="nd">30</span><span class="p">:</span><span class="nd">08</span> <span class="nt">mail</span><span class="p">.</span><span class="nc">openemail</span><span class="p">.</span><span class="nc">io</span> <span class="nt">systemd-timesyncd</span><span class="cp">[</span><span class="mi">29018</span><span class="cp">]</span><span class="o">:</span> <span class="nt">Synchronized</span> <span class="nt">to</span> <span class="nt">time</span> <span class="nt">server</span> <span class="nt">91</span><span class="p">.</span><span class="nc">189</span><span class="p">.</span><span class="nc">89</span><span class="p">.</span><span class="nc">198</span><span class="p">:</span><span class="nd">123</span> <span class="o">(</span><span class="nt">ntp</span><span class="p">.</span><span class="nc">ubuntu</span><span class="p">.</span><span class="nc">com</span><span class="o">).</span>
+</pre></div>
+To enable NTP you need to run the command <code>timedatectl set-ntp true</code>. You also need to edit your <code>/etc/systemd/timesyncd.conf:</code></p>
 <div class="codehilite"><pre><span></span># vim /etc/systemd/timesyncd.conf
 [Time]
 Servers=0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org
 </pre></div>
 
-<h2 id="hetzner-cloud-and-probably-others">Hetzner Cloud (and probably others)<a class="headerlink" href="#hetzner-cloud-and-probably-others" title="Permanent link">&para;</a></h2>
-<p>Check <code>/etc/network/interfaces.d/50-cloud-init.cfg</code> and change the IPv6 interface from eth0:0 to eth0:</p>
-<div class="codehilite"><pre><span></span># Wrong:
-auto eth0:0
-iface eth0:0 inet6 static
-# Right:
-auto eth0
-iface eth0 inet6 static
+<h2 id="set-up-static-ip">Set Up Static IP<a class="headerlink" href="#set-up-static-ip" title="Permanent link">&para;</a></h2>
+<p>Ubuntu 18.04 has changed its network interface configuration subsystem with new netplan configuration. The yml syntaxes are used in network configuration.</p>
+<p><strong>To configure the network</strong></p>
+<p><div class="codehilite"><pre><span></span>sudo nano  /etc/netplan/50-cloud-init.yaml
+</pre></div>
+Below is an example configuration. Adjust settings as per your network environment.</p>
+<p><div class="codehilite"><pre><span></span><span class="n">network</span><span class="o">:</span>
+    <span class="n">version</span><span class="o">:</span> <span class="mi">2</span>
+    <span class="n">ethernets</span><span class="o">:</span>
+        <span class="n">eth0</span><span class="o">:</span>
+            <span class="n">addresses</span><span class="o">:</span>
+            <span class="o">-</span> <span class="mf">178.128</span><span class="o">.</span><span class="mf">57.210</span><span class="o">/</span><span class="mi">20</span>
+            <span class="n">gateway4</span><span class="o">:</span> <span class="mf">178.128</span><span class="o">.</span><span class="mf">48.1</span>
+            <span class="n">match</span><span class="o">:</span>
+                <span class="n">macaddress</span><span class="o">:</span> <span class="mi">0</span><span class="n">a</span><span class="o">:</span><span class="mi">17</span><span class="o">:</span><span class="mi">6</span><span class="n">b</span><span class="o">:</span><span class="mi">4</span><span class="n">f</span><span class="o">:</span><span class="mi">06</span><span class="o">:</span><span class="n">ed</span>
+            <span class="n">nameservers</span><span class="o">:</span>
+                <span class="n">addresses</span><span class="o">:</span>
+                <span class="o">-</span> <span class="mf">67.207</span><span class="o">.</span><span class="mf">67.2</span>
+                <span class="o">-</span> <span class="mf">67.207</span><span class="o">.</span><span class="mf">67.3</span>
+                <span class="n">search</span><span class="o">:</span> <span class="o">[]</span>
+            <span class="kd">set</span><span class="o">-</span><span class="n">name</span><span class="o">:</span> <span class="n">eth0</span>
+</pre></div>
+<strong>To update your settings run:</strong>
+<div class="codehilite"><pre><span></span>sudo netplan apply
+</pre></div></p>
+<p><strong>To check your network configuration run</strong></p>
+<p><div class="codehilite"><pre><span></span>ip addr sh eth0
+</pre></div>
+You will get an output like Below</p>
+<div class="codehilite"><pre><span></span>eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000
+   link/ether 0a:17:6b:4f:06:ed brd ff:ff:ff:ff:ff:ff
+   inet 178.128.57.210/20 brd 178.128.63.255 scope global eth0
+      valid_lft forever preferred_lft forever
+   inet6 fe80::817:6bff:fe4f:6ed/64 scope link
+      valid_lft forever preferred_lft forever
 </pre></div>
 
-<p>Reboot or restart the interface.
-You may want to <a href="https://wiki.hetzner.de/index.php/Cloud_IP_static/en#disable_cloud-init_network_changes">disable cloud-init network changes.</a></p>
 <h2 id="mtu">MTU<a class="headerlink" href="#mtu" title="Permanent link">&para;</a></h2>
-<p>Especially relevant for OpenStack users: Check your MTU and set it accordingly in docker-compose.yml. See <strong>4.1</strong> in <a href="https://mailcow.github.io/mailcow-dockerized-docs/i_u_m_install/">our installation docs</a>.</p>
+<p>Especially relevant for OpenStack users: Check your MTU and set it accordingly in docker-compose.yml. See <strong>4.1</strong> in <a href="https://git/mailcow-dockerized-docs/i_u_m_install/">our installation docs</a>.</p>
                 
                   
                 
